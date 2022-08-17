@@ -176,5 +176,84 @@
         </div>
       </section>
     </main>
+    <section class="auth">
+      <div class="auth__shadow"></div>
+      <div class="auth__container">
+        <div class="auth__close"></div>
+        <form class="auth__form form form--hidden" id="" action="#" autocomplete="on">
+          <h1 class="form__title">Войти</h1>
+          <div class="form__message form__message--error">Неправильное имя или пароль</div>
+          <ul class="form__input-list">
+            <li class="form__input-item">
+              <div class="form__input-error-message">Ошибка</div>
+              <input class="form__input" id="email" type="email" autofocus placeholder="Email" required>
+            </li>
+            <li class="form__input-item">
+              <div class="form__input-error-message">Ошибка</div>
+              <input type="password" class="form__input form__input--error" autofocus placeholder="Пароль" required>
+            </li>
+            <li class="form__input-item">
+              <input type="checkbox" class="form__checkbox" value="showpassword">
+              <label for="showpassword">Показать пароль</label>
+            </li>
+            <li class="form__input-item">
+              <input type="checkbox" class="form__checkbox" value="loginkeeping">
+              <label for="loginkeeping">Оставаться в системе</label>
+            </li>
+          </ul>
+          <button class="form__btn" type="submit">Войти</button>
+          <button class="form__btn" type="reset">Очистить</button>
+          <p class="form__text">
+            <a href="#" class="form__link">Забыли имя или пароль?</a>
+          </p>
+          <p class="form__text">Еще не зарегистрированы?
+            <a href="#" class="form__link" id="link-create-account">Создать аккаунт</a>
+          </p>
+        </form>
+        <form class="auth__form form" id="" action="#">
+          <h1 class="form__title">Создать новый аккаунт</h1>
+          <div class="form__avatar">
+            <img class="form__avatar-img" id="preview" src="#" alt="">
+          </div>
+          <div class="form__message form__message--error">Неправильное имя или пароль</div>
+          <ul class="form__input-list">
+            <li class="form__input-item">
+              <div class="form__input-error-message">Ошибка</div>
+              <input type="text" class="form__input" autofocus placeholder="Имя" required>
+            </li>
+            <li class="form__input-item">
+              <div class="form__input-error-message">Ошибка</div>
+              <input type="email" class="form__input" autofocus placeholder="Email" required>
+            </li>
+            <li class="form__input-item">
+              <div class="form__input-error-message">Ошибка</div>
+              <input type="password" class="form__input form__input--error" autofocus placeholder="Пароль">
+            </li>
+            <li class="form__input-item">
+              <div class="form__input-error-message">Ошибка</div>
+              <input type="password" class="form__input form__input--error" autofocus placeholder="Подтвердите пароль">
+            </li>
+            <li class="form__input-item">
+              <input type="checkbox" class="form__checkbox" value="showpassword">
+              <label for="showpassword">Показать пароль</label>
+            </li>
+            <li class="form__input-item">
+              <input type="checkbox" class="form__checkbox" value="agree">
+              <label for="agree">Я согласен на обработку моих персональных данных</label>
+            </li>
+            <li class="form__input-item">
+              <div class="form__input-error-message">Тип файла не поддерживается</div>
+              <input type="file" class="form__input form__input--file form__input--error" id="file" accept="image/*">
+              <label for="file">Выберите файл</label>
+            </li>
+          </ul>
+          <button class="form__btn" type="submit">Продолжить</button>
+          <button class="form__btn" type="reset">Очистить</button>
+          <p class="form__text">Уже есть аккаунт?
+            <a href="#" class="form__link" id="link-login">Войти</a>
+          </p>
+        </form>
+      </div>
+    </section>
   </body>
 </html>
