@@ -28,7 +28,7 @@ const STATISTICS: StatBackProps = {
 
 
 export const getDataWords = async():Promise<Array<Dictionary>> => {
-const response = await fetch(`${wordsApi}`)
+const response = await fetch(`${wordsApi}`);
 
 if(!response.ok){
   throw new Error(`Could not fetch ${wordsApi}, received ${response.status}`);
@@ -41,7 +41,6 @@ export const getDataPage = async(group:string | number,page?:number):Promise<Dic
   if (!response.ok) {
     throw new Error(`Could not fetch ${`${baseApi}words?page=${page}&group=${group}`}, received ${response.status}`);
   }
-
   return await response.json();
 }
 
@@ -92,7 +91,6 @@ export const getUserWord = async () => {
   if (!rawResponse.ok) {
     throw new Error(`Could not fetch ${url}, received ${rawResponse.status}`);
   }
-
   return await rawResponse.json();
 };
 
@@ -125,7 +123,6 @@ const getStatistics = async (user:{userId:string,token:string}): Promise<StatPro
     if (!content.statistics.audioCall && !content.statistics.sprint) {
       setStatistics(user, STATISTICS);
       return STATISTICS.statistics;
-
     } else return await content;
   } else {
     setStatistics(user, STATISTICS);
