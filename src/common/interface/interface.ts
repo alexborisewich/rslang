@@ -25,10 +25,14 @@ export interface StatisticDailyProps {
   learningWords: string[];
   winStreak: number;
   generalCountLearningWords: number;
-  countRightAnswers: number
+  countOfRightAnswers: number
 }
 
 export interface StatProps{
   audioCall: StatisticDailyProps[];
   sprint: StatisticDailyProps[];
+}
+
+export interface StatBackProps {
+  statistics: StatProps,
 }

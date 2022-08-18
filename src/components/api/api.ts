@@ -1,7 +1,30 @@
-import { Dictionary,Registration,StatProps } from "../../common/interface/interface";
+import { Dictionary,Registration,StatProps,StatBackProps } from "../../common/interface/interface";
 
 const baseApi:string = 'https://rslang-172.herokuapp.com/';
 const wordsApi:string = `${baseApi}words?all=true`;
+const STATISTICS: StatBackProps = {
+  "statistics": {
+    "audioCall": [
+      {
+        "data": "",
+        "learningWords": [],
+        "winStreak": 0,
+        "generalCountLearningWords": 0,
+        "countOfRightAnswers": 0
+      }
+    ],
+    "sprint": [
+      {
+        "data": "0",
+        "learningWords": [],
+        "winStreak": 0,
+        "generalCountLearningWords": 0,
+        "countOfRightAnswers": 0
+      }
+    ]
+  }
+}
+
 
 
 export const getDataWords = async():Promise<Array<Dictionary>> => {
@@ -88,29 +111,41 @@ export const createUserWord = async (userId:string, wordId:string, word:string) 
   return content;
 };
 
-const getStatistics = async (): Promise<StatProps> => {
-  const{userId:id,token:newToken} = await loginUser(values);
-  const rawResponse = await fetch(`${baseApi}users/${id}/statistics`, {
+const getStatistics = async (user:{userId:string,token:string}): Promise<StatProps> => {
+
+  const rawResponse = await fetch(`${baseApi}users/${user.userId}/statistics`, {
     method: 'GET',
     headers: {
-      'Authorization': `Bearer ${newToken}`,
+      'Authorization': `Bearer ${user.token}`,
       'Accept': 'application/json',
     }
   });
   if (rawResponse.ok) {
     const content = await rawResponse.json();
     if (!content.statistics.audioCall && !content.statistics.sprint) {
+      setStatistics(user, STATISTICS);
+      return STATISTICS.statistics;
 
     } else return await content;
   } else {
-
+    setStatistics(user, STATISTICS);
+    return STATISTICS.statistics;
   }
 };
 
-const setStatistics = async (user: any, statistic: StatProps) => {
-
-
+const setStatistics = async (user:{userId:string,token:string}, statistic: StatBackProps) => {
+  const rawResponse = await fetch(`${baseApi}users/${user.userId}/statistics`, {
+    method: 'PUT',
+    headers: {
+      'Authorization': `Bearer ${user.token}`,
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(statistic),
+  });
 };
+
+
 
 
 
