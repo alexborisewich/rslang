@@ -239,86 +239,117 @@
               </span>
             </a>
           </div>
-          <div class="games__audiochallenge game">
-            <div class="game__start-screen">
-              <h2 class="game__title">Аудиовызов</h2>
-              <p class="game__instruction">Инструкция</p>
-              <label for="game-select-level">Уровень сложности</label>
-              <select class="game__select-level" name="game-select-level" id="game-select-level">
-                <option value="1">A1 Elementary</option>
-                <option value="2">A2 Pre-Intermediate</option>
-                <option value="3">B1 Intermediate</option>
-                <option value="4">B2 Upper-Intermediate</option>
-                <option value="5">C1 Advanced</option>
-                <option value="6">C2 Proficiency</option>
-              </select>
-              <button class="game__btn-start btn">Начать</button>
-            </div>
-            <div class="game__gameplay">
-              <ul class="game__lives-list">
-                <li class="game__lives-item">+</li>
-                <li class="game__lives-item">+</li>
-                <li class="game__lives-item">+</li>
-                <li class="game__lives-item">+</li>
-                <li class="game__lives-item">+</li>
+          <div class="games__start-screen">
+            <h2 class="games__title">Аудиовызов</h2>
+            <p class="games__instruction">Инструкция</p>
+            <label for="games-select-level">Уровень сложности</label>
+            <select class="games__select-level" name="games-select-level" id="games-select-level">
+              <option value="1">A1 Elementary</option>
+              <option value="2">A2 Pre-Intermediate</option>
+              <option value="3">B1 Intermediate</option>
+              <option value="4">B2 Upper-Intermediate</option>
+              <option value="5">C1 Advanced</option>
+              <option value="6">C2 Proficiency</option>
+            </select>
+            <button class="games__btn-start btn">Начать</button>
+          </div>
+          <div class="games__audiochallenge audiochallenge">
+            <div class="audiochallenge__gameplay">
+              <ul class="audiochallenge__lives-list">
+                <li class="audiochallenge__lives-item">+</li>
+                <li class="audiochallenge__lives-item">+</li>
+                <li class="audiochallenge__lives-item">+</li>
+                <li class="audiochallenge__lives-item">+</li>
+                <li class="audiochallenge__lives-item">+</li>
               </ul>
-              <div class="game__speaker">
-                <img class="game__speaker-img" src="" alt="">
+              <div class="audiochallenge__speaker">
+                <img class="audiochallenge__speaker-img" src="" alt="">
               </div>
-              <ul class="game__answer-list">
-                <li class="game__answer-item">
+              <ul class="audiochallenge__answer-list">
+                <li class="audiochallenge__answer-item">
                   <span>1</span>
                 </li>
-                <li class="game__answer-item">
+                <li class="audiochallenge__answer-item">
                   <span>2</span>
                 </li>
-                <li class="game__answer-item">
+                <li class="audiochallenge__answer-item">
                   <span>3</span>
                 </li>
-                <li class="game__answer-item">
+                <li class="audiochallenge__answer-item">
                   <span>4</span>
                 </li>
-                <li class="game__answer-item">
+                <li class="audiochallenge__answer-item">
                   <span>5</span>
                 </li>
               </ul>
-              <button class="game__answer-btn btn">Не знаю</button>
+              <button class="audiochallenge__answer-btn btn">Не знаю</button>
             </div>
-            <div class="game__finish">
-              <div class="game__finish-container">
-                <h3 class="game__finish-title">Результаты</h3>
-                <div class="game__answers-counters">
-                  <span class="game__answers-right">Знаю:
-                    <span class="game__correct-count">1</span>
-                  </span>
-                  <span class="game__answers-wrong">Не знаю:
-                    <span class="game__wrong-count">1</span>
-                  </span>
-                </div>
-                <table class="game__finish-statistic">
-                  <thead>
-                    <tr>
-                      <th>1</th>
-                      <th>2</th>
-                      <th>3</th>
-                      <th>4</th>
-                      <th>5</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Звук</td>
-                      <td>англ слово</td>
-                      <td>[]</td>
-                      <td>рус слово</td>
-                      <td>+ или-</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <button class="game__restart-btn btn">Играть еще</button>
-                <button class="game__change-btn btn">Игры</button>
-                <button class="game__exit-btn btn">Выйти</button>
+          </div>
+          <div class="games__sprint sprint">
+            <div class="sprint__header">
+              <div class="sprint__score">
+                <p class="sprint__score-pointer">0</p>
+                <p class="sprint__score-animate">+20</p>
               </div>
+              <!-- here svg with series length status -->
+              <div class="sprint__timer timer">
+                <svg class="timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                  <g class="timer__circle">
+                    <circle class="timer__path-elapsed" cx="50" cy="50" r="45"></circle>
+                    <path class="timer__path-remaining" id="timer-path-remaining" stroke-dasharray="283"
+                          d="M 50, 50 m -45, 0 a 45,45 0 1,0 90,0 a 45,45 0 1,0 -90,0"></path>
+                  </g>
+                </svg>
+                <span class="timer__counter" id="base-timer-label"></span>
+              </div>
+            </div>
+            <div class="sprint__body">
+              <p class="sprint__question">
+                <span class="sprint__word">word</span>
+                =
+                <span class="sprint__translate">слово</span>
+                ?
+              </p>
+              <div class="sprint__answer">
+                <button class="sprint-answer__btn btn">Неверно</button>
+                <button class="sprint-answer__btn btn">Верно</button>
+              </div>
+            </div>
+          </div>
+          <div class="games__finish">
+            <div class="games__finish-container">
+              <h3 class="games__finish-title">Результаты</h3>
+              <div class="games__answers-counters">
+                <span class="games__answers-right">Знаю:
+                  <span class="games__correct-count">1</span>
+                </span>
+                <span class="games__answers-wrong">Не знаю:
+                  <span class="games__wrong-count">1</span>
+                </span>
+              </div>
+              <table class="games__finish-statistic">
+                <thead>
+                  <tr>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Звук</td>
+                    <td>англ слово</td>
+                    <td>[]</td>
+                    <td>рус слово</td>
+                    <td>+ или-</td>
+                  </tr>
+                </tbody>
+              </table>
+              <button class="games__restart-btn btn">Играть еще</button>
+              <button class="games__change-btn btn">Игры</button>
+              <button class="games__exit-btn btn">Выйти</button>
             </div>
           </div>
         </div>
