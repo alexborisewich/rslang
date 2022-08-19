@@ -1,6 +1,6 @@
 import {Registration,StatBackProps } from "../../common/interface/interface";
 
-export default class API {
+class API {
   baseApi = 'https://rslang-172.herokuapp.com/';
 
   wordsApi = `${this.baseApi}words?all=true`;
@@ -110,6 +110,10 @@ export default class API {
     });
   }
 }
+
+const api = new API();
+export default api;
+
 
 
 
