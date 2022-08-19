@@ -50,6 +50,18 @@ class API {
     return response;
   }
 
+  async getUser(id: number,token: string ){
+    const url = `${this.baseApi}users/${id}`;
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: 'application/json',
+      },
+    });
+    return response;
+  }
+
   async createUser(body: Registration) {
     const response = await fetch(`${this.baseApi}users`, {
       method: 'POST',
