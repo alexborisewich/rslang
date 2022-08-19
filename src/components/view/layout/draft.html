@@ -5,11 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../../../../node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" href="./draft.css">
   </head>
   <body class="page">
     <header class="header">
       <div class=" header__container">
-        <a class="header__logo logo" href="#"></a>
+        <a class="header__logo logo" href="#">RSLang</a>
         <nav class="header__menu menu">
           <ul class="menu__list">
             <li class="menu__item">
@@ -45,7 +47,7 @@
       <section class="homepage">
         <div class="homepage__container container">
           <div class="homepage__about">
-            <div class="about__app">
+            <div class="homepage__app">
               <h2 class="homepage__title title">О приложении</h2>
               <p class="homepage__text">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates quae adipisci
@@ -56,7 +58,7 @@
                 Смотреть
               </button>
             </div>
-            <div class="about__team">
+            <div class="homepage__team">
               <h2 class="homepage__title title">О команде</h2>
               <p class="homepage__text">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates quae adipisci
@@ -67,10 +69,18 @@
                 Смотреть
               </button>
             </div>
-            <nav class="homepage__nav">
-              <button class="homepage__nav-btn"></button>
-              <button class="homepage__nav-btn"></button>
-            </nav>
+            <ul class="homepage__nav dot-nav">
+              <li class="dot-nav__item">
+                <a href=" #" class="dot-nav__link dot-nav__link--active">
+                  <span class=" dot-nav__circle"></span>
+                </a>
+              </li>
+              <li class="dot-nav__item">
+                <a href="#" class="dot-nav__link">
+                  <span class="dot-nav__circle"></span>
+                </a>
+              </li>
+            </ul>
           </div>
           <div class="homepage__img">
           </div>
@@ -78,7 +88,7 @@
       </section>
       <section class="textbook">
         <div class="textbook__container container">
-          <div class="textbook__workspace">
+          <div class="textbook__header">
             <h2 class="textbook__title title">Учебник</h2>
             <a class="textbook__set-level"> Выберите уровень</a>
             <ul class="textbook__level-list">
@@ -122,65 +132,69 @@
             <button class="textbook__set-btn btn" type="button">Сложные слова</button>
             <button class="textbook__set-btn btn" type="button">Настройки</button>
             <button class="textbook__minigames-link">Миниигры</button>
-            <h1 class="textbook__subtitle">Слова</h1>
-            <div class="textbook__words">
-              <a href="" class="textbook__link">
-                <span class="textbook__word">Word</span>
-                <span class="textbook__translate">Слово</span>
-              </a>
+          </div>
+          <div class="textbook__body">
+            <div class="textbook__words-wrapper">
+              <h2 class="textbook__subtitle">Слова</h2>
+              <div class="textbook__words">
+                <a href="" class="textbook__link">
+                  <span class="textbook__word">Word</span>
+                  <span class="textbook__translate">Слово</span>
+                </a>
+              </div>
+              <nav class="textbook__pagination">
+                <button class="textbook__btn-prev btn">Предыдущая</button>
+                <span class="textbook__page-pointer">1</span>
+                <button class="textbook__btn-next btn">Следующая</button>
+              </nav>
+            </div>
+            <div class="textbook__card card">
+              <div class="card__img"></div>
+              <div class="card__content">
+                <div class="card__main">
+                  <h2 class="card__word">Word</h2>
+                  <h3 class="card__translate">Слово</h3>
+                  <span class="card__transcription">[]</span>
+                  <button class="card__play" type="button"></button>
+                </div>
+                <button class="card__btn-set-compound btn">Добавить в сложные</button>
+                <button class="card__btn-set-learned btn">Изучено</button>
+                <div class="card-description">
+                  <h4 class="card__mean card-subtitle"> Значение </h3>
+                    <p>Description</p>
+                    <p>Описание</p>
+                    <h4 class="card__example card-subtitle"> Пример </h3>
+                      <p>Example</p>
+                      <p>Пример</p>
+                      <h4 class="card__statistic card-subtitle">Прогресс изучения</h4>
+                      <ul class="card__statistic-list">
+                        <li class="card__statistic-item">
+                          <span class="card__statistic-new">Новое или Изучено</span>
+                          <span class="card__statistic-counter">+ или -</span>
+                        </li>
+                        <li class="card__statistic-item">
+                          <span class="card__statistic-game">Аудиовызов</span>
+                          <span class="card__statistic-counter">Правильно: 0</span>
+                          <span class="card__statistic-counter">Неправильно: 0</span>
+                        </li>
+                        <li class="card__statistic-item">
+                          <span class="card__statistic-game">Спринт</span>
+                          <span class="card__statistic-counter">Правильно: 0</span>
+                          <span class="card__statistic-counter">Неправильно: 0</span>
+                        </li>
+                      </ul>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="textbook__card card">
-            <div class="card__img"></div>
-            <div class="card__content">
-              <div class="card__main">
-                <h2 class="card__word">Word</h2>
-                <h3 class="card__translate">Слово</h3>
-                <span class="card__transcription">[]</span>
-                <button class="card__play" type="button"></button>
-              </div>
-              <button class="card__btn-set-compound btn">Добавить в сложные</button>
-              <button class="card__btn-set-learned btn">Изучено</button>
-              <div class="card-description">
-                <h4 class="card__mean card-subtitle"> Значение </h3>
-                  <p>Description</p>
-                  <p>Описание</p>
-                  <h4 class="card__example card-subtitle"> Пример </h3>
-                    <p>Example</p>
-                    <p>Пример</p>
-                    <h4 class="card__statistic card-subtitle">Прогресс изучения</h4>
-                    <ul class="card__statistic-list">
-                      <li class="card__statistic-item">
-                        <span class="card__statistic-new">Новое или Изучено</span>
-                        <span class="card__statistic-counter">+ или -</span>
-                      </li>
-                      <li class="card__statistic-item">
-                        <span class="card__statistic-game">Аудиовызов</span>
-                        <span class="card__statistic-counter">Правильно: 0</span>
-                        <span class="card__statistic-counter">Неправильно: 0</span>
-                      </li>
-                      <li class="card__statistic-item">
-                        <span class="card__statistic-game">Спринт</span>
-                        <span class="card__statistic-counter">Правильно: 0</span>
-                        <span class="card__statistic-counter">Неправильно: 0</span>
-                      </li>
-                    </ul>
-              </div>
-            </div>
-          </div>
-          <nav class="textbook__pagination">
-            <button class="textbook__btn-prev">Предыдущая</button>
-            <span class="textbook__page-pointer">1</span>
-            <button class="textbook__btn-next">Следующая</button>
-          </nav>
         </div>
       </section>
       <section class="games">
         <div class="games__container container">
           <div class="games__btn-wpapper">
-            <button class="games__sound-btn">Звук</button>
-            <button class="games__screen-btn">На весь экран</button>
-            <button class="games__close-btn">Закрыть</button>
+            <button class="games__sound-btn btn">Звук</button>
+            <button class="games__screen-btn btn">На весь экран</button>
+            <button class="games__close-btn btn">Закрыть</button>
           </div>
           <div class="games__select">
             <a class="games__audiochallenge-link game-link" href="#">
@@ -388,92 +402,109 @@
             <div class="stat__long-term">
               <h2 class="stat__title title">Статистика за все время</h2>
               <canvas class="stat__chart" id="chart"></canvas>
-              <nav class="stat__nav">
-                <button class="stat__nav-btn"></button>
-                <button class="stat__nav-btn"></button>
-              </nav>
+              <ul class="stat__nav dot-nav">
+                <li class="dot-nav__item">
+                  <a href="#" class="dot-nav__link">
+                    <span class="dot-nav__circle"></span>
+                  </a>
+                </li>
+                <li class="dot-nav__item">
+                  <a href="#" class="dot-nav__link">
+                    <span class="dot-nav__circle"></span>
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
       </section>
     </main>
     <section class="auth">
-      <div class="auth__shadow"></div>
       <div class="auth__container">
-        <div class="auth__close"></div>
-        <form class="auth__form form form--hidden" id="" action="#" autocomplete="on">
-          <h1 class="form__title">Войти</h1>
-          <div class="form__message form__message--error">Неправильное имя или пароль</div>
-          <ul class="form__input-list">
-            <li class="form__input-item">
-              <div class="form__input-error-message">Ошибка</div>
-              <input class="form__input" id="email" type="email" autofocus placeholder="Email" required>
-            </li>
-            <li class="form__input-item">
-              <div class="form__input-error-message">Ошибка</div>
-              <input type="password" class="form__input form__input--error" autofocus placeholder="Пароль" required>
-            </li>
-            <li class="form__input-item">
-              <input type="checkbox" class="form__checkbox" value="showpassword">
-              <label for="showpassword">Показать пароль</label>
-            </li>
-            <li class="form__input-item">
-              <input type="checkbox" class="form__checkbox" value="loginkeeping">
-              <label for="loginkeeping">Оставаться в системе</label>
-            </li>
-          </ul>
-          <button class="form__btn" type="submit">Войти</button>
-          <button class="form__btn" type="reset">Очистить</button>
-          <p class="form__text">
-            <a href="#" class="form__link">Забыли имя или пароль?</a>
+        <div class="auth__form-wrapper">
+          <a href="#" class="auth__close-form">X</a>
+          <form class="auth__form form form--hidden" id="" action="#" autocomplete="on">
+            <h2 class="form__title">Войти</h2>
+            <div class="form__message"></div>
+            <ul class="form__input-list">
+              <li class="form__input-item">
+                <input class="form__input" id="email" type="email" autofocus placeholder="Email" required>
+                <div class="form__input-message"></div>
+              </li>
+              <li class="form__input-item">
+                <input type="password" class="form__input" autofocus placeholder="Пароль" required>
+                <div class="form__input-message"></div>
+              </li>
+              <li class="form__input-item">
+                <input type="checkbox" class="form__checkbox" value="showpassword">
+                <label class="form__input-label" for="showpassword">Показать пароль</label>
+              </li>
+              <li class="form__input-item">
+                <input type="checkbox" class="form__checkbox" value="loginkeeping">
+                <label class="form__input-label" for="loginkeeping">Запомнить меня</label>
+              </li>
+            </ul>
+            <div class="form__btn-wrapper">
+              <button class="form__btn btn" type="submit">Войти</button>
+              <button class="form__btn btn" type="reset">Очистить</button>
+            </div>
+
+            <p class="form__text">
+              <a href="#" class="form__link">Забыли имя или пароль?</a>
+            </p>
+          </form>
+          <p class="auth__text">Еще не зарегистрированы?
+            <a href="#" class="auth__link" id="link-create-account">Создать аккаунт</a>
           </p>
-          <p class="form__text">Еще не зарегистрированы?
-            <a href="#" class="form__link" id="link-create-account">Создать аккаунт</a>
+        </div>
+        <div class="auth__form-wrapper">
+          <a href="#" class="auth__close-form">X</a>
+          <form class="auth__form form" id="" action="#">
+            <div class="form__avatar">
+              <img class="form__avatar-img" id="preview" src="#" alt="">
+            </div>
+            <h2 class="form__title">Создать новый аккаунт</h2>
+            <div class="form__message"></div>
+            <ul class="form__input-list">
+              <li class="form__input-item">
+                <input type="text" class="form__input" autofocus placeholder="Имя" required>
+                <div class="form__input-message"></div>
+              </li>
+              <li class="form__input-item">
+                <input type="email" class="form__input" placeholder="Email" required>
+                <div class="form__input-message"></div>
+              </li>
+              <li class="form__input-item">
+                <input type="password" class="form__input" placeholder="Пароль">
+                <div class="form__input-message"></div>
+              </li>
+              <li class="form__input-item">
+                <input type="password" class="form__input" placeholder="Подтвердите пароль">
+                <div class="form__input-message"></div>
+              </li>
+              <li class="form__input-item">
+                <input type="checkbox" class="form__checkbox" value="showpassword">
+                <label class="form__input-label" for="showpassword">Показать пароль</label>
+              </li>
+              <li class="form__input-item">
+                <input type="checkbox" class="form__checkbox" value="agree">
+                <label class="form__input-label" for="agree">Я согласен на обработку персональных данных</label>
+              </li>
+              <li class="form__input-item">
+                <input type="file" class="form__input form__input--file" id="file" accept="image/*">
+                <label class="form__label-btn btn" for="file">Загрузить фото</label>
+                <div class="form__input-message"></div>
+              </li>
+            </ul>
+            <div class="form__btn-wrapper">
+              <button class="form__btn btn" type="submit">Продолжить</button>
+              <button class="form__btn btn" type="reset">Очистить</button>
+            </div>
+          </form>
+          <p class="auth__text">Уже есть аккаунт?
+            <a href="#" class="auth__link" id="link-login">Войти</a>
           </p>
-        </form>
-        <form class="auth__form form" id="" action="#">
-          <h1 class="form__title">Создать новый аккаунт</h1>
-          <div class="form__avatar">
-            <img class="form__avatar-img" id="preview" src="#" alt="">
-          </div>
-          <div class="form__message form__message--error">Неправильное имя или пароль</div>
-          <ul class="form__input-list">
-            <li class="form__input-item">
-              <div class="form__input-error-message">Ошибка</div>
-              <input type="text" class="form__input" autofocus placeholder="Имя" required>
-            </li>
-            <li class="form__input-item">
-              <div class="form__input-error-message">Ошибка</div>
-              <input type="email" class="form__input" autofocus placeholder="Email" required>
-            </li>
-            <li class="form__input-item">
-              <div class="form__input-error-message">Ошибка</div>
-              <input type="password" class="form__input form__input--error" autofocus placeholder="Пароль">
-            </li>
-            <li class="form__input-item">
-              <div class="form__input-error-message">Ошибка</div>
-              <input type="password" class="form__input form__input--error" autofocus placeholder="Подтвердите пароль">
-            </li>
-            <li class="form__input-item">
-              <input type="checkbox" class="form__checkbox" value="showpassword">
-              <label for="showpassword">Показать пароль</label>
-            </li>
-            <li class="form__input-item">
-              <input type="checkbox" class="form__checkbox" value="agree">
-              <label for="agree">Я согласен на обработку моих персональных данных</label>
-            </li>
-            <li class="form__input-item">
-              <div class="form__input-error-message">Тип файла не поддерживается</div>
-              <input type="file" class="form__input form__input--file form__input--error" id="file" accept="image/*">
-              <label for="file">Выберите файл</label>
-            </li>
-          </ul>
-          <button class="form__btn" type="submit">Продолжить</button>
-          <button class="form__btn" type="reset">Очистить</button>
-          <p class="form__text">Уже есть аккаунт?
-            <a href="#" class="form__link" id="link-login">Войти</a>
-          </p>
-        </form>
+        </div>
       </div>
     </section>
     <footer class="footer">
