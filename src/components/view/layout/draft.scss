@@ -1,0 +1,679 @@
+* {
+  padding: 0;
+  margin: 0;
+  // border: 1px solid black;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+*,
+*:before,
+::after {
+  box-sizing: border-box;
+}
+
+a,
+a:visited,
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+
+.page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1%;
+  }
+
+  &__logo {}
+
+  &__menu {}
+
+  &__theme-btn {}
+
+  &__auth-btn {}
+}
+
+.logo {}
+
+.menu {
+
+  &__list {
+    display: flex;
+    column-gap: 10px;
+  }
+
+  &__item {}
+
+  &__link {}
+}
+
+.submenu-title {}
+
+.submenu {
+
+  &__list {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s ease-in-out;
+  }
+
+  &__link {}
+}
+
+.menu__item:hover>.submenu__list {
+  visibility: visible;
+  opacity: 1;
+}
+
+.btn {}
+
+.main {
+  flex: 1;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.homepage {
+  width: 100%;
+  height: 100%;
+
+  &__container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  &__about {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 45%;
+  }
+
+  &__app,
+  &__team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title {
+    align-self: flex-start;
+  }
+
+  &__text {}
+
+  &__btn {
+    align-self: flex-end;
+  }
+
+  &__nav {}
+
+  &__img {
+    flex: 0 0 45%;
+    height: auto;
+    background: rgb(149, 23, 23);
+  }
+}
+
+.container {
+  height: 100%;
+  padding: 1%;
+}
+
+.title {}
+
+.dot-nav {
+  display: flex;
+  justify-content: center;
+
+  &__item {}
+
+  &__link {
+    display: flex;
+    outline: none;
+  }
+
+  &__circle {
+    width: 20px;
+    height: 20px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    background: #9e9e9eab;
+    margin: 10px;
+    transition: 0.3s ease-in-out;
+  }
+
+  &__link--active &__circle {
+    border-color: #ffffffd0;
+    background: transparent;
+  }
+
+  &__link:hover &__circle {
+    background: #ffffffd0;
+  }
+
+  &__link:active &__circle {
+    background: transparent;
+    border-color: #ffffffd0;
+  }
+}
+
+.textbook {
+  width: 100%;
+  height: 100%;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__header {
+    position: relative;
+  }
+
+  &__title {}
+
+  &__set-level {}
+
+  &__level-list {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s ease-in-out;
+  }
+
+  &__set-level:hover~&__level-list {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__level-item {}
+
+  &__set-btn {}
+
+  &__minigames-link {}
+
+  &__body {
+    display: flex;
+    flex-grow: 1;
+  }
+
+  &__words-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  &__subtitle {}
+
+  &__words {
+    flex-grow: 1;
+  }
+
+  &__link {}
+
+  &__word {}
+
+  &__translate {}
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__btn-prev {}
+
+  &__page-pointer {}
+
+  &__btn-next {}
+
+  &__card {}
+}
+
+.container {}
+
+.title {}
+
+.btn {}
+
+.card {
+  align-self: center;
+
+  &__img {
+    width: 100%;
+    height: 50px;
+    background: rgb(187, 39, 39);
+  }
+
+  &__content {}
+
+  &__main {}
+
+  &__word {}
+
+  &__translate {}
+
+  &__transcription {}
+
+  &__play {}
+
+  &__btn-set-compound {}
+
+  &__btn-set-learned {}
+
+  &__mean {}
+
+  &__example {}
+
+  &__statistic {}
+
+  &__statistic-list {}
+
+  &__statistic-item {}
+
+  &__statistic-new {}
+
+  &__statistic-counter {}
+
+  &__statistic-game {}
+}
+
+.card-description {}
+
+.card-subtitle {}
+
+.games {
+  width: 100%;
+  height: 100%;
+
+  &__container {}
+
+  &__btn-wpapper {}
+
+  &__sound-btn {}
+
+  &__screen-btn {}
+
+  &__close-btn {}
+
+  &__select {}
+
+  &__audiochallenge-link {}
+
+  &__level-list {}
+
+  &__level-item {}
+
+  &__level-input {}
+
+  &__level-label {}
+
+  &__level-title {}
+
+  &__level-name {}
+
+  &__start-screen {}
+
+  &__title {}
+
+  &__instruction {}
+
+  &__select-level {}
+
+  &__btn-start {}
+
+  &__audiochallenge {}
+
+  &__sprint {}
+
+  &__finish {}
+
+  &__finish-container {}
+
+  &__finish-title {}
+
+  &__answers-counters {}
+
+  &__answers-right {}
+
+  &__correct-count {}
+
+  &__answers-wrong {}
+
+  &__wrong-count {}
+
+  &__finish-statistic {}
+
+  &__restart-btn {}
+
+  &__change-btn {}
+
+  &__exit-btn {}
+}
+
+.game-link {
+
+  &__title {}
+
+  &__img-wrapper {}
+
+  &__img {}
+}
+
+.audiochallenge {
+
+  &__gameplay {}
+
+  &__lives-list {}
+
+  &__lives-item {}
+
+  &__speaker {}
+
+  &__speaker-img {}
+
+  &__answer-list {}
+
+  &__answer-item {}
+
+  &__answer-btn {}
+}
+
+.sprint {
+
+  &__header {}
+
+  &__score {}
+
+  &__score-pointer {}
+
+  &__score-animate {}
+
+  &__timer {}
+
+  &__body {}
+
+  &__question {}
+
+  &__word {}
+
+  &__translate {}
+
+  &__answer {}
+}
+
+.timer {
+
+  &__svg {}
+
+  &__circle {}
+
+  &__path-elapsed {}
+
+  &__path-remaining {}
+
+  &__counter {}
+}
+
+.sprint-answer {
+
+  &__btn {}
+}
+
+.stat {
+  width: 100%;
+  height: 100%;
+
+  &__container {}
+
+  &__data {}
+
+  &__short-term {}
+
+  &__title {}
+
+  &__today {}
+
+  &__item {}
+
+  &__count {}
+
+  &__description {}
+
+  &__games {}
+
+  &__game {}
+
+  &__long-term {}
+
+  &__chart {}
+
+  &__nav {}
+}
+
+.auth {
+  display: none;
+  position: absolute;
+  // display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(52, 54, 66, 0.9);
+  cursor: pointer;
+  visibility: visible;
+  opacity: 1;
+  transition: 0.3s ease-in-out;
+
+  &--hidden {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  &__container {
+    position: relative;
+    width: 90%;
+    max-width: 400px;
+    background: #FFF;
+    cursor: auto;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px 0px #000;
+    transform: translateY(-30px);
+    transition: 0.3s ease-in-out;
+  }
+
+  &--hidden &__container {
+    transform: translateY(0);
+  }
+
+  &__form-wrapper {}
+
+  &__close-form {
+    position: absolute;
+    right: 0;
+    width: 40px;
+    height: 40px;
+
+  }
+
+  &__form {}
+
+  &__text {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: -30px;
+    text-align: center;
+    color: #fff;
+  }
+
+  &__link {
+    color: inherit;
+    font-weight: 700;
+    text-decoration: underline;
+  }
+}
+
+.form {
+  padding: 25px;
+
+  &>*:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  &__title {
+    text-align: center;
+  }
+
+  &__avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #000;
+    margin: 0 auto;
+  }
+
+  &__avatar-img {}
+
+  &__message {
+    text-align: center;
+    font-size: 12px;
+
+    &--success {
+      $success-color: #4bb544 !global;
+      color: $success-color;
+    }
+
+    &--error {
+      $error-color: #cc3333 !global;
+      color: $error-color;
+    }
+  }
+
+  &__input-list {
+    &>*:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__input-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__input-message {
+    margin-top: 5px;
+    font-size: 12px;
+    color: $error-color;
+  }
+
+  &__input {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    outline: none;
+    background: #eee;
+    transition: 0.3s ease-in-out;
+
+    &:focus {
+      border-color: #969696;
+      background: #FFF;
+    }
+
+    &--error {
+      color: $error-color;
+      border-color: $error-color;
+    }
+  }
+
+  &__checkbox {
+    margin-right: 10px;
+  }
+
+  &__input-label {
+    font-size: 14px;
+  }
+
+  &__input--file {
+    display: none;
+  }
+
+  &__btn-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  &__label-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+    border: 1px solid #000;
+    border-radius: 5px;
+
+  }
+
+  &__btn {
+    flex: 0 0 48%;
+  }
+
+  &__link {
+    color: #000;
+  }
+}
+
+.footer {
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1%
+  }
+
+  &__copyright {}
+
+  &__team-list {
+    display: flex;
+    column-gap: 10px;
+  }
+
+  &__team-item {}
+
+  &__team-link {}
+
+  &__rsschool-link {}
+}
