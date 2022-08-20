@@ -1,0 +1,25 @@
+.footer {
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1%;
+  }
+
+  &__copyright {
+  }
+
+  &__team-list {
+    display: flex;
+    column-gap: 10px;
+  }
+
+  &__team-item {
+  }
+
+  &__team-link {
+  }
+
+  &__rsschool-link {
+  }
+}

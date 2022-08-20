@@ -1,0 +1,14 @@
+.submenu {
+  &__list {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s ease-in-out;
+  }
+
+  &__link {
+  }
+}
+
+.submenu-title {
+}
