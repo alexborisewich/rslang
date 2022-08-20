@@ -312,9 +312,15 @@ button {
   width: 100%;
   height: 100%;
 
-  &__container {}
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
 
-  &__btn-wpapper {}
+  &__btn-wpapper {
+    display: flex;
+    justify-content: space-between;
+  }
 
   &__sound-btn {}
 
@@ -322,7 +328,13 @@ button {
 
   &__close-btn {}
 
-  &__select {}
+  &__select {
+    display: none;
+    // display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-grow: 1;
+  }
 
   &__audiochallenge-link {}
 
@@ -338,13 +350,64 @@ button {
 
   &__level-name {}
 
-  &__start-screen {}
+  &__start-screen {
+    display: none;
+    // display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+
+    &>*:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
 
   &__title {}
 
   &__instruction {}
 
-  &__select-level {}
+  &__select-level-wrapper {}
+
+  &__select-label {}
+
+  &__select-level {
+    display: inline-block;
+    font-size: 16px;
+    font-family: sans-serif;
+    font-weight: 700;
+    color: #444;
+    line-height: 1.3;
+    padding: .6em 1.4em .5em .8em;
+    width: auto;
+    max-width: 100%;
+    border: 1px solid #aaa;
+    box-shadow: 0 1px 0 1px rgba(0, 0, 0, .04);
+    border-radius: .5em;
+    appearance: none;
+    background-color: #fff;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'), linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
+    background-repeat: no-repeat, repeat;
+    background-position: right .7em top 50%, 0 0;
+    background-size: .65em auto, 100%;
+
+    &:hover {
+      border-color: #888;
+    }
+
+    &:focus {
+      border-color: #aaa;
+      box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+      box-shadow: 0 0 0 3px -moz-mac-focusring;
+      color: #222;
+      outline: none;
+    }
+
+    option {
+      font-weight: normal;
+    }
+
+  }
 
   &__btn-start {}
 
@@ -352,13 +415,47 @@ button {
 
   &__sprint {}
 
-  &__finish {}
+  &__finish {
+    // display: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-height: 100%;
+    margin: auto;
+  }
 
-  &__finish-container {}
+  &__finish-container {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    width: 90%;
+    max-width: 400px;
+    background: #FFF;
+    cursor: auto;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px 0px #000;
+    transform: translateY(-30px);
+    transition: 0.3s ease-in-out;
+    padding: 25px;
 
-  &__finish-title {}
+    &--hidden {
+      transform: translateY(0);
+    }
 
-  &__answers-counters {}
+    &>*:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__finish-title {
+    text-align: center;
+  }
+
+  &__answers-counters {
+    display: flex;
+    justify-content: space-around;
+  }
 
   &__answers-right {}
 
@@ -368,7 +465,12 @@ button {
 
   &__wrong-count {}
 
-  &__finish-statistic {}
+  &__finish-table {}
+
+  &__finish-btn-wrapper {
+    display: flex;
+    justify-content: space-around;
+  }
 
   &__restart-btn {}
 
@@ -387,10 +489,20 @@ button {
 }
 
 .audiochallenge {
+  display: none;
+  // display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
 
-  &__gameplay {}
+  &>*:not(:last-child) {
+    margin-bottom: 10px;
+  }
 
-  &__lives-list {}
+  &__lives-list {
+    display: flex;
+  }
 
   &__lives-item {}
 
@@ -398,7 +510,9 @@ button {
 
   &__speaker-img {}
 
-  &__answer-list {}
+  &__answer-list {
+    display: flex;
+  }
 
   &__answer-item {}
 
@@ -406,8 +520,20 @@ button {
 }
 
 .sprint {
+  display: none;
+  // display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
 
-  &__header {}
+  &>*:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  &__header {
+    display: flex;
+  }
 
   &__score {}
 
@@ -415,17 +541,23 @@ button {
 
   &__score-animate {}
 
-  &__timer {}
+  &__timer {
+    width: 50px;
+  }
 
   &__body {}
 
-  &__question {}
+  &__question {
+    margin-bottom: 10px;
+  }
 
   &__word {}
 
   &__translate {}
 
   &__answer {}
+
+  &__answer-btn {}
 }
 
 .timer {
@@ -441,36 +573,109 @@ button {
   &__counter {}
 }
 
-.sprint-answer {
+.table {
+  table-layout: fixed;
+  text-align: left;
+  border-collapse: collapse;
+  border-radius: 5px;
+  box-shadow: 0 0 0 2px #000;
+  width: 80%;
+  margin: 0 auto;
+  max-height: 100%;
+  user-select: none;
 
-  &__btn {}
+  &__header-cell {
+    text-align: center;
+    height: 40px;
+    padding: 5px;
+
+    &:first-child {
+      border-top-left-radius: 5px;
+    }
+
+    &:last-child {
+      border-top-right-radius: 5px;
+    }
+  }
+
+  &__row {
+    &:last-child>.table__cell:first-child {
+      border-bottom-left-radius: 5px;
+    }
+
+    &:last-child>.table__cell:last-child {
+      border-bottom-right-radius: 5px;
+    }
+  }
+
+  &__cell {
+    text-align: center;
+    height: 40px;
+    border-top: 2px solid #000;
+    padding: 5px;
+  }
 }
+
 
 .stat {
   width: 100%;
   height: 100%;
 
-  &__container {}
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
 
-  &__data {}
+  &__data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // align-items: center;
+    flex-grow: 1;
+  }
 
-  &__short-term {}
+  &__short-term {
+    display: flex;
+    flex-direction: column;
 
-  &__title {}
+    &>*:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
 
-  &__today {}
+  &__title {
+    text-align: center;
+  }
 
-  &__item {}
+  &__today {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
   &__count {}
 
   &__description {}
 
-  &__games {}
+  &__games {
+    display: flex;
+    justify-content: space-evenly;
+  }
 
   &__game {}
 
-  &__long-term {}
+  &__long-term {
+    display: none;
+    // display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-grow: 1;
+  }
 
   &__chart {}
 
@@ -506,11 +711,12 @@ button {
     box-shadow: 0px 0px 20px 0px #000;
     transform: translateY(-30px);
     transition: 0.3s ease-in-out;
+
+    &--hidden {
+      transform: translateY(0);
+    }
   }
 
-  &--hidden &__container {
-    transform: translateY(0);
-  }
 
   &__form-wrapper {}
 
