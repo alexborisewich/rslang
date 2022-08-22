@@ -1,6 +1,6 @@
-import Footer from './Footer';
-import Header from './Header';
-import Main from './Main';
+import Footer from './layout/Footer';
+import Header from './layout/Header';
+import Main from './layout/Main';
 
 export default class AppView {
   body = document.querySelector('body') as HTMLBodyElement;

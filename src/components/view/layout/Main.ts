@@ -1,10 +1,10 @@
-import Dictionary from './Dictionary';
-import Games from './Games';
-import Homepage from './Homepage';
-import Login from './Login';
-import Registration from './Registration';
-import Statistic from './Statistic';
-import Team from './Team';
+import Dictionary from '../dictionary/Dictionary';
+import Games from '../mini-games/Games';
+import Homepage from '../homepage/Homepage';
+import Login from '../authorization/Login';
+import Registration from '../authorization/Registration';
+import Statistic from '../statistics/Statistic';
+import Team from '../team/Team';
 
 export default class Main {
   renderContent() {

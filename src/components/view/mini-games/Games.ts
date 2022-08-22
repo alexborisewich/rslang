@@ -10,9 +10,7 @@ export default class Games {
       <div class="games__select">
         <a class="games__audiochallenge-link game-link" href="#">
           <span class="game-link__title">Аудиовызов</span>
-          <span class="game-link__img-wrapper">
-            <img class="game-link__img" src="" alt="">
-          </span>
+          <span class="game-link__img-wrapper"><img class="game-link__img" src="" alt=""></span>
         </a>
         <ul class="games__level-list">
           <li class="games__level-item">
@@ -59,9 +57,7 @@ export default class Games {
         </ul>
         <a class="games__audiochallenge-link game-link" href="#">
           <span class="game-link__title">Спринт</span>
-          <span class="game-link__img-wrapper">
-            <img class="game-link__img" src="" alt="">
-          </span>
+          <span class="game-link__img-wrapper"><img class="game-link__img" src="" alt=""></span>
         </a>
       </div>
       <div class="games__start-screen">
@@ -91,21 +87,11 @@ export default class Games {
             <img class="audiochallenge__speaker-img" src="" alt="">
           </div>
           <ul class="audiochallenge__answer-list">
-            <li class="audiochallenge__answer-item">
-              <span>1</span>
-            </li>
-            <li class="audiochallenge__answer-item">
-              <span>2</span>
-            </li>
-            <li class="audiochallenge__answer-item">
-              <span>3</span>
-            </li>
-            <li class="audiochallenge__answer-item">
-              <span>4</span>
-            </li>
-            <li class="audiochallenge__answer-item">
-              <span>5</span>
-            </li>
+            <li class="audiochallenge__answer-item"><span>1</span></li>
+            <li class="audiochallenge__answer-item"><span>2</span></li>
+            <li class="audiochallenge__answer-item"><span>3</span></li>
+            <li class="audiochallenge__answer-item"><span>4</span></li>
+            <li class="audiochallenge__answer-item"><span>5</span></li>
           </ul>
           <button class="audiochallenge__answer-btn btn">Не знаю</button>
         </div>
@@ -116,24 +102,19 @@ export default class Games {
             <p class="sprint__score-pointer">0</p>
             <p class="sprint__score-animate">+20</p>
           </div>
-          <!-- here svg with series length status -->
           <div class="sprint__timer timer">
             <svg class="timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
               <g class="timer__circle">
-                <circle class="timer__path-elapsed" cx="50" cy="50" r="45"></circle>
-                <path class="timer__path-remaining" id="timer-path-remaining" stroke-dasharray="283"
-                      d="M 50, 50 m -45, 0 a 45,45 0 1,0 90,0 a 45,45 0 1,0 -90,0"></path>
+                <circle class="timer__path-expired" cx="50" cy="50" r="45"></circle>
+                <path class="timer__path-remaining" d="M 50, 50 m -45, 0 a 45,45 0 1,0 90,0 a 45,45 0 1,0 -90,0"></path>
               </g>
             </svg>
-            <span class="timer__counter" id="base-timer-label"></span>
+            <span class="timer__counter"></span>
           </div>
         </div>
         <div class="sprint__body">
           <p class="sprint__question">
-            <span class="sprint__word">word</span>
-            =
-            <span class="sprint__translate">слово</span>
-            ?
+            <span class="sprint__word">word</span> = <span class="sprint__translate">слово</span>?
           </p>
           <div class="sprint__answer">
             <button class="sprint-answer__btn btn">Неверно</button>
@@ -145,12 +126,8 @@ export default class Games {
         <div class="games__finish-container">
           <h3 class="games__finish-title">Результаты</h3>
           <div class="games__answers-counters">
-            <span class="games__answers-right">Знаю:
-              <span class="games__correct-count">1</span>
-            </span>
-            <span class="games__answers-wrong">Не знаю:
-              <span class="games__wrong-count">1</span>
-            </span>
+            <span class="games__answers-right">Знаю: <span class="games__correct-count">1</span></span>
+            <span class="games__answers-wrong">Не знаю: <span class="games__wrong-count">1</span></span>
           </div>
           <table class="games__finish-statistic">
             <thead>
