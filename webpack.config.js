@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
-const isProd = process.env.NODE_ENV == 'production';
+const isProd = process.env.NODE_ENV === 'production';
 
 const config = {
   entry: {
@@ -84,6 +84,7 @@ const config = {
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },
+  experiments: { topLevelAwait: true },
 };
 
 module.exports = () => {

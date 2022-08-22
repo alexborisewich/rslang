@@ -1,4 +1,4 @@
-export interface Dictionary{
+export interface Dictionary {
   id: string;
   group: string | number;
   page: number;
@@ -16,8 +16,8 @@ export interface Dictionary{
 }
 
 export interface Registration {
-  email: string,
-  password: string,
+  email: string;
+  password: string;
 }
 
 export interface StatisticDailyProps {
@@ -25,14 +25,14 @@ export interface StatisticDailyProps {
   learningWords: string[];
   winStreak: number;
   generalCountLearningWords: number;
-  countOfRightAnswers: number
+  countOfRightAnswers: number;
 }
 
-export interface StatProps{
+export interface StatProps {
   audioCall: StatisticDailyProps[];
   sprint: StatisticDailyProps[];
 }
 
 export interface StatBackProps {
-  statistics: StatProps,
+  statistics: StatProps;
 }

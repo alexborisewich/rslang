@@ -1,4 +1,4 @@
-import {Registration,StatBackProps } from "../../common/interface/interface";
+import { Registration, StatBackProps } from '../../common/interface/interface';
 
 class API {
   baseApi = 'https://rslang-172.herokuapp.com/';
@@ -50,7 +50,7 @@ class API {
     return response;
   }
 
-  async getUser(id: number,token: string ){
+  async getUser(id: number, token: string) {
     const url = `${this.baseApi}users/${id}`;
     const response = await fetch(url, {
       method: 'GET',

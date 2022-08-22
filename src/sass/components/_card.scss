@@ -2,8 +2,8 @@
   align-self: center;
 
   &__img {
-    width: 100%;
-    height: 50px;
+    object-fit: cover;
+    height: 250px;
     background: rgb(187, 39, 39);
   }
 
