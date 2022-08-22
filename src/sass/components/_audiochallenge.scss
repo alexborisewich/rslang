@@ -1,0 +1,35 @@
+.audiochallenge {
+  display: none;
+  // display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+
+  & > *:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  &__lives-list {
+    display: flex;
+  }
+
+  &__lives-item {
+  }
+
+  &__speaker {
+  }
+
+  &__speaker-img {
+  }
+
+  &__answer-list {
+    display: flex;
+  }
+
+  &__answer-item {
+  }
+
+  &__answer-btn {
+  }
+}

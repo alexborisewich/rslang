@@ -1,0 +1,48 @@
+.sprint {
+  display: none;
+  // display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+
+  & > *:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  &__header {
+    display: flex;
+  }
+
+  &__score {
+  }
+
+  &__score-pointer {
+  }
+
+  &__score-animate {
+  }
+
+  &__timer {
+    width: 50px;
+  }
+
+  &__body {
+  }
+
+  &__question {
+    margin-bottom: 10px;
+  }
+
+  &__word {
+  }
+
+  &__translate {
+  }
+
+  &__answer {
+  }
+
+  &__answer-btn {
+  }
+}

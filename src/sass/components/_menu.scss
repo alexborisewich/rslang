@@ -1,0 +1,17 @@
+.menu {
+  &__list {
+    display: flex;
+    column-gap: 10px;
+  }
+
+  &__item {
+  }
+
+  &__item:hover > .submenu__list {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &__link {
+  }
+}

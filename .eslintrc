@@ -1,5 +1,5 @@
 {
-  "root":true,
+  "root": true,
   "env": {
     "browser": true,
     "node": true,
@@ -24,12 +24,13 @@
   "ignorePatterns": ["dist"],
   "rules": {
     "@typescript-eslint/no-explicit-any": "error",
-    "no-console": [ "warn", { "allow": ["error", "warn"] }],
+    "no-console": ["warn", { "allow": ["error", "warn"] }],
     "max-len": ["warn", { "code": 120 }],
     "indent": "off",
     "@typescript-eslint/indent": "off",
     "no-param-reassign": ["error", { "props": false }],
     "no-unused-vars": 1,
-  "@typescript-eslint/no-unused-vars": ["warn"]
+    "@typescript-eslint/no-unused-vars": ["warn"],
+    "class-methods-use-this": "off"
   }
 }
