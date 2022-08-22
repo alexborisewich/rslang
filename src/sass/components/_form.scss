@@ -1,7 +1,7 @@
 .form {
   padding: 25px;
 
-  &>*:not(:last-child) {
+  & > *:not(:last-child) {
     margin-bottom: 10px;
   }
 
@@ -17,23 +17,26 @@
     margin: 0 auto;
   }
 
-  &__avatar-img {}
+  &__avatar-img {
+  }
 
   &__message {
     text-align: center;
     font-size: 12px;
 
     &--success {
+      $success-color: #4bb544 !global;
       color: $success-color;
     }
 
     &--error {
+      $error-color: #cc3333 !global;
       color: $error-color;
     }
   }
 
   &__input-list {
-    &>*:not(:last-child) {
+    & > *:not(:last-child) {
       margin-bottom: 10px;
     }
   }
@@ -108,7 +111,6 @@
   &__link {
     color: #000;
   }
-
   &--hidden {
     display: none;
   }

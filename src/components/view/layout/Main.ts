@@ -1,16 +1,17 @@
-import Dictionary from '../dictionary/Dictionary';
-import Games from '../mini-games/Games';
-import Homepage from '../homepage/Homepage';
+import store from '../../../store/store';
 import Login from '../authorization/Login';
 import Registration from '../authorization/Registration';
+import Dictionary from '../dictionary/Dictionary';
+import Homepage from '../homepage/Homepage';
+import Games from '../mini-games/Games';
 import Statistic from '../statistics/Statistic';
 import Team from '../team/Team';
 
 export default class Main {
   renderContent() {
-    const state = { active: 'homepage' };
+    const state = store.getState().app;
 
-    switch (state.active) {
+    switch (state.activeTab) {
       case 'dictionary':
         return new Dictionary().createElement();
       case 'games':
