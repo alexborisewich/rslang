@@ -1,4 +1,5 @@
 .header {
+  height: 110px;
   background-color: $color-primary;
   &__container {
     display: flex;
@@ -6,7 +7,6 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    height: 100px;
   }
 
   &__logo {
@@ -16,13 +16,17 @@
   }
 
   &__theme-switcher {
+    transition: all 0.2s linear;
     cursor: pointer;
     width: 50px;
     height: 50px;
     &-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    &:hover {
+      filter: hue-rotate(160deg);
     }
   }
 
