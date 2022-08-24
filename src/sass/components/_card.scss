@@ -1,16 +1,32 @@
 .card {
-  align-self: center;
+  //   align-self: center;
+  display: flex;
+  flex-grow: 0;
+  flex-flow: column;
+  width: 500px;
+  border: 3px solid $color-primary;
+  border-radius: 10px;
+  padding: 10px;
+//   min-height: 600px;
 
   &__img {
     object-fit: cover;
-    height: 250px;
-    background: rgb(187, 39, 39);
+    height: 150px;
+    border-radius: 10px;
+    // background: $color-primary;
   }
 
   &__content {
+    display: flex;
+    flex-flow: column;
+    gap: 5px;
   }
 
   &__main {
+    display: flex;
+    flex-flow: column;
+    gap: 5px;
+    margin-top: 5px;
   }
 
   &__word {
@@ -32,6 +48,7 @@
   }
 
   &__mean {
+    margin-top: 5px;
   }
 
   &__example {
@@ -57,7 +74,13 @@
 }
 
 .card-description {
+  display: flex;
+  flex-flow: column;
+  gap: 5px;
 }
 
 .card-subtitle {
+  display: flex;
+  flex-flow: column;
+  gap: 5px;
 }

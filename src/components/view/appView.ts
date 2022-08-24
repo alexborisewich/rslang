@@ -48,15 +48,17 @@ export default class AppView {
 
     const mainHandler = (e: Event) => {
       const targetLink = e.target as HTMLLinkElement;
-      const targetDiv = e.target as HTMLDivElement;
+      //   const targetDiv = e.target as HTMLDivElement;
       const targetBtn = e.target as HTMLButtonElement;
+      const targetSpan = e.target as HTMLSpanElement;
+      const wordDiv = targetSpan.closest('.textbook__word') as HTMLDivElement;
 
       console.log(e.target);
 
       if (targetLink.id === 'link-create-account') store.dispatch(switchTab('registration'));
       if (targetLink.id === 'link-login') store.dispatch(switchTab('login'));
       if (targetLink.id === 'close-form') store.dispatch(switchTab('homepage'));
-      if (targetDiv.classList.contains('textbook__word')) store.dispatch(selectWord(targetDiv.id));
+      if (wordDiv) store.dispatch(selectWord(wordDiv.id));
       if (targetBtn.classList.contains('textbook__difficulty-btn')) {
         const id = parseID(targetBtn.id);
         store.dispatch(selectDifficulty(id));

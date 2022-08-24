@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppState, Tabs } from '../../../common/types/app/types';
 
-const initialState: AppState = { activeTab: Tabs.HOMEPAGE };
+const initialState: AppState = { activeTab: Tabs.DICTIONARY };
 
 const appSlice = createSlice({
   name: 'app',
