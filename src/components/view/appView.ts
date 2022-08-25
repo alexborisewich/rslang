@@ -13,6 +13,7 @@ import { LoginResponse } from '../../common/types/user/types';
 import Header from './layout/Header';
 import Main from './layout/Main';
 import Footer from './layout/Footer';
+import { onClickHandlerGame } from '../controller/sprint-game/sprint-game';
 
 export default class AppView {
   body = document.querySelector('body') as HTMLBodyElement;
@@ -22,6 +23,8 @@ export default class AppView {
     const main = this.body.querySelector('.main') as HTMLDivElement;
     const regForm = this.body.querySelector('#reg-form') as HTMLFormElement;
     const logForm = this.body.querySelector('#log-form') as HTMLFormElement;
+
+
 
     const headerHandler = (e: Event) => {
       const targetBtn = e.target as HTMLButtonElement;
@@ -122,11 +125,16 @@ export default class AppView {
     new Footer().render(this.body);
   }
 
+  onClickSprint(){
+    onClickHandlerGame;
+  }
+
   renderApp() {
     this.body.innerHTML = '';
     this.renderHeader();
     this.renderMain();
     this.renderFooter();
     this.listen();
+    this.onClickSprint();
   }
 }
