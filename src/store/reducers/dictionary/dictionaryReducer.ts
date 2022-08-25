@@ -21,6 +21,9 @@ export const fetchWords = createAsyncThunk<
 
 const initialState: DictionaryState = {
   words: [],
+  complexWords: [],
+  learnedWords: [],
+  activeTab: 'all',
   totalWordsCount: 0,
   selectedWord: '',
   group: 0,

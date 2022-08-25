@@ -6,9 +6,7 @@
   &__container {
     display: flex;
     justify-content: space-between;
-    // flex-flow: column;
     justify-content: space-evenly;
-    // align-items: stretch;
   }
 
   &__header {
@@ -40,22 +38,22 @@
     border-radius: 10px;
     padding: 5px;
     &--a1 {
-      background-color: lime;
+      background-color: $a1-level-color;
     }
     &--a2 {
-      background-color: limegreen;
+      background-color: $a2-level-color;
     }
     &--b1 {
-      background-color: rgba(245, 212, 29, 0.842);
+      background-color: $b1-level-color;
     }
     &--b2 {
-      background-color: orange;
+      background-color: $b2-level-color;
     }
     &--c1 {
-      background-color: skyblue;
+      background-color: $c1-level-color;
     }
     &--c2 {
-      background-color: rgb(6, 136, 168);
+      background-color: $c2-level-color;
     }
   }
 
@@ -72,8 +70,6 @@
 
   &__words-wrapper {
     display: flex;
-    // flex-direction: column;
-    // flex-grow: 1;
   }
 
   &__subtitle {
@@ -92,12 +88,29 @@
 
   &__word {
     cursor: pointer;
-    border: 2px solid lime;
     border-radius: 5px;
     display: flex;
     flex-flow: column;
     padding: 5px;
     user-select: none;
+    &--group-0 {
+      border: 2px solid $a1-level-color;
+    }
+    &--group-1 {
+      border: 2px solid $a2-level-color;
+    }
+    &--group-2 {
+      border: 2px solid $b1-level-color;
+    }
+    &--group-3 {
+      border: 2px solid $b2-level-color;
+    }
+    &--group-4 {
+      border: 2px solid $c1-level-color;
+    }
+    &--group-5 {
+      border: 2px solid $c2-level-color;
+    }
     &--active {
       background-color: $color-primary;
       border-color: $color-primary;
@@ -109,37 +122,67 @@
 
   &__pagination {
     display: flex;
+    margin-top: auto;
     gap: 10px;
     justify-content: center;
+    align-items: center;
   }
 
-  &__btn-prev {
+  &__btn-prev,
+  &__btn-next {
+    display: none;
   }
 
   &__page-pointer {
   }
 
-  &__btn-next {
+  &__btn-prev-label,
+  &__btn-next-label {
+    cursor: pointer;
+    font-size: 24px;
+  }
+
+  &__btn-label {
+    &--disabled {
+      color: rgb(184, 183, 183);
+    }
   }
 
   &__card {
-
+    &--group-0 {
+      border: 2px solid $a1-level-color;
+    }
+    &--group-1 {
+      border: 2px solid $a2-level-color;
+    }
+    &--group-2 {
+      border: 2px solid $b1-level-color;
+    }
+    &--group-3 {
+      border: 2px solid $b2-level-color;
+    }
+    &--group-4 {
+      border: 2px solid $c1-level-color;
+    }
+    &--group-5 {
+      border: 2px solid $c2-level-color;
+    }
   }
 
   &__words-container {
     display: flex;
-    // flex-flow: column;
     justify-content: space-between;
     align-items: flex-start;
     padding-bottom: 50px;
   }
 
   &__card-container {
-    // display: flex;
-    // width: 500px;
   }
 
   &__workspace {
+    display: flex;
+    flex-flow: column;
     max-width: 600px;
+    height: 600px;
   }
 }

@@ -61,6 +61,7 @@ export default class AppView {
       if (wordDiv) store.dispatch(selectWord(wordDiv.id));
       if (targetBtn.classList.contains('textbook__difficulty-btn')) {
         const id = parseID(targetBtn.id);
+        store.dispatch(changePage(0));
         store.dispatch(selectDifficulty(id));
         store.dispatch(selectWord(''));
         const state = store.getState().dictionary;

@@ -3,12 +3,20 @@ import store from '../../../store/store';
 export default class Dictionary {
   state = store.getState().dictionary;
 
+  appState = store.getState().app;
+
   private renderWords() {
-    return this.state.words
+    // const addClass = (condition: string) => {
+
+    // }
+    const words = this.state.activeTab === 'all' ? this.state.words : this.state.complexWords;
+
+    return words
       .map((word) => {
-        return `<div class="textbook__word ${word.id === this.state.selectedWord ? 'textbook__word--active' : ''}" id=${
-          word.id
-        }>
+        return `<div class="textbook__word 
+        ${word.id === this.state.selectedWord ? 'textbook__word--active' : ''}
+        textbook__word--group-${this.state.group}"
+        id=${word.id}>
             <span class="word__text">${word.word}</span>
             <span class="word__text">${word.wordTranslate}</span>
           </div>`;
@@ -19,7 +27,7 @@ export default class Dictionary {
   private renderCard() {
     const selected = this.state.words.find((word) => word.id === this.state.selectedWord);
     if (!selected) return '';
-    return `<div class="textbook__card card">
+    return `<div class="textbook__card card textbook__card--group-${this.state.group}">
     <img class="card__img" src='https://rslang-172.herokuapp.com/${selected.image}'/>
     <div class="card__content">
       <div class="card__main">
@@ -81,10 +89,12 @@ export default class Dictionary {
             </span>
           </li>
         </ul>
+        <div>
         <button class="textbook__set-btn btn" type="button">Все слова</button>
         <button class="textbook__set-btn btn" type="button">Сложные слова</button>
         <button class="textbook__set-btn btn" type="button">Аудиовызов</button>
         <button class="textbook__set-btn btn" type="button">Спринт</button>
+        </div>
         <div class="textbook__words-container">
         <div class="textbook__words">
         ${this.renderWords()}
@@ -92,9 +102,16 @@ export default class Dictionary {
         
       </div>
       <nav class="textbook__pagination">
-        <button class="pagination__btn textbook__btn-prev" ${this.state.page === 0 ? 'disabled' : ''}> << </button>
+        <input type="button" class="pagination__btn textbook__btn-prev" id='prev-button'
+        ${this.state.page === 0 ? 'disabled' : ''}/> <label class="textbook__btn-prev-label 
+        ${this.state.page === 0 ? 'textbook__btn-label--disabled' : ''}"
+        for="prev-button"> << </label>
         <span class="textbook__page-pointer">${this.state.page + 1}</span>
-        <button class="pagination__btn textbook__btn-next" ${this.state.page >= 29 ? 'disabled' : ''}> >> </button>
+        <input type="button" class="pagination__btn textbook__btn-next" id='next-button' 
+        ${this.state.page >= 29 ? 'disabled' : ''}/> 
+        <label class="textbook__btn-next-label textbook__btn-label
+        ${this.state.page >= 29 ? 'textbook__btn-label--disabled' : ''}"
+        for="next-button"> >> </label> 
       </nav>
       </div>
       
