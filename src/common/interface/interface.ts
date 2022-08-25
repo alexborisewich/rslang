@@ -53,10 +53,10 @@ export interface StatBackProps {
   statistics: StatProps;
 }
 
-export interface Game{
+export interface Game {
   words: WordDictionary[];
   hardWords: string[];
   hard: string;
-  group:number;
-  page:number;
-  }
+  group: number;
+  page: number;
+}
