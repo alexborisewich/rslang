@@ -1,13 +1,14 @@
 .sprint {
-  display: none;
-  // display: flex;
+  //display: none;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   flex-grow: 1;
-  background-image: url(../../assets/background-sprint-game.jpg);
+  background-image: url(../assets/background-sprint-game.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  min-height: 100%;
 
   & > *:not(:last-child) {
     margin-bottom: 10px;
@@ -93,7 +94,7 @@
     text-decoration: none;
     color: black;
     font-family: sans-serif;
-    font-size: 1rem;
+    font-size: 1.5rem;
     cursor: pointer;
     text-align: center;
     transition: background 250ms ease-in-out, transform 150ms ease;
@@ -104,11 +105,12 @@
   &__answer-btn-false {
     background:coral;
   }
-  &__answer-btn-true,
+  &__answer-btn-true:hover{
+    opacity: 0.8;
+  }
   &__answer-btn-false:hover{
     opacity: 0.8;
   }
-
 
   &__back {
     display:flex;
@@ -125,7 +127,7 @@
     background: burlywood;
     color: black;
     font-family: sans-serif;
-    font-size: 1rem;
+    font-size: 1.2rem;
     cursor: pointer;
     text-align: center;
   }
@@ -138,11 +140,13 @@
     background: burlywood;
     color: black;
     font-family: sans-serif;
-    font-size: 1rem;
+    font-size: 1.2rem;
     cursor: pointer;
     text-align: center;
   }
-  &__back-to-new-game,
+  &__back-to-new-game:hover{
+    opacity: 0.8;
+  }
   &__back-to-list-games:hover{
     opacity: 0.8;
   }
