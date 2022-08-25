@@ -10,8 +10,8 @@ export default class SprintGame {
     <div class = "sprint__word"></div>
     <div class = "sprint__translate"></div>
     <div class = "sprint__answer">
-        <button class = "sprint__answer-btn sprint__answer-btn-false" onclick="onClickHandlerGame(false)>&#10008</button>
-        <button class = "sprint__answer-btn-true" onclick="onClickHandlerGame(true)>&#10004</button>
+        <button class = "sprint__answer-btn sprint__answer-btn-false">&#10008</button>
+        <button class = "sprint__answer-btn sprint__answer-btn-true">&#10004</button>
     </div>
     <div class = "sprint__back">
     <button class = "sprint__back-to-new-game">Новая игра</button>
