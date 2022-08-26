@@ -2,6 +2,7 @@ import {
   addComplexWord,
   addLearnedWord,
   changePage,
+  changePlayState,
   deleteComplexWord,
   deleteLearnedWord,
   fetchWords,
@@ -121,12 +122,12 @@ export default class AppView {
 
         const word = words.find((el) => el.id === selected);
         if (word) {
-          targetBtn.disabled = true;
+          store.dispatch(changePlayState(true));
           playAudio(word.audio)
             .then(() => playAudio(word.audioMeaning))
             .then(() => playAudio(word.audioExample))
             .then(() => {
-              targetBtn.disabled = false;
+              store.dispatch(changePlayState(false));
             });
         }
       }

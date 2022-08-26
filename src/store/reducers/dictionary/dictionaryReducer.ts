@@ -29,6 +29,7 @@ const initialState: DictionaryState = {
   group: 0,
   page: 0,
   isLoading: false,
+  isPlaying: false,
   error: { isError: false, message: '' },
 };
 
@@ -61,6 +62,9 @@ const dictionarySlice = createSlice({
       console.log(action.payload.id);
       state.learnedWords = state.learnedWords.filter((word) => word.id !== action.payload.id);
     },
+    changePlayState(state, action: PayloadAction<boolean>) {
+      state.isPlaying = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -92,4 +96,5 @@ export const {
   deleteComplexWord,
   addLearnedWord,
   deleteLearnedWord,
+  changePlayState,
 } = dictionarySlice.actions;

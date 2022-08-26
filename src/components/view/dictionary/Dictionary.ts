@@ -42,7 +42,8 @@ export default class Dictionary {
         <h3 class="card__translate">${selected.wordTranslate}</h3>
         <span class="card__transcription">${selected.transcription}</span>
         <div class="card__buttons">
-         <button class="card__play btn" type="button" id="play-audio-btn">Воспроизвести</button>
+         <button class="card__play btn" type="button" id="play-audio-btn"
+         ${this.state.isPlaying ? 'disabled' : ''}>Воспроизвести</button>
          <div class="card__user-buttons">
          <button class="card__btn-set-complex btn
          ${this.state.complexWords.includes(selected) ? 'hidden' : ''}
