@@ -6,8 +6,10 @@
 //Base
 @import './base/base';
 @import './base/fonts';
+@import './base/theme';
 //Components
 @import './components/logo';
+@import './components/button';
 @import './components/menu';
 @import './components/submenu';
 @import './components/nav';

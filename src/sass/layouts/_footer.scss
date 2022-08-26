@@ -1,10 +1,14 @@
 .footer {
-    margin-top: auto;
+  background-color: $color-primary;
+  height: 110px;
+  margin-top: auto;
   &__container {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     align-items: center;
-    padding: 1%;
+    padding: 20px;
+    height: 100px;
   }
 
   &__copyright {
@@ -12,13 +16,17 @@
 
   &__team-list {
     display: flex;
-    column-gap: 10px;
+    gap: 20px;
   }
 
   &__team-item {
   }
 
   &__team-link {
+    transition: all 0.1s linear;
+    &:hover {
+      color: ghostwhite;
+    }
   }
 
   &__rsschool-link {

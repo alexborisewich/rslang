@@ -17,12 +17,14 @@ body {
   display: flex;
   flex-flow: column;
   font-size: 1.6rem;
+  font-family: 'Rubik', sans-serif;
 }
 
 a,
 a:visited,
 a:hover {
   text-decoration: none;
+  color: initial;
 }
 
 ul li {
