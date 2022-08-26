@@ -110,37 +110,6 @@ export default class Games {
           <button class="audiochallenge__answer-btn btn">Не знаю</button>
         </div>
       </div>
-      <div class="games__sprint sprint">
-        <div class="sprint__header">
-          <div class="sprint__score">
-            <p class="sprint__score-pointer">0</p>
-            <p class="sprint__score-animate">+20</p>
-          </div>
-          <!-- here svg with series length status -->
-          <div class="sprint__timer timer">
-            <svg class="timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-              <g class="timer__circle">
-                <circle class="timer__path-elapsed" cx="50" cy="50" r="45"></circle>
-                <path class="timer__path-remaining" id="timer-path-remaining" stroke-dasharray="283"
-                      d="M 50, 50 m -45, 0 a 45,45 0 1,0 90,0 a 45,45 0 1,0 -90,0"></path>
-              </g>
-            </svg>
-            <span class="timer__counter" id="base-timer-label"></span>
-          </div>
-        </div>
-        <div class="sprint__body">
-          <p class="sprint__question">
-            <span class="sprint__word">word</span>
-            =
-            <span class="sprint__translate">слово</span>
-            ?
-          </p>
-          <div class="sprint__answer">
-            <button class="sprint-answer__btn btn">Неверно</button>
-            <button class="sprint-answer__btn btn">Верно</button>
-          </div>
-        </div>
-      </div>
       <div class="games__finish">
         <div class="games__finish-container">
           <h3 class="games__finish-title">Результаты</h3>
@@ -181,3 +150,35 @@ export default class Games {
   </section>`;
   }
 }
+
+/* <div class="games__sprint sprint">
+        <div class="sprint__header">
+          <div class="sprint__score">
+            <p class="sprint__score-pointer">0</p>
+            <p class="sprint__score-animate">+20</p>
+          </div>
+          <!-- here svg with series length status -->
+          <div class="sprint__timer timer">
+            <svg class="timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <g class="timer__circle">
+                <circle class="timer__path-elapsed" cx="50" cy="50" r="45"></circle>
+                <path class="timer__path-remaining" id="timer-path-remaining" stroke-dasharray="283"
+                      d="M 50, 50 m -45, 0 a 45,45 0 1,0 90,0 a 45,45 0 1,0 -90,0"></path>
+              </g>
+            </svg>
+            <span class="timer__counter" id="base-timer-label"></span>
+          </div>
+        </div>
+        <div class="sprint__body">
+          <p class="sprint__question">
+            <span class="sprint__word">word</span>
+            =
+            <span class="sprint__translate">слово</span>
+            ?
+          </p>
+          <div class="sprint__answer">
+            <button class="sprint-answer__btn btn">Неверно</button>
+            <button class="sprint-answer__btn btn">Верно</button>
+          </div>
+        </div>
+      </div> */
