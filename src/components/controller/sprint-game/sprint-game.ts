@@ -18,6 +18,10 @@ class LogicSprintGame {
     const sprintBackBlock = document.querySelector('.sprint__back') as HTMLButtonElement;
     const btnTrue = document.querySelector('.sprint__answer-btn-true') as HTMLButtonElement;
     const btnFalse = document.querySelector('.sprint__answer-btn-false') as HTMLButtonElement;
+    btnTrue.disabled = true;
+    btnFalse.disabled = true;
+
+
 
     let WORDS_GROUP: WordDictionary[];
     let WORDS_GAME: WordDictionary[];
@@ -166,7 +170,7 @@ class LogicSprintGame {
       timerSprint!.textContent = '60';
       sprintBackBlock.style.display = 'none';
       btnTrue.disabled = false;
-      btnTrue.disabled = false;
+      btnFalse.disabled = false;
       if (!timerOn) {
         timerOn = true;
         const animation = setInterval(function () {
@@ -175,8 +179,8 @@ class LogicSprintGame {
             timerOn = false;
             sprintBackBlock.style.display = 'flex';
             btnTrue.disabled = true;
-            btnTrue.disabled = true;
-            alert(score);
+            btnFalse.disabled = true;
+            alert(`Score: ${score}`);
           } else {
             timerSprint!.textContent = `${Number(timerSprint!.textContent) - 1}`;
           }
