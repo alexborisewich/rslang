@@ -46,17 +46,17 @@ export default class Dictionary {
          ${this.state.isPlaying ? 'disabled' : ''}>Воспроизвести</button>
          <div class="card__user-buttons">
          <button class="card__btn-set-complex btn
-         ${this.state.complexWords.includes(selected) ? 'hidden' : ''}
+         ${this.state.complexWords.some((word) => word.id === selected.id) ? 'hidden' : ''}
          " id="add-complex">Добавить в сложные</button>
          <button class="card__btn-set-complex btn
-         ${!this.state.complexWords.includes(selected) ? 'hidden' : ''}
+         ${!this.state.complexWords.some((word) => word.id === selected.id) ? 'hidden' : ''}
          " id="delete-complex">Удалить из сложных</button>
          <button class="card__btn-set-learned btn
-         ${this.state.learnedWords.includes(selected) ? 'hidden' : ''}
+         ${this.state.learnedWords.some((word) => word.id === selected.id) ? 'hidden' : ''}
          
          " id="add-learned">Изучено</button>
          <button class="card__btn-set-learned btn
-         ${!this.state.learnedWords.includes(selected) ? 'hidden' : ''}
+         ${!this.state.learnedWords.some((word) => word.id === selected.id) ? 'hidden' : ''}
          
          " id="delete-learned">Удалить из изученных</button>
          </div>
