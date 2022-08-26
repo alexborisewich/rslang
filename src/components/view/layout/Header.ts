@@ -6,7 +6,6 @@ export default class Header {
   appState = store.getState().app;
 
   createElement() {
-    console.log(this.appState.activeTab);
     return `<header class="header">
     <div class=" header__container container">
       <a class="header__logo logo" href="#">

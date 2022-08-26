@@ -21,9 +21,9 @@ export const fetchWords = createAsyncThunk<
 
 const initialState: DictionaryState = {
   words: [],
+  activeTab: 'all',
   complexWords: [],
   learnedWords: [],
-  activeTab: 'all',
   totalWordsCount: 0,
   selectedWord: '',
   group: 0,
@@ -44,6 +44,22 @@ const dictionarySlice = createSlice({
     },
     changePage(state, action: PayloadAction<number>) {
       state.page = action.payload;
+    },
+    switchDictionaryTab(state, action: PayloadAction<'all' | 'complex'>) {
+      state.activeTab = action.payload;
+    },
+    addComplexWord(state, action: PayloadAction<Dictionary>) {
+      state.complexWords.push(action.payload);
+    },
+    deleteComplexWord(state, action: PayloadAction<Dictionary>) {
+      state.complexWords = state.complexWords.filter((word) => word.id !== action.payload.id);
+    },
+    addLearnedWord(state, action: PayloadAction<Dictionary>) {
+      state.learnedWords.push(action.payload);
+    },
+    deleteLearnedWord(state, action: PayloadAction<Dictionary>) {
+      console.log(action.payload.id);
+      state.learnedWords = state.learnedWords.filter((word) => word.id !== action.payload.id);
     },
   },
   extraReducers: (builder) => {
@@ -67,4 +83,13 @@ const dictionarySlice = createSlice({
 });
 
 export default dictionarySlice.reducer;
-export const { selectWord, selectDifficulty, changePage } = dictionarySlice.actions;
+export const {
+  selectWord,
+  selectDifficulty,
+  changePage,
+  switchDictionaryTab,
+  addComplexWord,
+  deleteComplexWord,
+  addLearnedWord,
+  deleteLearnedWord,
+} = dictionarySlice.actions;
