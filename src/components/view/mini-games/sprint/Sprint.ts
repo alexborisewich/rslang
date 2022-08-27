@@ -1,6 +1,11 @@
 export default class SprintGame {
   createElement() {
     return `<section class="sprint">
+    <div class="games__btn-wpapper">
+        <button class="games__sound-btn">Звук</button>
+        <button class="games__screen-btn">На весь экран</button>
+        <button class="games__close-btn">&#9587</button>
+    </div>
     <div class = "sprint__body">
     <div class = "sprint__header">
         <div class = "sprint__score">0</div>
@@ -17,6 +22,9 @@ export default class SprintGame {
     <button class = "sprint__back-to-new-game">Новая игра</button>
     <button class = "sprint__back-to-list-games">К списку игр</button>
     </div>
+  </div>
+  <div class="games__finish">
+
   </div>
   </section>`;
   }
