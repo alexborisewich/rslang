@@ -3,19 +3,26 @@ import store from '../../../store/store';
 export default class Dictionary {
   state = store.getState().dictionary;
 
+  words = this.state.activeTab === 'all' ? this.state.words : this.state.complexWords;
+
   appState = store.getState().app;
 
+  userState = store.getState().user;
+
   private renderWords() {
-    // const addClass = (condition: string) => {
-
-    // }
-    const words = this.state.activeTab === 'all' ? this.state.words : this.state.complexWords;
-
-    return words
+    return this.words
       .map((word) => {
         return `<div class="textbook__word 
         ${word.id === this.state.selectedWord ? 'textbook__word--active' : ''}
-        textbook__word--group-${this.state.group}"
+        ${this.state.complexWords.some((el) => el.id === word.id) ? 'textbook__word--complex' : ''}
+        ${this.state.learnedWords.some((el) => el.id === word.id) ? 'textbook__word--learned' : ''}
+        ${
+          this.state.complexWords.some((el) => el.id === word.id) &&
+          this.state.learnedWords.some((el) => el.id === word.id)
+            ? 'textbook__word--complex-and-learned'
+            : ''
+        }
+        textbook__word--group-${word.group}"
         id=${word.id}>
             <span class="word__text">${word.word}</span>
             <span class="word__text">${word.wordTranslate}</span>
@@ -25,7 +32,7 @@ export default class Dictionary {
   }
 
   private renderCard() {
-    const selected = this.state.words.find((word) => word.id === this.state.selectedWord);
+    const selected = this.words.find((word) => word.id === this.state.selectedWord);
     if (!selected) return '';
     return `<div class="textbook__card card textbook__card--group-${this.state.group}">
     <img class="card__img" src='https://rslang-172.herokuapp.com/${selected.image}'/>
@@ -34,10 +41,28 @@ export default class Dictionary {
         <h2 class="card__word">${selected.word}</h2>
         <h3 class="card__translate">${selected.wordTranslate}</h3>
         <span class="card__transcription">${selected.transcription}</span>
-        <button class="card__play btn" type="button">Воспроизвести</button>
+        <div class="card__buttons">
+         <button class="card__play btn" type="button" id="play-audio-btn"
+         ${this.state.isPlaying ? 'disabled' : ''}>Воспроизвести</button>
+         <div class="card__user-buttons">
+         <button class="card__btn-set-complex btn
+         ${this.state.complexWords.some((word) => word.id === selected.id) ? 'hidden' : ''}
+         " id="add-complex">Добавить в сложные</button>
+         <button class="card__btn-set-complex btn
+         ${!this.state.complexWords.some((word) => word.id === selected.id) ? 'hidden' : ''}
+         " id="delete-complex">Удалить из сложных</button>
+         <button class="card__btn-set-learned btn
+         ${this.state.learnedWords.some((word) => word.id === selected.id) ? 'hidden' : ''}
+         
+         " id="add-learned">Изучено</button>
+         <button class="card__btn-set-learned btn
+         ${!this.state.learnedWords.some((word) => word.id === selected.id) ? 'hidden' : ''}
+         
+         " id="delete-learned">Удалить из изученных</button>
+         </div>
+        </div>
       </div>
-      <button class="card__btn-set-compound btn">Добавить в сложные</button>
-      <button class="card__btn-set-learned btn">Изучено</button>
+      
       <div class="card-description">
         <h4 class="card__mean card-subtitle">Значение</h3>
           <p>${selected.textMeaning}</p>
@@ -89,9 +114,13 @@ export default class Dictionary {
             </span>
           </li>
         </ul>
-        <div>
-        <button class="textbook__set-btn btn" type="button">Все слова</button>
-        <button class="textbook__set-btn btn" type="button">Сложные слова</button>
+        <div class="textbook__buttons">
+        <div class="textbook__user-buttons ${this.userState.isLoggedOn ? '' : 'hidden'}">
+        <button class="textbook__set-btn btn" type="button" id="all-words-btn"
+        ${this.state.activeTab === 'all' ? 'disabled' : ''}>Все слова</button>
+        <button class="textbook__set-btn btn" type="button" id="complex-words-btn"
+        ${this.state.activeTab === 'complex' ? 'disabled' : ''}>Сложные слова</button>
+        </div>
         <button class="textbook__set-btn btn" type="button">Аудиовызов</button>
         <button class="textbook__set-btn btn" type="button">Спринт</button>
         </div>

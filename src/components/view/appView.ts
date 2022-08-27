@@ -1,11 +1,17 @@
 import {
+  addComplexWord,
+  addLearnedWord,
   changePage,
+  changePlayState,
+  deleteComplexWord,
+  deleteLearnedWord,
   fetchWords,
   selectDifficulty,
   selectWord,
+  switchDictionaryTab,
 } from '../../store/reducers/dictionary/dictionaryReducer';
 import { switchTab } from '../../store/reducers/app/appReducer';
-import { parseID } from '../../common/utils/utils';
+import { parseID, playAudio } from '../../common/utils/utils';
 import store from '../../store/store';
 import api from '../api/api';
 import { logIn, logOut } from '../../store/reducers/user/userReducer';
@@ -77,6 +83,57 @@ export default class AppView {
         store.dispatch(selectWord(''));
         store.dispatch(fetchWords({ group, page }));
       }
+      if (targetBtn.id === 'all-words-btn') store.dispatch(switchDictionaryTab('all'));
+      if (targetBtn.id === 'complex-words-btn') store.dispatch(switchDictionaryTab('complex'));
+      if (targetBtn.id === 'add-complex') {
+        const selected = store.getState().dictionary.selectedWord;
+        const { words } = store.getState().dictionary;
+        const complex = words.find((word) => word.id === selected);
+        if (complex) store.dispatch(addComplexWord(complex));
+      }
+      if (targetBtn.id === 'delete-complex') {
+        const selected = store.getState().dictionary.selectedWord;
+        const { complexWords } = store.getState().dictionary;
+        const complex = complexWords.find((word) => word.id === selected);
+        if (complex) store.dispatch(deleteComplexWord(complex));
+      }
+      if (targetBtn.id === 'add-learned') {
+        const selected = store.getState().dictionary.selectedWord;
+        const words =
+          store.getState().dictionary.activeTab === 'all'
+            ? store.getState().dictionary.words
+            : store.getState().dictionary.complexWords;
+        const learned = words.find((word) => word.id === selected);
+        if (learned) store.dispatch(addLearnedWord(learned));
+      }
+      if (targetBtn.id === 'delete-learned') {
+        const selected = store.getState().dictionary.selectedWord;
+        const { learnedWords } = store.getState().dictionary;
+        const learned = learnedWords.find((word) => word.id === selected);
+        if (learned) store.dispatch(deleteLearnedWord(learned));
+      }
+
+      if (targetBtn.id === 'play-audio-btn') {
+        const selected = store.getState().dictionary.selectedWord;
+        const words =
+          store.getState().dictionary.activeTab === 'all'
+            ? store.getState().dictionary.words
+            : store.getState().dictionary.complexWords;
+
+        const word = words.find((el) => el.id === selected);
+        if (word) {
+          store.dispatch(changePlayState(true));
+          playAudio(word.audio)
+            .then(() => playAudio(word.audioMeaning))
+            .then(() => playAudio(word.audioExample))
+            .then(() => {
+              store.dispatch(changePlayState(false));
+            });
+        }
+      }
+
+      if (targetBtn.id === 'audiochallenge-btn') store.dispatch(switchTab('audiochallenge'));
+      if (targetBtn.id === 'sprint-btn') store.dispatch(switchTab('sprint'));
     };
 
     const regFormHandler = (e: Event) => {

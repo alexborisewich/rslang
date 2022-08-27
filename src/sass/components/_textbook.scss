@@ -5,8 +5,8 @@
 
   &__container {
     display: flex;
+    flex-grow: 1;
     justify-content: space-between;
-    justify-content: space-evenly;
   }
 
   &__header {
@@ -111,9 +111,21 @@
     &--group-5 {
       border: 2px solid $c2-level-color;
     }
+    &--complex {
+      background-color: tomato;
+    }
+    &--learned {
+      background-color: greenyellow;
+    // color: greenyellow;
+    }
+    &--complex-and-learned {
+      background-color: tomato;
+      color: greenyellow;
+    }
     &--active {
       background-color: $color-primary;
       border-color: $color-primary;
+      color: initial;
     }
   }
 
@@ -173,7 +185,6 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    padding-bottom: 50px;
   }
 
   &__card-container {
@@ -183,6 +194,15 @@
     display: flex;
     flex-flow: column;
     max-width: 600px;
-    height: 600px;
+    min-height: 550px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 5px;
+  }
+  &__user-buttons {
+    display: flex;
+    gap: 5px;
   }
 }

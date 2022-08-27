@@ -1,12 +1,11 @@
 .card {
-  //   align-self: center;
+    // background-color: tomato;
+    // background-color: aqua;
   display: flex;
-  flex-grow: 0;
   flex-flow: column;
-  width: 500px;
+  width: 555px;
   border-radius: 10px;
   padding: 10px;
-//   min-height: 600px;
 
   &__img {
     object-fit: cover;
@@ -69,6 +68,16 @@
   }
 
   &__statistic-game {
+  }
+
+  &__buttons {
+    font-size: 14px;
+    display: flex;
+    gap: 5px;
+  }
+  &__user-buttons {
+    display: flex;
+    gap: 5px;
   }
 }
 

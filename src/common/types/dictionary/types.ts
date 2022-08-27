@@ -10,5 +10,6 @@ export type DictionaryState = {
   group: string | number;
   page: number;
   isLoading: boolean;
+  isPlaying: boolean;
   error: { isError: boolean; message: Error['message'] };
 };
