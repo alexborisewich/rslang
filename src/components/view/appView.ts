@@ -14,6 +14,7 @@ import Header from './layout/Header';
 import Main from './layout/Main';
 import Footer from './layout/Footer';
 import LogicSprintGame from '../controller/sprint-game/sprint-game';
+import { LogicGames } from '../controller/games/games';
 
 export default class AppView {
   body = document.querySelector('body') as HTMLBodyElement;
@@ -42,7 +43,11 @@ export default class AppView {
         store.dispatch(switchTab('dictionary'));
         store.dispatch(fetchWords({ group, page }));
       }
-      if (targetLink.id === 'games-link') store.dispatch(switchTab('games'));
+      if (targetLink.id === 'games-link') {
+        store.dispatch(switchTab('games'));
+        const startLogic = new LogicGames();
+        startLogic.createLogic();
+      }
       if (targetLink.id === 'sprint-link') {
         store.dispatch(switchTab('sprint'));
         const startSprintLogic = new LogicSprintGame();
@@ -62,6 +67,11 @@ export default class AppView {
       console.log(e.target);
 
       if (targetLink.id === 'link-create-account') store.dispatch(switchTab('registration'));
+      if (targetLink.id === 'sprint-link') {
+        store.dispatch(switchTab('sprint'));
+        const startSprintLogic = new LogicSprintGame();
+        startSprintLogic.createLogic();
+      }
       if (targetLink.id === 'link-login') store.dispatch(switchTab('login'));
       if (targetLink.id === 'close-form') store.dispatch(switchTab('homepage'));
       if (wordDiv) store.dispatch(selectWord(wordDiv.id));
