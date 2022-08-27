@@ -2,11 +2,6 @@ export default class Games {
   createElement() {
     return `<section class="games">
     <div class="games__container container">
-      <div class="games__btn-wpapper">
-        <button class="games__sound-btn">Звук</button>
-        <button class="games__screen-btn">На весь экран</button>
-        <button class="games__close-btn">Закрыть</button>
-      </div>
       <div class="games__select">
         <a class="games__audiochallenge-link game-link" href="#">
           <span class="game-link__title">Аудиовызов</span>
@@ -16,41 +11,41 @@ export default class Games {
         </a>
         <ul class="games__level-list">
           <li class="games__level-item">
-            <input class="games__level-input" type="radio" id="A1" name="level-select" checked>
+            <input class="games__level-input" type="radio" id="A1" name="level-select" value = "0" checked>
             <label class="games__level-label" for="A1">
               <span class="games__level-title">A1</span>
               <span class="games__level-name">Elementary</span></label>
           </li>
           <li class="games__level-item">
-            <input class="games__level-input" type="radio" id="A2" name="level-select">
+            <input class="games__level-input" type="radio" id="A2" name="level-select" value = "1">
             <label class="games__level-label" for="A2">
               <span class="games__level-title">A2</span>
               <span class="games__level-name">Pre-Intermediate</span>
             </label>
           </li>
           <li class="games__level-item">
-            <input class="games__level-input" type="radio" id="B1" name="level-select">
+            <input class="games__level-input" type="radio" id="B1" name="level-select" value = "2">
             <label class="games__level-label" for="B1">
               <span class="games__level-title">B1</span>
               <span class="games__level-name">Intermediate</span>
             </label>
           </li>
           <li class="games__level-item">
-            <input class="games__level-input" type="radio" id="B2" name="level-select">
+            <input class="games__level-input" type="radio" id="B2" name="level-select" value = "3">
             <label class="games__level-label" for="B2">
               <span class="games__level-title">B2</span>
               <span class="games__level-name">Upper-Intermediate</span>
             </label>
           </li>
           <li class="games__level-item">
-            <input class="games__level-input" type="radio" id="C1" name="level-select">
+            <input class="games__level-input" type="radio" id="C1" name="level-select" value = "4">
             <label class="games__level-label" for="C1">
               <span class="games__level-title">C1</span>
               <span class="games__level-name">Advanced</span>
             </label>
           </li>
           <li class="games__level-item">
-            <input class="games__level-input" type="radio" id="C2" name="level-select">
+            <input class="games__level-input" type="radio" id="C2" name="level-select" value = "5">
             <label class="games__level-label" for="C2">
               <span class="games__level-title">C2</span>
               <span class="games__level-name">Proficiency</span>
@@ -58,7 +53,7 @@ export default class Games {
           </li>
         </ul>
         <a class="games__audiochallenge-link game-link" href="#">
-          <span class="game-link__title">Спринт</span>
+          <span class="game-link__title" id = "sprint-link">Спринт</span>
           <span class="game-link__img-wrapper">
             <img class="game-link__img" src="" alt="">
           </span>
@@ -108,42 +103,6 @@ export default class Games {
             </li>
           </ul>
           <button class="audiochallenge__answer-btn btn">Не знаю</button>
-        </div>
-      </div>
-      <div class="games__finish">
-        <div class="games__finish-container">
-          <h3 class="games__finish-title">Результаты</h3>
-          <div class="games__answers-counters">
-            <span class="games__answers-right">Знаю:
-              <span class="games__correct-count">1</span>
-            </span>
-            <span class="games__answers-wrong">Не знаю:
-              <span class="games__wrong-count">1</span>
-            </span>
-          </div>
-          <table class="games__finish-statistic">
-            <thead>
-              <tr>
-                <th>1</th>
-                <th>2</th>
-                <th>3</th>
-                <th>4</th>
-                <th>5</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Звук</td>
-                <td>англ слово</td>
-                <td>[]</td>
-                <td>рус слово</td>
-                <td>+ или-</td>
-              </tr>
-            </tbody>
-          </table>
-          <button class="games__restart-btn btn">Играть еще</button>
-          <button class="games__change-btn btn">Игры</button>
-          <button class="games__exit-btn btn">Выйти</button>
         </div>
       </div>
     </div>
