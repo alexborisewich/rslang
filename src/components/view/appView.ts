@@ -32,7 +32,7 @@ export default class AppView {
     const headerHandler = (e: Event) => {
       const targetBtn = e.target as HTMLButtonElement;
       const targetLink = e.target as HTMLLinkElement;
-      console.log(e.target);
+      const targetImg = e.target as HTMLImageElement;
 
       if (targetBtn.id === 'login-btn') store.dispatch(switchTab('login'));
       if (targetBtn.id === 'logout-btn') {
@@ -50,16 +50,18 @@ export default class AppView {
       if (targetLink.id === 'games-link') store.dispatch(switchTab('games'));
       if (targetLink.id === 'statistic-link') store.dispatch(switchTab('statistic'));
       if (targetLink.id === 'team-link') store.dispatch(switchTab('team'));
+      if (targetImg.id === 'theme-btn') {
+        this.body.classList.toggle('theme--light');
+        this.body.classList.toggle('theme--dark');
+        targetImg.classList.toggle('header__theme-switcher--active');
+      }
     };
 
     const mainHandler = (e: Event) => {
       const targetLink = e.target as HTMLLinkElement;
-      //   const targetDiv = e.target as HTMLDivElement;
       const targetBtn = e.target as HTMLButtonElement;
       const targetSpan = e.target as HTMLSpanElement;
       const wordDiv = targetSpan.closest('.textbook__word') as HTMLDivElement;
-
-      console.log(e.target);
 
       if (targetLink.id === 'link-create-account') store.dispatch(switchTab('registration'));
       if (targetLink.id === 'link-login') store.dispatch(switchTab('login'));

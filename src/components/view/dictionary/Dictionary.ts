@@ -53,7 +53,6 @@ export default class Dictionary {
          " id="delete-complex">Удалить из сложных</button>
          <button class="card__btn-set-learned btn
          ${this.state.learnedWords.some((word) => word.id === selected.id) ? 'hidden' : ''}
-         
          " id="add-learned">Изучено</button>
          <button class="card__btn-set-learned btn
          ${!this.state.learnedWords.some((word) => word.id === selected.id) ? 'hidden' : ''}
@@ -152,21 +151,3 @@ export default class Dictionary {
   </section>`;
   }
 }
-
-// <h4 class="card__statistic card-subtitle">Прогресс изучения</h4>
-//             <ul class="card__statistic-list">
-//               <li class="card__statistic-item">
-//                 <span class="card__statistic-new">Новое или Изучено</span>
-//                 <span class="card__statistic-counter">+ или -</span>
-//               </li>
-//               <li class="card__statistic-item">
-//                 <span class="card__statistic-game">Аудиовызов</span>
-//                 <span class="card__statistic-counter">Правильно: 0</span>
-//                 <span class="card__statistic-counter">Неправильно: 0</span>
-//               </li>
-//               <li class="card__statistic-item">
-//                 <span class="card__statistic-game">Спринт</span>
-//                 <span class="card__statistic-counter">Правильно: 0</span>
-//                 <span class="card__statistic-counter">Неправильно: 0</span>
-//               </li>
-//             </ul>

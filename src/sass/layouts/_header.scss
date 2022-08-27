@@ -26,7 +26,13 @@
       object-fit: cover;
     }
     &:hover {
-      filter: hue-rotate(160deg);
+      filter: hue-rotate(120deg);
+    }
+    &--active {
+      filter: hue-rotate(120deg);
+      &:hover {
+        filter: hue-rotate(-120deg);
+      }
     }
   }
 

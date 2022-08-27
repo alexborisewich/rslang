@@ -101,7 +101,6 @@ const userSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(register.fulfilled, (state, action) => {
-        console.log(state, action);
         if (action.payload) {
           state.id = action.payload.id;
           state.email = action.payload.email;
