@@ -20,12 +20,10 @@ import Header from './layout/Header';
 import Main from './layout/Main';
 import Footer from './layout/Footer';
 import AudioChallengeGame from './mini-games/audioсhallenge/Audiochallenge';
-import SprintController from '../controller/sprint/SprintController';
+import sprintController from '../controller/sprint/SprintController';
 
 export default class AppView {
   body = document.querySelector('body') as HTMLBodyElement;
-
-  sprintController = new SprintController();
 
   listen() {
     const header = this.body.querySelector('.header') as HTMLDivElement;
@@ -170,12 +168,12 @@ export default class AppView {
       if ((targetGameLink as HTMLElement).closest('.games__sprint-link')) {
         console.warn('GameSprint not implemented');
       }
-
+    };
     const sprintHandler = (e: Event) => {
       const targetBtn = e.target as HTMLButtonElement;
-      if (targetBtn.id === 'sprint-new-game') this.sprintController.startGame();
-      if (targetBtn.id === 'sprint-answer-true') this.sprintController.getUserAnswer(true);
-      if (targetBtn.id === 'sprint-answer-false') this.sprintController.getUserAnswer(false);
+      if (targetBtn.id === 'sprint-new-game') sprintController.startGame();
+      if (targetBtn.id === 'sprint-answer-true') sprintController.getUserAnswer(true);
+      if (targetBtn.id === 'sprint-answer-false') sprintController.getUserAnswer(false);
     };
 
     const regFormHandler = (e: Event) => {

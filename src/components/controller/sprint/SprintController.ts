@@ -5,12 +5,13 @@ import {
   init,
   setRoundState,
   switchGameStatus,
-  tick,
 } from '../../../store/reducers/sprint/sprintReducer';
 import store from '../../../store/store';
 
-export default class SprintController {
+class SprintController {
   state = store.getState().sprint;
+
+  time = this.state.time;
 
   interval = 0;
 
@@ -35,15 +36,18 @@ export default class SprintController {
 
   startTimer() {
     const interval = setInterval(() => {
-      const { time } = store.getState().sprint;
-      store.dispatch(tick());
-      if (time === 1) this.finishGame();
+      this.time -= 1;
+      const div = document.querySelector('.sprint__timer') as HTMLDivElement;
+      div.textContent = `${this.time}`;
+      //   store.dispatch(tick());
+      if (this.time === 1) this.finishGame();
     }, 1000);
     return +interval;
   }
 
   stopTimer(id: number) {
     clearInterval(id);
+    this.time = this.state.time;
   }
 
   getUserAnswer(answer: boolean) {
@@ -73,3 +77,5 @@ export default class SprintController {
     return array[idx];
   };
 }
+
+export default new SprintController();
