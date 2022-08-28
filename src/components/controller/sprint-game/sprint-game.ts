@@ -61,8 +61,6 @@ class LogicSprintGame {
       page: objectJSON.object[0].page,
     };
 
-    // page1 group 1
-
     const getWordsGroup = () => {
       /// if (objectGames.hard) return hardWords;
       return objectGames.words.filter((item) => item.group === objectGames.group);
@@ -176,6 +174,7 @@ class LogicSprintGame {
             sprintBackBlock.style.display = 'flex';
             btnTrue.disabled = true;
             btnFalse.disabled = true;
+
             answerResult.innerHTML = `<div class="games__finish-container">
             <h3 class="games__finish-title">Ваш результат: ${score} очков</h3>
             <h4 class="games__finish-title"> Длина серии: ${series} </h4>
