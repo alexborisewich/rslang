@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-grow: 1;
+//   flex-grow: 1;
   background-image: url(../assets/sprint/background-sprint-game.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -51,14 +51,19 @@
 
   &__body {
     width: 300px;
+<<<<<<< HEAD
     height: 300px;
     height: auto;
+=======
+    // height: auto;
+    height: 300px;
+>>>>>>> dd1d1d8 (feat: add user answers logic and games page)
     border-radius: 10px;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin: 0 auto;
+    // margin: 0 auto;
     background: radial-gradient(
       circle,
       rgba(60, 132, 127, 0.8830882694874825) 0%,
@@ -163,6 +168,7 @@
     flex-direction: column;
     align-items: center;
   }
+<<<<<<< HEAD
 
   &__btn-wpapper {
     display: flex;
@@ -302,4 +308,6 @@
 
   &__exit-btn {
   }
+=======
+>>>>>>> dd1d1d8 (feat: add user answers logic and games page)
 }

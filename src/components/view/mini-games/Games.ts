@@ -10,6 +10,7 @@ export default class Games {
             </span>
           </a>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <ul class="games__level-list">
               <li class="games__level-item">
                 <input class="games__level-input" type="radio" value="0" name="level-select" checked>
@@ -60,6 +61,8 @@ export default class Games {
             </span>
           </a>
 =======
+=======
+>>>>>>> dd1d1d8 (feat: add user answers logic and games page)
           <ul class="games__level-list">
             <li class="games__level-item">
               <input class="games__level-input" type="radio" id="A1" name="level-select" value = "0" checked>
@@ -104,7 +107,11 @@ export default class Games {
             </li>
           </ul>
           <a class="games__audiochallenge-link game-link" href="#">
+<<<<<<< HEAD
             <span class="game-link__title" id = "games-sprint-link">Спринт</span>
+=======
+            <span class="game-link__title" id = "sprint-link">Спринт</span>
+>>>>>>> dd1d1d8 (feat: add user answers logic and games page)
             <span class="game-link__img-wrapper">
               <img class="game-link__img" src="" alt="">
             </span>
@@ -155,7 +162,10 @@ export default class Games {
             </ul>
             <button class="audiochallenge__answer-btn btn">Не знаю</button>
           </div>
+<<<<<<< HEAD
 >>>>>>> 92fac0f (feat: add user answers logic and games page)
+=======
+>>>>>>> dd1d1d8 (feat: add user answers logic and games page)
         </div>
       </div>
     </section>`;

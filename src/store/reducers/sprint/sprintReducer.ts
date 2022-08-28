@@ -17,11 +17,13 @@ type SprintState = {
     answer: Dictionary | null;
     isCorrect: boolean;
   };
+<<<<<<< HEAD
   showStat: boolean;
   question: Dictionary | null;
   answer: Dictionary | null;
+=======
+>>>>>>> dd1d1d8 (feat: add user answers logic and games page)
   isStarted: boolean;
-  isCorrect: boolean;
   isLoading: boolean;
   error: { isError: boolean; message: string };
 };
@@ -41,11 +43,13 @@ const initialState: SprintState = {
     answer: null,
     isCorrect: false,
   },
+<<<<<<< HEAD
   showStat: false,
   question: null,
   answer: null,
+=======
+>>>>>>> dd1d1d8 (feat: add user answers logic and games page)
   isStarted: false,
-  isCorrect: false,
   isLoading: false,
   error: { isError: false, message: '' },
 };
@@ -70,6 +74,7 @@ const sprintSlice = createSlice({
   name: 'sprint',
   initialState,
   reducers: {
+<<<<<<< HEAD
     init(state) {
       state.score = initialState.score;
       state.time = initialState.time;
@@ -93,15 +98,28 @@ const sprintSlice = createSlice({
       state.showStat = action.payload;
     },
     setRoundState(state, action: PayloadAction<{ question: Dictionary; answer: Dictionary }>) {
+=======
+    switchGameStatus(state, action: PayloadAction<boolean>) {
+      state.isStarted = action.payload;
+    },
+    setRoundState(state, action: PayloadAction<{ question: Dictionary; answer: Dictionary }>) {
+      console.log(action);
+>>>>>>> dd1d1d8 (feat: add user answers logic and games page)
       state.roundState.question = action.payload.question;
       state.roundState.answer = action.payload.answer;
       state.roundState.isCorrect = action.payload.question.wordTranslate === action.payload.answer.wordTranslate;
       state.words = state.words.filter((word) => word.id !== action.payload.question.id);
     },
     checkUserAnswer(state, action: PayloadAction<boolean>) {
+<<<<<<< HEAD
       if (state.roundState.isCorrect === action.payload) {
         state.streak += 1;
         state.score += 20;
+=======
+      console.log(action.payload);
+      if (state.roundState.isCorrect === action.payload) {
+        state.streak += 1;
+>>>>>>> dd1d1d8 (feat: add user answers logic and games page)
         state.maxStreak = Math.max(state.maxStreak, state.streak);
         if (state.roundState.question) state.correct.push(state.roundState.question);
       } else {
@@ -109,6 +127,7 @@ const sprintSlice = createSlice({
         if (state.roundState.question) state.wrong.push(state.roundState.question);
       }
     },
+<<<<<<< HEAD
     tick(state) {
       state.time -= 1;
     },
@@ -116,6 +135,8 @@ const sprintSlice = createSlice({
       state.group = action.payload.group;
       state.page = action.payload.page;
     },
+=======
+>>>>>>> dd1d1d8 (feat: add user answers logic and games page)
   },
   extraReducers: (builder) => {
     builder
@@ -127,7 +148,6 @@ const sprintSlice = createSlice({
       .addCase(getSprintData.fulfilled, (state, action) => {
         state.isLoading = false;
         state.words = action.payload;
-        if (!state.question) [state.question] = action.payload;
       })
       .addCase(getSprintData.rejected, (state, action) => {
         state.isLoading = false;
@@ -138,5 +158,9 @@ const sprintSlice = createSlice({
 });
 
 export default sprintSlice.reducer;
+<<<<<<< HEAD
 export const { init, switchGameStatus, showSprintStat, setRoundState, checkUserAnswer, tick, setGroupAndPage } =
   sprintSlice.actions;
+=======
+export const { switchGameStatus, setRoundState, checkUserAnswer } = sprintSlice.actions;
+>>>>>>> dd1d1d8 (feat: add user answers logic and games page)
