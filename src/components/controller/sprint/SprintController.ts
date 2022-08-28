@@ -1,12 +1,12 @@
 import { Dictionary } from '../../../common/interface/interface';
 import { switchTab } from '../../../store/reducers/app/appReducer';
 import {
-  checkUserAnswer,
   getSprintData,
   init,
   setRoundState,
   showSprintStat,
   switchGameStatus,
+  tick,
 } from '../../../store/reducers/sprint/sprintReducer';
 import store from '../../../store/store';
 
@@ -18,10 +18,9 @@ class SprintController {
   interval = 0;
 
   startGame() {
-    const { group, page } = store.getState().sprint;
     this.stopTimer(this.interval);
     store.dispatch(init());
-    store.dispatch(getSprintData({ group, page })).then(() => {
+    store.dispatch(getSprintData({ group: this.state.group, page: this.state.page })).then(() => {
       store.dispatch(switchGameStatus(true));
       this.interval = this.startTimer();
       this.startRound();
@@ -43,6 +42,9 @@ class SprintController {
       const div = document.querySelector('.sprint__timer') as HTMLDivElement;
       div.textContent = `${this.time}`;
       if (this.time === 1) this.finishGame();
+      const { time } = store.getState().sprint;
+      store.dispatch(tick());
+      if (time === 1) this.finishGame();
     }, 1000);
     return +interval;
   }
@@ -59,11 +61,6 @@ class SprintController {
     });
   }
 
-  setUserAnswer(answer: boolean) {
-    store.dispatch(checkUserAnswer(answer));
-    this.startRound();
-  }
-
   finishGame() {
     console.log('game is finished');
     store.dispatch(switchGameStatus(false));
@@ -74,7 +71,11 @@ class SprintController {
   backToGames() {
     this.stopTimer(this.interval);
     store.dispatch(switchTab('games'));
+    this.stopTimer(this.interval);
+    this.showStatistic();
   }
+
+  showStatistic() {}
 
   closeGame() {
     this.stopTimer(this.interval);
