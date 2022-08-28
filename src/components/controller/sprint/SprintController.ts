@@ -2,17 +2,24 @@ import { Dictionary } from '../../../common/interface/interface';
 import {
   checkUserAnswer,
   getSprintData,
+  init,
   setRoundState,
   switchGameStatus,
+  tick,
 } from '../../../store/reducers/sprint/sprintReducer';
 import store from '../../../store/store';
 
 export default class SprintController {
   state = store.getState().sprint;
 
+  interval = 0;
+
   startGame() {
+    this.stopTimer(this.interval);
+    store.dispatch(init());
     store.dispatch(getSprintData({ group: this.state.group, page: this.state.page })).then(() => {
       store.dispatch(switchGameStatus(true));
+      this.interval = this.startTimer();
       this.startRound();
     });
   }
@@ -26,7 +33,20 @@ export default class SprintController {
     } else this.finishGame();
   }
 
-  setUserAnswer(answer: boolean) {
+  startTimer() {
+    const interval = setInterval(() => {
+      const { time } = store.getState().sprint;
+      store.dispatch(tick());
+      if (time === 1) this.finishGame();
+    }, 1000);
+    return +interval;
+  }
+
+  stopTimer(id: number) {
+    clearInterval(id);
+  }
+
+  getUserAnswer(answer: boolean) {
     store.dispatch(checkUserAnswer(answer));
     this.startRound();
   }
@@ -34,6 +54,18 @@ export default class SprintController {
   finishGame() {
     console.log('game is finished');
     store.dispatch(switchGameStatus(false));
+    this.stopTimer(this.interval);
+    this.showStatistic();
+  }
+
+  showStatistic() {}
+
+  backToGames() {
+    this.stopTimer(this.interval);
+  }
+
+  closeGame() {
+    this.stopTimer(this.interval);
   }
 
   getRandomWord = (array: Dictionary[]) => {

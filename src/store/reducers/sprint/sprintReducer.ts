@@ -62,6 +62,21 @@ const sprintSlice = createSlice({
   name: 'sprint',
   initialState,
   reducers: {
+    init(state) {
+      state.score = initialState.score;
+      state.time = initialState.time;
+      state.streak = initialState.streak;
+      state.maxStreak = initialState.maxStreak;
+      state.words = initialState.words;
+      state.page = initialState.page;
+      state.group = initialState.group;
+      state.correct = initialState.correct;
+      state.wrong = initialState.wrong;
+      state.roundState = initialState.roundState;
+      state.isStarted = initialState.isStarted;
+      state.isLoading = initialState.isLoading;
+      state.error = initialState.error;
+    },
     switchGameStatus(state, action: PayloadAction<boolean>) {
       state.isStarted = action.payload;
     },
@@ -82,6 +97,9 @@ const sprintSlice = createSlice({
         state.streak = 0;
         if (state.roundState.question) state.wrong.push(state.roundState.question);
       }
+    },
+    tick(state) {
+      state.time -= 1;
     },
   },
   extraReducers: (builder) => {
@@ -104,4 +122,4 @@ const sprintSlice = createSlice({
 });
 
 export default sprintSlice.reducer;
-export const { switchGameStatus, setRoundState, checkUserAnswer } = sprintSlice.actions;
+export const { init, switchGameStatus, setRoundState, checkUserAnswer, tick } = sprintSlice.actions;

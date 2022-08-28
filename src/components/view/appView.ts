@@ -146,8 +146,8 @@ export default class AppView {
     const sprintHandler = (e: Event) => {
       const targetBtn = e.target as HTMLButtonElement;
       if (targetBtn.id === 'sprint-new-game') this.sprintController.startGame();
-      if (targetBtn.id === 'sprint-answer-true') this.sprintController.setUserAnswer(true);
-      if (targetBtn.id === 'sprint-answer-false') this.sprintController.setUserAnswer(false);
+      if (targetBtn.id === 'sprint-answer-true') this.sprintController.getUserAnswer(true);
+      if (targetBtn.id === 'sprint-answer-false') this.sprintController.getUserAnswer(false);
     };
 
     const regFormHandler = (e: Event) => {
