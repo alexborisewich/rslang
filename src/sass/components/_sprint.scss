@@ -5,11 +5,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-grow: 1;
+//   flex-grow: 1;
   background-image: url(../assets/sprint/background-sprint-game.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100%;
+  height: 100%;
 
   & > *:not(:last-child) {
     margin-bottom: 10px;
@@ -50,13 +51,14 @@
 
   &__body {
     width: 300px;
-    height: auto;
+    // height: auto;
+    height: 300px;
     border-radius: 10px;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin: 0 auto;
+    // margin: 0 auto;
     background: radial-gradient(
       circle,
       rgba(60, 132, 127, 0.8830882694874825) 0%,
@@ -154,5 +156,11 @@
   }
   &__back-to-list-games:hover {
     opacity: 0.8;
+  }
+  &__interface {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
 }

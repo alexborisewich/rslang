@@ -19,13 +19,17 @@ import { LoginResponse } from '../../common/types/user/types';
 import Header from './layout/Header';
 import Main from './layout/Main';
 import Footer from './layout/Footer';
+import SprintController from '../controller/sprint/SprintController';
 
 export default class AppView {
   body = document.querySelector('body') as HTMLBodyElement;
 
+  sprintController = new SprintController();
+
   listen() {
     const header = this.body.querySelector('.header') as HTMLDivElement;
     const main = this.body.querySelector('.main') as HTMLDivElement;
+    const sprint = this.body.querySelector('.sprint') as HTMLDivElement;
     const regForm = this.body.querySelector('#reg-form') as HTMLFormElement;
     const logForm = this.body.querySelector('#log-form') as HTMLFormElement;
 
@@ -139,6 +143,13 @@ export default class AppView {
       if (targetBtn.id === 'sprint-btn') store.dispatch(switchTab('sprint'));
     };
 
+    const sprintHandler = (e: Event) => {
+      const targetBtn = e.target as HTMLButtonElement;
+      if (targetBtn.id === 'sprint-new-game') this.sprintController.startGame();
+      if (targetBtn.id === 'sprint-answer-true') this.sprintController.setUserAnswer(true);
+      if (targetBtn.id === 'sprint-answer-false') this.sprintController.setUserAnswer(false);
+    };
+
     const regFormHandler = (e: Event) => {
       e.preventDefault();
       const email = main.querySelector('#email-input') as HTMLInputElement;
@@ -166,6 +177,7 @@ export default class AppView {
 
     header.addEventListener('click', headerHandler);
     main.addEventListener('click', mainHandler);
+    if (sprint) sprint.addEventListener('click', sprintHandler);
     if (regForm) regForm.addEventListener('submit', regFormHandler);
     if (logForm) logForm.addEventListener('submit', logFormHandler);
   }
