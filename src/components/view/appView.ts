@@ -48,6 +48,7 @@ export default class AppView {
         store.dispatch(switchTab('dictionary'));
         store.dispatch(fetchWords({ group, page }));
       }
+
       if (targetLink.id === 'games-link') {
         store.dispatch(switchTab('games'));
         this.body.querySelectorAll('.game-link').forEach((link) => link.addEventListener('click', gamesHandler));
@@ -56,6 +57,9 @@ export default class AppView {
         const audioGame = new AudioChallengeGame();
         audioGame.renderStartScreen();
       }
+
+      if (targetLink.id === 'games-link') store.dispatch(switchTab('games'));
+      if (targetLink.id === 'sprint-link') store.dispatch(switchTab('sprint'));
       if (targetLink.id === 'statistic-link') store.dispatch(switchTab('statistic'));
       if (targetLink.id === 'team-link') store.dispatch(switchTab('team'));
       if (targetImg.id === 'theme-btn') {
