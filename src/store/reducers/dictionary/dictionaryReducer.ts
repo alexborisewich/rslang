@@ -5,7 +5,7 @@ import api from '../../../components/api/api';
 
 export const fetchWords = createAsyncThunk<
   Dictionary[],
-  { group: string | number; page?: number },
+  { group: string | number; page: number },
   { rejectValue: string }
 >('dictionary/fetchPage', async ({ group, page }, { rejectWithValue }) => {
   try {
