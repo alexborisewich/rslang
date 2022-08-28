@@ -26,7 +26,7 @@ import { setGroupAndPage, showSprintStat } from '../../store/reducers/sprint/spr
 export default class AppView {
   body = document.querySelector('body') as HTMLBodyElement;
 
-  sprintController = new SprintController();
+  //   sprintController = new SprintController();
 
   listen() {
     const header = this.body.querySelector('.header') as HTMLDivElement;
