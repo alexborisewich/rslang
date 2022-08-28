@@ -10,20 +10,71 @@
   &__btn-wpapper {
     display: flex;
     justify-content: space-between;
+    width: 380px;
   }
 
   &__sound-btn {
+    display: inline-block;
+    visibility: hidden;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    margin: 0 10px 0 10px;
+    text-decoration: none;
+    color: black;
+    font-family: sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out, transform 150ms ease;
+    background-color: turquoise;
+  }
+  &__sound-btn:hover {
+    opacity: 0.8;
   }
 
   &__screen-btn {
+    display: inline-block;
+    visibility: hidden;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    margin: 0 10px 0 10px;
+    text-decoration: none;
+    color: black;
+    font-family: sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out, transform 150ms ease;
+    background-color: turquoise;
+  }
+  &__screen-btn:hover {
+    opacity: 0.8;
   }
 
   &__close-btn {
+    display: inline-block;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    margin: 0 10px 0 10px;
+    text-decoration: none;
+    color: black;
+    font-family: sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out, transform 150ms ease;
+    background-color: turquoise;
+  }
+  &__close-btn:hover {
+    opacity: 0.8;
   }
 
   &__select {
-    display: none;
-    // display: flex;
+    //display: none;
+    display: flex;
     justify-content: space-around;
     align-items: center;
     flex-grow: 1;
@@ -52,7 +103,7 @@
 
   &__start-screen {
     display: none;
-    // display: flex;
+    //display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -123,10 +174,12 @@
   }
 
   &__finish {
-    // display: none;
-    display: flex;
-    justify-content: center;
+    display: none;
+    //display: flex;
+    position: absolute;
+    z-index: 2;
     align-items: center;
+    justify-content: center;
     width: 100%;
     max-height: 100%;
     margin: auto;
@@ -136,8 +189,9 @@
     display: flex;
     flex-direction: column;
     align-content: center;
-    width: 90%;
-    max-width: 400px;
+    width: 100%;
+    max-width: 700px;
+    height: 350px;
     background: #fff;
     cursor: auto;
     border-radius: 10px;
@@ -145,6 +199,7 @@
     transform: translateY(-30px);
     transition: 0.3s ease-in-out;
     padding: 25px;
+    overflow: scroll;
 
     &--hidden {
       transform: translateY(0);
