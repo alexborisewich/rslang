@@ -53,6 +53,13 @@ class SprintController {
   }
 
   getUserAnswer(answer: boolean) {
+    store.dispatch(getSprintData({ group: this.state.group, page: this.state.page })).then(() => {
+      store.dispatch(switchGameStatus(true));
+      this.startRound();
+    });
+  }
+
+  setUserAnswer(answer: boolean) {
     store.dispatch(checkUserAnswer(answer));
     this.startRound();
   }
