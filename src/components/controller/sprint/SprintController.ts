@@ -7,6 +7,7 @@ import {
   setRoundState,
   showSprintStat,
   switchGameStatus,
+  tick,
 } from '../../../store/reducers/sprint/sprintReducer';
 import store from '../../../store/store';
 
