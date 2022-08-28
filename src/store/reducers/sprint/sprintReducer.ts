@@ -18,7 +18,10 @@ type SprintState = {
     isCorrect: boolean;
   };
   showStat: boolean;
+  question: Dictionary | null;
+  answer: Dictionary | null;
   isStarted: boolean;
+  isCorrect: boolean;
   isLoading: boolean;
   error: { isError: boolean; message: string };
 };
@@ -39,7 +42,10 @@ const initialState: SprintState = {
     isCorrect: false,
   },
   showStat: false,
+  question: null,
+  answer: null,
   isStarted: false,
+  isCorrect: false,
   isLoading: false,
   error: { isError: false, message: '' },
 };
@@ -121,6 +127,7 @@ const sprintSlice = createSlice({
       .addCase(getSprintData.fulfilled, (state, action) => {
         state.isLoading = false;
         state.words = action.payload;
+        if (!state.question) [state.question] = action.payload;
       })
       .addCase(getSprintData.rejected, (state, action) => {
         state.isLoading = false;
