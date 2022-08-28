@@ -31,10 +31,10 @@ export default class Sprint {
       <button class = "sprint__back-to-new-game" id="sprint-new-game">Новая игра</button>
       <button class = "sprint__back-to-list-games" id="back-to-games">К списку игр</button>
       <div class="sprint__game">
-      <div class="games__btn-wpapper">
-          <button class="games__sound-btn">Звук</button>
-          <button class="games__screen-btn">На весь экран</button>
-          <button class="games__close-btn">&#9587</button>
+      <div class="sprint__btn-wpapper">
+          <button class="sprint__sound-btn">Звук</button>
+          <button class="sprint__screen-btn">На весь экран</button>
+          <button class="sprint__close-btn">&#9587</button>
       </div>
       <div class = "sprint__body">
       <div class="sprint__interface ${this.sprintState.isStarted ? '' : 'hidden'}">
