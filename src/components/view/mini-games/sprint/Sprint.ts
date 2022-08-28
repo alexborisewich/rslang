@@ -40,7 +40,7 @@ export default class Sprint {
       <div class="sprint__interface ${this.sprintState.isStarted ? '' : 'hidden'}">
       <div class = "sprint__header">
           <div class = "sprint__score">${this.sprintState.score}</div>
-          <div class = "sprint__timer">${this.sprintState.time}</div>
+          <div class = "sprint__timer">${sprintController.time}</div>
       </div>
       <div class = "sprint__word"></div>
       <div class = "sprint__translate"></div>  

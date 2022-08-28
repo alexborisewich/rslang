@@ -6,7 +6,6 @@ import {
   setRoundState,
   showSprintStat,
   switchGameStatus,
-  tick,
 } from '../../../store/reducers/sprint/sprintReducer';
 import store from '../../../store/store';
 
@@ -43,7 +42,6 @@ class SprintController {
       div.textContent = `${this.time}`;
       if (this.time === 1) this.finishGame();
       const { time } = store.getState().sprint;
-      store.dispatch(tick());
       if (time === 1) this.finishGame();
     }, 1000);
     return +interval;
