@@ -1,4 +1,5 @@
 import store from '../../../../store/store';
+import sprintController from '../../../controller/sprint/SprintController';
 
 export default class Sprint {
   sprintState = store.getState().sprint;
@@ -15,7 +16,7 @@ export default class Sprint {
       <div class="sprint__interface ${this.sprintState.isStarted ? '' : 'hidden'}">
       <div class = "sprint__header">
           <div class = "sprint__score">${this.sprintState.score}</div>
-          <div class = "sprint__timer">${this.sprintState.time}</div>
+          <div class = "sprint__timer">${sprintController.time}</div>
       </div>
   
       <div class = "sprint__word">${this.sprintState.roundState.question?.word}</div>
