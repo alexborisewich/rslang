@@ -1,5 +1,5 @@
 import store from '../../store/store';
-import AppView from '../view/AppView';
+import AppView from '../view/appView';
 
 export default class App {
   view = new AppView();
