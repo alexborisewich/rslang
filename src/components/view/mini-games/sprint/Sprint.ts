@@ -6,10 +6,10 @@ export default class Sprint {
   createElement() {
     return `<section class="sprint">
       <div class="sprint__game">
-      <div class="games__btn-wpapper">
-          <button class="games__sound-btn">Звук</button>
-          <button class="games__screen-btn">На весь экран</button>
-          <button class="games__close-btn">&#9587</button>
+      <div class="sprint__btn-wpapper">
+          <button class="sprint__sound-btn">Звук</button>
+          <button class="sprint__screen-btn">На весь экран</button>
+          <button class="sprint__close-btn">&#9587</button>
       </div>
       <div class = "sprint__body">
       <div class="sprint__interface ${this.sprintState.isStarted ? '' : 'hidden'}">
