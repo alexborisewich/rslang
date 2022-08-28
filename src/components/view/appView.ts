@@ -48,6 +48,7 @@ export default class AppView {
         store.dispatch(fetchWords({ group, page }));
       }
       if (targetLink.id === 'games-link') store.dispatch(switchTab('games'));
+      if (targetLink.id === 'sprint-link') store.dispatch(switchTab('sprint'));
       if (targetLink.id === 'statistic-link') store.dispatch(switchTab('statistic'));
       if (targetLink.id === 'team-link') store.dispatch(switchTab('team'));
       if (targetImg.id === 'theme-btn') {
