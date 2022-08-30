@@ -38,9 +38,7 @@ export default class AppView {
       const targetBtn = e.target as HTMLButtonElement;
       const targetLink = e.target as HTMLLinkElement;
 
-      if (targetBtn) {
-        if (store.getState().sprint.isStarted) sprintController.finishGame();
-      }
+      if (targetBtn) if (store.getState().sprint.isStarted) sprintController.finishGame();
 
       if (targetBtn.id === 'login-btn') store.dispatch(switchTab('login'));
       if (targetBtn.id === 'logout-btn') {
