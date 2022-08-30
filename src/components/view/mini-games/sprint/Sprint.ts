@@ -53,7 +53,7 @@ export default class Sprint {
       </div>      
       <div class = "sprint__back">
       <button class = "sprint__back-to-new-game" id="sprint-new-game">Новая игра</button>
-      <button class = "sprint__back-to-list-games">К списку игр</button>
+      <button class = "sprint__back-to-list-games" id="back-to-games">К списку игр</button>
       </div>
     </div>
     <div class="games__finish">

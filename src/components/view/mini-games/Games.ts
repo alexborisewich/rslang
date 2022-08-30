@@ -108,10 +108,14 @@ export default class Games {
           </ul>
           <a class="games__audiochallenge-link game-link" href="#">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <span class="game-link__title" id = "games-sprint-link">Спринт</span>
 =======
             <span class="game-link__title" id = "sprint-link">Спринт</span>
 >>>>>>> dd1d1d8 (feat: add user answers logic and games page)
+=======
+            <span class="game-link__title" id = "games-sprint-link">Спринт</span>
+>>>>>>> 6d675d5 (feat: add sprint statistic)
             <span class="game-link__img-wrapper">
               <img class="game-link__img" src="" alt="">
             </span>

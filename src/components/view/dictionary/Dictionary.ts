@@ -120,8 +120,11 @@ export default class Dictionary {
         <button class="textbook__set-btn btn" type="button" id="complex-words-btn"
         ${this.state.activeTab === 'complex' ? 'disabled' : ''}>Сложные слова</button>
         </div>
+<<<<<<< HEAD
         <button class="textbook__set-btn btn" id="audiochallenge-btn" type="button">Аудиовызов</button>
         <button class="textbook__set-btn btn" type="button">Спринт</button>
+=======
+>>>>>>> 6d675d5 (feat: add sprint statistic)
         <button class="textbook__set-btn btn" type="button">Аудиовызов</button>
         <button class="textbook__set-btn btn" id="dictionary-sprint-link" type="button">Спринт</button>
         </div>
