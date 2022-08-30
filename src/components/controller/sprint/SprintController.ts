@@ -87,3 +87,56 @@ class SprintController {
 }
 
 export default new SprintController();
+
+// answerResult.innerHTML = `<div class="games__finish-container">
+//             <h3 class="games__finish-title">Ваш результат: ${score} очков</h3>
+//             <h4 class="games__finish-title"> Длина серии: ${series} </h4>
+//             <div class="games__answers-counters">
+//             <span class="games__answers-right">Знаю:
+//               <span class="games__correct-count">${correctList.length}</span>
+//             </span>
+//             <span class="games__answers-wrong">Не знаю:
+//               <span class="games__wrong-count">${errorList.length}</span>
+//             </span>
+//             </div>
+//             <table class="games__finish-statistic">
+//               <thead>
+//                 <tr>
+//                   <th>1</th>
+//                   <th>2</th>
+//                   <th>3</th>
+//                 </tr>
+//               </thead>
+//               <tbody class = "tbody-items">
+//               <tr>
+//               <td>англ. слово</td>
+//               <td>[]</td>
+//               <td>рус. слово</td>
+//             </tr>
+//             <tr>
+//             <td colspan="3" style = "text-align: center; background-color:#00FF00"> Изученные</td>
+//             </tr>
+//             ${correctList.map((word: WordDictionary) => {
+//               return `<tr>
+//                 <td>${word.word}</td>
+//                 <td>${word.transcription}</td>
+//                 <td>${word.wordTranslate}</td>
+//               </tr>`;
+//             })}
+//             <tr>
+//             <td colspan="3" style = "text-align: center; background-color:#FF0000"> Не изученные</td>
+//             </tr>
+//             ${errorList.map((word: WordDictionary) => {
+//               return `<tr>
+//                 <td>${word.word}</td>
+//                 <td>${word.transcription}</td>
+//                 <td>${word.wordTranslate}</td>
+//               </tr>`;
+//             })}
+//               </tbody>
+//             </table>
+//             <button class="games__exit-btn btn">Выйти</button>
+//           </div>`;
+//             answerResult.style.display = 'flex';
+//             document.querySelector('.games__exit-btn')?.addEventListener('click', function () {
+//               answerResult.style.display = 'none';
