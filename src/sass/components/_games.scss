@@ -7,71 +7,6 @@
     flex-direction: column;
   }
 
-//   &__btn-wpapper {
-//     display: flex;
-//     justify-content: space-between;
-//     // width: 380px;
-//   }
-
-//   &__sound-btn {
-//     display: inline-block;
-//     visibility: hidden;
-//     padding: 5px;
-//     border: none;
-//     border-radius: 5px;
-//     margin: 0 10px 0 10px;
-//     text-decoration: none;
-//     color: black;
-//     font-family: sans-serif;
-//     font-size: 1rem;
-//     cursor: pointer;
-//     text-align: center;
-//     transition: background 250ms ease-in-out, transform 150ms ease;
-//     background-color: turquoise;
-//   }
-//   &__sound-btn:hover {
-//     opacity: 0.8;
-//   }
-
-//   &__screen-btn {
-//     display: inline-block;
-//     visibility: hidden;
-//     padding: 5px;
-//     border: none;
-//     border-radius: 5px;
-//     margin: 0 10px 0 10px;
-//     text-decoration: none;
-//     color: black;
-//     font-family: sans-serif;
-//     font-size: 1rem;
-//     cursor: pointer;
-//     text-align: center;
-//     transition: background 250ms ease-in-out, transform 150ms ease;
-//     background-color: turquoise;
-//   }
-//   &__screen-btn:hover {
-//     opacity: 0.8;
-//   }
-
-//   &__close-btn {
-//     display: inline-block;
-//     padding: 5px;
-//     border: none;
-//     border-radius: 5px;
-//     margin: 0 10px 0 10px;
-//     text-decoration: none;
-//     color: black;
-//     font-family: sans-serif;
-//     font-size: 1rem;
-//     cursor: pointer;
-//     text-align: center;
-//     transition: background 250ms ease-in-out, transform 150ms ease;
-//     background-color: turquoise;
-//   }
-//   &__close-btn:hover {
-//     opacity: 0.8;
-//   }
-
   &__select {
     //display: none;
     display: flex;
@@ -206,6 +141,7 @@
   &__sprint {
   }
 
+<<<<<<< HEAD
   //   &__finish {
   //     display: none;
   //     //display: flex;
@@ -312,49 +248,82 @@
     &--hidden {
       transform: translateY(0);
     }
+=======
+//   &__finish {
+//     display: none;
+//     //display: flex;
+//     position: absolute;
+//     z-index: 2;
+//     align-items: center;
+//     justify-content: center;
+//     width: 100%;
+//     max-height: 100%;
+//     margin: auto;
+//   }
+>>>>>>> 6d675d5 (feat: add sprint statistic)
 
-    & > *:not(:last-child) {
-      margin-bottom: 10px;
-    }
-  }
+//   &__finish-container {
+//     display: flex;
+//     flex-direction: column;
+//     align-content: center;
+//     width: 100%;
+//     max-width: 700px;
+//     height: 350px;
+//     background: #fff;
+//     cursor: auto;
+//     border-radius: 10px;
+//     box-shadow: 0px 0px 20px 0px #000;
+//     transform: translateY(-30px);
+//     transition: 0.3s ease-in-out;
+//     padding: 25px;
+//     overflow: scroll;
 
-  &__finish-title {
-    text-align: center;
-  }
+//     &--hidden {
+//       transform: translateY(0);
+//     }
 
-  &__answers-counters {
-    display: flex;
-    justify-content: space-around;
-  }
+//     & > *:not(:last-child) {
+//       margin-bottom: 10px;
+//     }
+//   }
 
-  &__answers-right {
-  }
+//   &__finish-title {
+//     text-align: center;
+//   }
 
-  &__correct-count {
-  }
+//   &__answers-counters {
+//     display: flex;
+//     justify-content: space-around;
+//   }
 
-  &__answers-wrong {
-  }
+//   &__answers-right {
+//   }
 
-  &__wrong-count {
-  }
+//   &__correct-count {
+//   }
 
-  &__finish-table {
-  }
+//   &__answers-wrong {
+//   }
 
-  &__finish-btn-wrapper {
-    display: flex;
-    justify-content: space-around;
-  }
+//   &__wrong-count {
+//   }
 
-  &__restart-btn {
-  }
+//   &__finish-table {
+//   }
 
-  &__change-btn {
-  }
+//   &__finish-btn-wrapper {
+//     display: flex;
+//     justify-content: space-around;
+//   }
 
-  &__exit-btn {
-  }
+//   &__restart-btn {
+//   }
+
+//   &__change-btn {
+//   }
+
+//   &__exit-btn {
+//   }
 }
 
 .game-link {

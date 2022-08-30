@@ -17,9 +17,10 @@ class SprintController {
   interval = 0;
 
   startGame() {
+    const { group, page } = store.getState().sprint;
     this.stopTimer(this.interval);
     store.dispatch(init());
-    store.dispatch(getSprintData({ group: this.state.group, page: this.state.page })).then(() => {
+    store.dispatch(getSprintData({ group, page })).then(() => {
       store.dispatch(switchGameStatus(true));
       this.interval = this.startTimer();
       this.startRound();
