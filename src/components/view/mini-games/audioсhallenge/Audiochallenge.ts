@@ -8,6 +8,8 @@ import heartSVG from '../../../../assets/heart.svg';
 import playSVG from '../../../../assets/play.svg';
 import succesSVG from '../../../../assets/success.svg';
 import wrongSVG from '../../../../assets/wrong.svg';
+import scoreSVG from '../../../../assets/score.svg';
+import streakSVG from '../../../../assets/streak.svg';
 import restartSVG from '../../../../assets/restart.svg';
 import gamesSVG from '../../../../assets/games.svg';
 import preloaderGIF from '../../../../assets/preloader.gif';
@@ -27,13 +29,15 @@ import {
   disable,
   asyncPlay,
 } from '../../../../common/utils/utils';
+import store from '../../../../store/store';
+import { switchTab } from '../../../../store/reducers/app/appReducer';
 
 export default class AudioChallengeGame {
   level: number;
 
-  page: number | null;
+  page: number;
 
-  container = document.querySelector('.games__container') as HTMLElement;
+  container = document.querySelector('section > .container') as HTMLElement;
 
   api = api;
 
@@ -62,8 +66,8 @@ export default class AudioChallengeGame {
   constructor(level?: number, page?: number) {
     if (level) this.level = level;
     else this.level = 0;
-    if (page) this.page = page;
-    else this.page = null;
+    if (page || page === 0) this.page = page;
+    else this.page = getRandomNumber(30);
   }
 
   async start() {
@@ -83,26 +87,30 @@ export default class AudioChallengeGame {
     this.container.innerHTML = '';
     this.container.innerHTML = `<div class="audiochallenge__start-screen start">
         <h2 class="start__title">Аудиовызов</h2>
-        <p class="start__instruction">Используйте клавиши:</p>
-        <p class="start__instruction">
-          <span class="start__key" ><i>1</i></span>, <span class="start__key" ><i>2</i></span>,
-          <span class="start__key" ><i>3</i></span>, <span class="start__key" ><i>4</i></span>,
-          <span class="start__key" ><i>5</i></span>, для ответа</p>
-        <p class="start__instruction"><span class="start__key --long" ><i>⏎ Enter</i></span>,
-          для отображения правильного ответа</p>
-        <p class="start__instruction"><span class="start__key" ><i>⇨</i></span>, для перехода к следующему вопросу</p>
-        <p class="start__instruction"><span class="start__key --long" ><i>Space</i></span>,
-        для повторного воспроизведения</p>
-        <label for="games-select-level">Выберите уровень сложности</label>
-        <select class="start__level" name="-level" id="-level">
-          <option value="0">A1 Elementary</option>
-          <option value="1">A2 Pre-Intermediate</option>
-          <option value="2">B1 Intermediate</option>
-          <option value="3">B2 Upper-Intermediate</option>
-          <option value="4">C1 Advanced</option>
-          <option value="5">C2 Proficiency</option>
+        <div class="start__instruction-wrapper">
+          <p class="start__instruction">Используйте клавиши:</p>
+          <p class="start__instruction">
+            <span class="start__key" ><i>1</i></span>, <span class="start__key" ><i>2</i></span>,
+            <span class="start__key" ><i>3</i></span>, <span class="start__key" ><i>4</i></span>,
+            <span class="start__key" ><i>5</i></span>, для ответа</p>
+          <p class="start__instruction"><span class="start__key --long" ><i>⏎ Enter</i></span>,
+            для отображения правильного ответа</p>
+          <p class="start__instruction"><span class="start__key" ><i>⇨</i></span>, для перехода к следующему вопросу</p>
+          <p class="start__instruction"><span class="start__key --long" ><i>Space</i></span>,
+          для повторного воспроизведения</p>
+        </div>
+        <div class="start__select-level-wrapper">
+          <label for="games-select-level">Выберите уровень сложности</label>
+          <select class="start__level" name="-level" id="-level">
+            <option value="0">A1 Elementary</option>
+            <option value="1">A2 Pre-Intermediate</option>
+            <option value="2">B1 Intermediate</option>
+            <option value="3">B2 Upper-Intermediate</option>
+            <option value="4">C1 Advanced</option>
+            <option value="5">C2 Proficiency</option>
         </select>
-        <button class="start__btn btn btn-start">Играть</button>
+        </div>
+        <button class="start__btn audiogame-btn btn-start">Играть</button>
       </div>`;
     const levelSelector = this.container.querySelector('.start__level') as HTMLSelectElement;
     if (this.level) levelSelector.selectedIndex = this.level;
@@ -122,9 +130,9 @@ export default class AudioChallengeGame {
       <audio class="audiochallenge__answer-sound" audio preload="auto"></audio>
       <audio class="audiochallenge__bg-sound" preload="auto"></audio>
       <div class="audiochallenge__control-btn-wrapper">
-        <button class="audiochallenge__mute-btn btn btn-mute">${muteOffSVG}</button>
-        <button class="audiochallenge__screen-btn btn btn-screen">${fullScreenOnSVG}</button>
-        <button class="audiochallenge__close-btn btn btn-close">${closeSVG}</button>
+        <button class="audiochallenge__mute-btn audiogame-btn btn-mute">${muteOffSVG}</button>
+        <button class="audiochallenge__screen-btn audiogame-btn btn-screen">${fullScreenOnSVG}</button>
+        <button class="audiochallenge__close-btn audiogame-btn btn-exit">${closeSVG}</button>
       </div>
       <div class="audiochallenge__game game">
         <div class="game__header">
@@ -148,18 +156,19 @@ export default class AudioChallengeGame {
         <div class="game__body"></div>
         <div class="game__footer">
           <div class="game__answer-wrapper">
-            <button class="game__answer-btn btn btn-answer"></button>
-            <button class="game__answer-btn btn btn-answer"></button>
-            <button class="game__answer-btn btn btn-answer"></button>
-            <button class="game__answer-btn btn btn-answer"></button>
-            <button class="game__answer-btn btn btn-answer"></button>
+            <button class="game__answer-btn audiogame-btn btn-answer"></button>
+            <button class="game__answer-btn audiogame-btn btn-answer"></button>
+            <button class="game__answer-btn audiogame-btn btn-answer"></button>
+            <button class="game__answer-btn audiogame-btn btn-answer"></button>
+            <button class="game__answer-btn audiogame-btn btn-answer"></button>
           </div>
           <div class="game__skip-wrapper">
-            <button class="game__not-answer-btn icon-github btn btn-not-answer">Показать ответ</button>
-            <button class="game__next-btn btn btn-next --hidden">Следующий вопрос</button>
+            <button class="game__not-answer-btn icon-github audiogame-btn btn-not-answer">Показать ответ</button>
+            <button class="game__next-btn audiogame-btn btn-next --hidden">Следующий вопрос</button>
           </div>
         </div>
-      </div>`;
+      </div>
+      <div class="audiochallenge__finish finish --hidden"></div>`;
   }
 
   btnsHandler() {
@@ -196,6 +205,8 @@ export default class AudioChallengeGame {
         if (i < 2) el.muted = !el.muted;
       });
     });
+    const exitBtn = this.container.querySelector('.btn-exit');
+    exitBtn?.addEventListener('click', () => store.dispatch(switchTab('homepage')));
   }
 
   keyboardHandler() {
@@ -306,8 +317,8 @@ export default class AudioChallengeGame {
         <div class="game__correct-data correct --hidden">
           <div class="correct__img-wrapper">
             <img class="correct__img" src="${baseLink}${image}" alt="${word}">
+            <button class="correct__speaker speaker correct-btn">${playSVG}</button>
           </div>
-          <button class="correct__speaker speaker correct-btn">${playSVG}</button>
           <div class="correct__text-data-wrapper">
             <p class="correct__word">${word} ${transcription}</p>
             <p class="correct__meaning">${textMeaning}</p>
@@ -331,16 +342,12 @@ export default class AudioChallengeGame {
 
   async setData() {
     if (!this.words || this.current === this.words.length) {
-      const randomPage = getRandomNumber(30);
-      const page = this.page || this.page === 0 ? this.page : randomPage;
-      this.page = page;
-      this.current = 0;
-      this.words = await this.getData(page);
-      if (this.page === 0) {
-        this.timer.stop();
-        // while (randomPage === 0) randomPage = getRandomNumber(30);
-        // this.page = randomPage;
-      } else this.page -= 1;
+      if (this.words && this.current === this.words.length && this.page === 0) this.timer.stop();
+      if (!this.words || (this.words && this.current === this.words.length && this.page !== 0)) {
+        this.words = await this.getData(this.page);
+        this.page = this.page === 0 ? this.page : (this.page -= 1);
+        this.current = 0;
+      }
     }
     const { wordTranslate, audio } = this.words[this.current];
     if (this.isEnded) return;
@@ -424,9 +431,9 @@ export default class AudioChallengeGame {
   }
 
   renderFinishScreen() {
-    this.container.innerHTML += `<div class="audiochallenge__finish finish --hidden">
-        <div class="finish__container">
-          <h3 class="finish__title">Результаты</h3>
+    const finishScreen = this.container.querySelector('.finish') as HTMLElement;
+    finishScreen.innerHTML += `<div class="finish__container">
+          <h3 class="finish__title">Результаты игры</h3>
           <div class="finish__answers-wrapper">
             <span class="finish__right">
               <span class="finish__icon">${succesSVG}</span>
@@ -436,15 +443,24 @@ export default class AudioChallengeGame {
               <span class="finish__icon">${wrongSVG}</span>
               <span class="finish__wrong-count">1</span>
             </span>
+            <span class="finish__score">
+              <span class="finish__icon">${scoreSVG}</span>
+              <span class="finish__score-count">${this.score}</span>
+            </span>
+            <span class="finish__streak">
+              <span class="finish__icon">${streakSVG}</span>
+              <span class="finish__streak-count">${this.maxStreak}</span>
+            </span>
           </div>
+          <div class="finish__table-wrapper">
           <table class="finish__statistic-table"><tbody></tbody></table>
-          <div class="finish__btn-wrapper">
-            <button class="finish__restart-btn btn btn-restart">${restartSVG}</button>
-            <button class="finish__change-btn btn btn-change">${gamesSVG}</button>
-            <button class="finish__exit-btn btn btn-exit">${closeSVG}</button>
           </div>
-        </div>
-      </div>`;
+          <div class="finish__btn-wrapper">
+            <button class="finish__restart-btn audiogame-btn btn-restart">${restartSVG}</button>
+            <button class="finish__change-btn audiogame-btn btn-change">${gamesSVG}</button>
+            <button class="finish__exit-btn audiogame-btn btn-close">${closeSVG}</button>
+          </div>
+        </div>`;
     this.renderTableStatisticData();
     this.container
       .querySelectorAll('.finish__audio-cell')
@@ -454,10 +470,10 @@ export default class AudioChallengeGame {
       this.setDefaultValues();
       this.renderStartScreen();
     });
-    // const changeGameBtn = this.container.querySelector('.btn-change');
-    // changeGameBtn?.addEventListener('click', () => { });
-    // const exitBtn = this.container.querySelector('.btn-change');
-    // exitBtn?.addEventListener('click', () => { });
+    const changeGameBtn = this.container.querySelector('.btn-change');
+    changeGameBtn?.addEventListener('click', () => store.dispatch(switchTab('games')));
+    const closeBtn = this.container.querySelector('.btn-close');
+    closeBtn?.addEventListener('click', () => finishScreen.classList.add('--hidden'));
   }
 
   renderTableStatisticData() {
@@ -495,7 +511,8 @@ export default class AudioChallengeGame {
     this.renderFinishScreen();
     this.isEnded = !this.isEnded;
     const footerBtnWrapper = this.container.querySelector('.game__skip-wrapper') as HTMLElement;
-    footerBtnWrapper.innerHTML = `<button class="game__finish-btn btn btn-finish">Показать статистику</button>`;
+    footerBtnWrapper.innerHTML = `
+      <button class="game__finish-btn audiogame-btn btn-finish">Показать статистику</button>`;
     const finishScreen = this.container.querySelector('.finish') as HTMLElement;
     const finishBtn = this.container.querySelector('.btn-finish') as HTMLElement;
     finishBtn.addEventListener('click', () => finishScreen.classList.remove('--hidden'));
