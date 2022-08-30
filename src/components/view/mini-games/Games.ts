@@ -104,7 +104,7 @@ export default class Games {
             </li>
           </ul>
           <a class="games__audiochallenge-link game-link" href="#">
-            <span class="game-link__title" id = "sprint-link">Спринт</span>
+            <span class="game-link__title" id = "games-sprint-link">Спринт</span>
             <span class="game-link__img-wrapper">
               <img class="game-link__img" src="" alt="">
             </span>
