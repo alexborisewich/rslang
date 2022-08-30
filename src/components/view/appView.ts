@@ -188,6 +188,7 @@ export default class AppView {
         console.warn('GameSprint not implemented');
       }
     };
+
     const sprintHandler = (e: Event) => {
       const targetBtn = e.target as HTMLButtonElement;
       if (targetBtn.id === 'sprint-new-game') sprintController.startGame();
