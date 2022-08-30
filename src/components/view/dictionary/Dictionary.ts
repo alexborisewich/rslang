@@ -121,7 +121,7 @@ export default class Dictionary {
         ${this.state.activeTab === 'complex' ? 'disabled' : ''}>Сложные слова</button>
         </div>
         <button class="textbook__set-btn btn" type="button">Аудиовызов</button>
-        <button class="textbook__set-btn btn" type="button">Спринт</button>
+        <button class="textbook__set-btn btn" id="dictionary-sprint-link" type="button">Спринт</button>
         </div>
         <div class="textbook__words-container">
         <div class="textbook__words">

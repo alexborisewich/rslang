@@ -17,6 +17,7 @@ type SprintState = {
     answer: Dictionary | null;
     isCorrect: boolean;
   };
+  showStat: boolean;
   isStarted: boolean;
   isLoading: boolean;
   error: { isError: boolean; message: string };
@@ -37,6 +38,7 @@ const initialState: SprintState = {
     answer: null,
     isCorrect: false,
   },
+  showStat: false,
   isStarted: false,
   isLoading: false,
   error: { isError: false, message: '' },
@@ -68,11 +70,12 @@ const sprintSlice = createSlice({
       state.streak = initialState.streak;
       state.maxStreak = initialState.maxStreak;
       state.words = initialState.words;
-      state.page = initialState.page;
-      state.group = initialState.group;
+      //   state.page = initialState.page;
+      //   state.group = initialState.group;
       state.correct = initialState.correct;
       state.wrong = initialState.wrong;
       state.roundState = initialState.roundState;
+      state.showStat = initialState.showStat;
       state.isStarted = initialState.isStarted;
       state.isLoading = initialState.isLoading;
       state.error = initialState.error;
@@ -80,17 +83,19 @@ const sprintSlice = createSlice({
     switchGameStatus(state, action: PayloadAction<boolean>) {
       state.isStarted = action.payload;
     },
+    showSprintStat(state, action: PayloadAction<boolean>) {
+      state.showStat = action.payload;
+    },
     setRoundState(state, action: PayloadAction<{ question: Dictionary; answer: Dictionary }>) {
-      console.log(action);
       state.roundState.question = action.payload.question;
       state.roundState.answer = action.payload.answer;
       state.roundState.isCorrect = action.payload.question.wordTranslate === action.payload.answer.wordTranslate;
       state.words = state.words.filter((word) => word.id !== action.payload.question.id);
     },
     checkUserAnswer(state, action: PayloadAction<boolean>) {
-      console.log(action.payload);
       if (state.roundState.isCorrect === action.payload) {
         state.streak += 1;
+        state.score += 20;
         state.maxStreak = Math.max(state.maxStreak, state.streak);
         if (state.roundState.question) state.correct.push(state.roundState.question);
       } else {
@@ -100,6 +105,10 @@ const sprintSlice = createSlice({
     },
     tick(state) {
       state.time -= 1;
+    },
+    setGroupAndPage(state, action: PayloadAction<{ group: number; page: number }>) {
+      state.group = action.payload.group;
+      state.page = action.payload.page;
     },
   },
   extraReducers: (builder) => {
@@ -122,4 +131,5 @@ const sprintSlice = createSlice({
 });
 
 export default sprintSlice.reducer;
-export const { init, switchGameStatus, setRoundState, checkUserAnswer, tick } = sprintSlice.actions;
+export const { init, switchGameStatus, showSprintStat, setRoundState, checkUserAnswer, tick, setGroupAndPage } =
+  sprintSlice.actions;

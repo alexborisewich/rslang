@@ -1,16 +1,18 @@
 import store from '../../../../store/store';
 import sprintController from '../../../controller/sprint/SprintController';
+import SprintStat from './SprintStat';
 
 export default class Sprint {
   sprintState = store.getState().sprint;
 
   createElement() {
     return `<section class="sprint">
+    ${this.sprintState.showStat ? new SprintStat().createElement() : ''}
       <div class="sprint__game">
       <div class="sprint__btn-wpapper">
           <button class="sprint__sound-btn">Звук</button>
           <button class="sprint__screen-btn">На весь экран</button>
-          <button class="sprint__close-btn">&#9587</button>
+          <button class="sprint__close-btn" id="close-sprint-game">&#9587</button>
       </div>
       <div class = "sprint__body">
       <div class="sprint__interface ${this.sprintState.isStarted ? '' : 'hidden'}">
@@ -29,14 +31,13 @@ export default class Sprint {
       
       <div class = "sprint__back">
       <button class = "sprint__back-to-new-game" id="sprint-new-game">Новая игра</button>
-      <button class = "sprint__back-to-list-games">К списку игр</button>
+      <button class = "sprint__back-to-list-games" id="back-to-games">К списку игр</button>
       </div>
     </div>
     <div class="games__finish">
   
     </div>
       </div>
-      
     </section>`;
   }
 }
