@@ -19,6 +19,7 @@ import { LoginResponse } from '../../common/types/user/types';
 import Header from './layout/Header';
 import Main from './layout/Main';
 import Footer from './layout/Footer';
+import AudioChallengeGame from './mini-games/audioсhallenge/Audiochallenge';
 
 export default class AppView {
   body = document.querySelector('body') as HTMLBodyElement;
@@ -32,7 +33,6 @@ export default class AppView {
     const headerHandler = (e: Event) => {
       const targetBtn = e.target as HTMLButtonElement;
       const targetLink = e.target as HTMLLinkElement;
-      console.log(e.target);
 
       if (targetBtn.id === 'login-btn') store.dispatch(switchTab('login'));
       if (targetBtn.id === 'logout-btn') {
@@ -47,7 +47,14 @@ export default class AppView {
         store.dispatch(switchTab('dictionary'));
         store.dispatch(fetchWords({ group, page }));
       }
-      if (targetLink.id === 'games-link') store.dispatch(switchTab('games'));
+      if (targetLink.id === 'games-link') {
+        store.dispatch(switchTab('games'));
+        this.body.querySelectorAll('.game-link').forEach((link) => link.addEventListener('click', gamesHandler));
+      }
+      if (targetLink.id === 'audiochallenge-link') {
+        const audioGame = new AudioChallengeGame();
+        audioGame.renderStartScreen();
+      }
       if (targetLink.id === 'statistic-link') store.dispatch(switchTab('statistic'));
       if (targetLink.id === 'team-link') store.dispatch(switchTab('team'));
     };
@@ -58,8 +65,6 @@ export default class AppView {
       const targetBtn = e.target as HTMLButtonElement;
       const targetSpan = e.target as HTMLSpanElement;
       const wordDiv = targetSpan.closest('.textbook__word') as HTMLDivElement;
-
-      console.log(e.target);
 
       if (targetLink.id === 'link-create-account') store.dispatch(switchTab('registration'));
       if (targetLink.id === 'link-login') store.dispatch(switchTab('login'));
@@ -132,8 +137,26 @@ export default class AppView {
         }
       }
 
-      if (targetBtn.id === 'audiochallenge-btn') store.dispatch(switchTab('audiochallenge'));
+      if (targetBtn.id === 'audiochallenge-btn') {
+        const state = store.getState().dictionary;
+        const { group, page } = state;
+        const audioGame = new AudioChallengeGame(group as number, page);
+        audioGame.renderStartScreen();
+      }
       if (targetBtn.id === 'sprint-btn') store.dispatch(switchTab('sprint'));
+    };
+
+    const gamesHandler = (e: Event) => {
+      const getLevelNumber = () =>
+        +(document.querySelector('input[name="level-select"]:checked') as HTMLInputElement).value;
+      const targetGameLink = e.target;
+      if ((targetGameLink as HTMLElement).closest('.games__audiochallenge-link')) {
+        const audioGame = new AudioChallengeGame(getLevelNumber());
+        audioGame.renderStartScreen();
+      }
+      if ((targetGameLink as HTMLElement).closest('.games__sprint-link')) {
+        console.warn('GameSprint not implemented');
+      }
     };
 
     const regFormHandler = (e: Event) => {
@@ -143,7 +166,7 @@ export default class AppView {
       api
         .createUser({ email: email.value, password: password.value })
         .then(() => store.dispatch(switchTab('login')))
-        .catch(console.log);
+        .catch(console.warn);
     };
 
     const logFormHandler = (e: Event) => {
@@ -158,7 +181,7 @@ export default class AppView {
           store.dispatch(logIn(userData));
         })
         .then(() => store.dispatch(switchTab('homepage')))
-        .catch(console.log);
+        .catch(console.warn);
     };
 
     header.addEventListener('click', headerHandler);
