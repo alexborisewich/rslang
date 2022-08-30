@@ -12,7 +12,7 @@ export default class Dictionary {
   private renderWords() {
     return this.words
       .map((word) => {
-        return `<div class="textbook__word 
+        return `<div class="textbook__word
         ${word.id === this.state.selectedWord ? 'textbook__word--active' : ''}
         ${this.state.complexWords.some((el) => el.id === word.id) ? 'textbook__word--complex' : ''}
         ${this.state.learnedWords.some((el) => el.id === word.id) ? 'textbook__word--learned' : ''}
@@ -42,27 +42,27 @@ export default class Dictionary {
         <h3 class="card__translate">${selected.wordTranslate}</h3>
         <span class="card__transcription">${selected.transcription}</span>
         <div class="card__buttons">
-         <button class="card__play btn" type="button" id="play-audio-btn"
-         ${this.state.isPlaying ? 'disabled' : ''}>Воспроизвести</button>
-         <div class="card__user-buttons">
-         <button class="card__btn-set-complex btn
-         ${this.state.complexWords.some((word) => word.id === selected.id) ? 'hidden' : ''}
-         " id="add-complex">Добавить в сложные</button>
-         <button class="card__btn-set-complex btn
-         ${!this.state.complexWords.some((word) => word.id === selected.id) ? 'hidden' : ''}
-         " id="delete-complex">Удалить из сложных</button>
-         <button class="card__btn-set-learned btn
-         ${this.state.learnedWords.some((word) => word.id === selected.id) ? 'hidden' : ''}
-         
-         " id="add-learned">Изучено</button>
-         <button class="card__btn-set-learned btn
-         ${!this.state.learnedWords.some((word) => word.id === selected.id) ? 'hidden' : ''}
-         
-         " id="delete-learned">Удалить из изученных</button>
-         </div>
+        <button class="card__play btn" type="button" id="play-audio-btn"
+        ${this.state.isPlaying ? 'disabled' : ''}>Воспроизвести</button>
+        <div class="card__user-buttons">
+        <button class="card__btn-set-complex btn
+        ${this.state.complexWords.some((word) => word.id === selected.id) ? 'hidden' : ''}
+        " id="add-complex">Добавить в сложные</button>
+        <button class="card__btn-set-complex btn
+        ${!this.state.complexWords.some((word) => word.id === selected.id) ? 'hidden' : ''}
+        " id="delete-complex">Удалить из сложных</button>
+        <button class="card__btn-set-learned btn
+        ${this.state.learnedWords.some((word) => word.id === selected.id) ? 'hidden' : ''}
+
+        " id="add-learned">Изучено</button>
+        <button class="card__btn-set-learned btn
+        ${!this.state.learnedWords.some((word) => word.id === selected.id) ? 'hidden' : ''}
+
+        " id="delete-learned">Удалить из изученных</button>
+        </div>
         </div>
       </div>
-      
+
       <div class="card-description">
         <h4 class="card__mean card-subtitle">Значение</h3>
           <p>${selected.textMeaning}</p>
@@ -70,7 +70,7 @@ export default class Dictionary {
           <h4 class="card__example card-subtitle">Пример</h3>
             <p>${selected.textExample}</p>
             <p>${selected.textExampleTranslate}</p>
-            
+
       </div>
     </div>
   </div>`;
@@ -121,33 +121,33 @@ export default class Dictionary {
         <button class="textbook__set-btn btn" type="button" id="complex-words-btn"
         ${this.state.activeTab === 'complex' ? 'disabled' : ''}>Сложные слова</button>
         </div>
-        <button class="textbook__set-btn btn" type="button">Аудиовызов</button>
+        <button class="textbook__set-btn btn" id="audiochallenge-btn" type="button">Аудиовызов</button>
         <button class="textbook__set-btn btn" type="button">Спринт</button>
         </div>
         <div class="textbook__words-container">
         <div class="textbook__words">
         ${this.renderWords()}
         </div>
-        
+
       </div>
       <nav class="textbook__pagination">
         <input type="button" class="pagination__btn textbook__btn-prev" id='prev-button'
-        ${this.state.page === 0 ? 'disabled' : ''}/> <label class="textbook__btn-prev-label 
+        ${this.state.page === 0 ? 'disabled' : ''}/> <label class="textbook__btn-prev-label
         ${this.state.page === 0 ? 'textbook__btn-label--disabled' : ''}"
         for="prev-button"> << </label>
         <span class="textbook__page-pointer">${this.state.page + 1}</span>
-        <input type="button" class="pagination__btn textbook__btn-next" id='next-button' 
-        ${this.state.page >= 29 ? 'disabled' : ''}/> 
+        <input type="button" class="pagination__btn textbook__btn-next" id='next-button'
+        ${this.state.page >= 29 ? 'disabled' : ''}/>
         <label class="textbook__btn-next-label textbook__btn-label
         ${this.state.page >= 29 ? 'textbook__btn-label--disabled' : ''}"
-        for="next-button"> >> </label> 
+        for="next-button"> >> </label>
       </nav>
       </div>
-      
+
       <div class="textbook__card-container">
       ${this.renderCard()}
       </div>
-      
+
     </div>
   </section>`;
   }
