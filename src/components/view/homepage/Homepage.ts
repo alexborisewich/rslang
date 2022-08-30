@@ -18,25 +18,9 @@ export default class Homepage {
         
       </div>
       <div class="homepage__img-container">
-      <img class="homepage__img-promo" src="assets/Children flat vector design.svg" />
+        <img class="homepage__img-promo" src="./assets/promo-image.svg" />
       </div>
     </div>
   </section>`;
   }
 }
-
-// <div class="about__team">
-//           <h2 class="homepage__title title">О команде</h2>
-//           <p class="homepage__text">
-//             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates quae adipisci
-//             architecto commodi nobis. Eum accusantium quae nobis ipsam amet, quo dignissimos fuga quod distinctio
-//             soluta, asperiores deserunt impedit odit?
-//           </p>
-//           <button class="homepage__btn btn">
-//             Смотреть
-//           </button>
-//         </div>
-//         <nav class="homepage__nav">
-//           <button class="homepage__nav-btn"></button>
-//           <button class="homepage__nav-btn"></button>
-//         </nav>
