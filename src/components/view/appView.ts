@@ -21,15 +21,20 @@ import Main from './layout/Main';
 import Footer from './layout/Footer';
 import sprintController from '../controller/sprint/SprintController';
 import { setGroupAndPage, showSprintStat } from '../../store/reducers/sprint/sprintReducer';
+import sprintController from '../controller/sprint/SprintController';
+import { setGroupAndPage, showSprintStat } from '../../store/reducers/sprint/sprintReducer';
 
 export default class AppView {
   body = document.querySelector('body') as HTMLBodyElement;
 
   //   sprintController = new SprintController();
 
+  //   sprintController = new SprintController();
+
   listen() {
     const header = this.body.querySelector('.header') as HTMLDivElement;
     const main = this.body.querySelector('.main') as HTMLDivElement;
+    const sprint = this.body.querySelector('.sprint') as HTMLDivElement;
     const sprint = this.body.querySelector('.sprint') as HTMLDivElement;
     const regForm = this.body.querySelector('#reg-form') as HTMLFormElement;
     const logForm = this.body.querySelector('#log-form') as HTMLFormElement;
@@ -55,6 +60,7 @@ export default class AppView {
         store.dispatch(fetchWords({ group, page }));
       }
       if (targetLink.id === 'games-link') store.dispatch(switchTab('games'));
+      if (targetLink.id === 'sprint-link') store.dispatch(switchTab('sprint'));
       if (targetLink.id === 'sprint-link') store.dispatch(switchTab('sprint'));
       if (targetLink.id === 'statistic-link') store.dispatch(switchTab('statistic'));
       if (targetLink.id === 'team-link') store.dispatch(switchTab('team'));
@@ -176,6 +182,38 @@ export default class AppView {
         store.dispatch(showSprintStat(false));
         store.dispatch(switchTab('games'));
       }
+      if (targetBtn.id === 'dictionary-sprint-link') {
+        const { group, page } = store.getState().dictionary;
+        store.dispatch(showSprintStat(false));
+        store.dispatch(setGroupAndPage({ group, page }));
+        store.dispatch(switchTab('sprint'));
+      }
+      if (targetBtn.id === 'games-sprint-link') {
+        const input = document.querySelector('.games__level-input:checked') as HTMLInputElement;
+        const group = +input.value;
+        const page = Math.floor(Math.random() * 31);
+        store.dispatch(showSprintStat(false));
+        store.dispatch(setGroupAndPage({ group, page }));
+        store.dispatch(switchTab('sprint'));
+      }
+    };
+
+    const sprintHandler = (e: Event) => {
+      const targetBtn = e.target as HTMLButtonElement;
+      if (targetBtn.id === 'sprint-new-game') sprintController.startGame();
+      if (targetBtn.id === 'sprint-answer-true') sprintController.getUserAnswer(true);
+      if (targetBtn.id === 'sprint-answer-false') sprintController.getUserAnswer(false);
+      if (targetBtn.id === 'close-sprint-stat') store.dispatch(showSprintStat(false));
+      if (targetBtn.id === 'close-sprint-game') {
+        sprintController.finishGame();
+        store.dispatch(showSprintStat(false));
+        store.dispatch(switchTab('homepage'));
+      }
+      if (targetBtn.id === 'back-to-games') {
+        sprintController.finishGame();
+        store.dispatch(showSprintStat(false));
+        store.dispatch(switchTab('games'));
+      }
     };
 
     const regFormHandler = (e: Event) => {
@@ -205,6 +243,7 @@ export default class AppView {
 
     header.addEventListener('click', headerHandler);
     main.addEventListener('click', mainHandler);
+    if (sprint) sprint.addEventListener('click', sprintHandler);
     if (sprint) sprint.addEventListener('click', sprintHandler);
     if (regForm) regForm.addEventListener('submit', regFormHandler);
     if (logForm) logForm.addEventListener('submit', logFormHandler);
