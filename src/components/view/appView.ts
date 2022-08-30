@@ -42,7 +42,6 @@ export default class AppView {
       if (targetBtn) {
         if (store.getState().sprint.isStarted) sprintController.finishGame();
       }
-
       if (targetBtn.id === 'login-btn') store.dispatch(switchTab('login'));
       if (targetBtn.id === 'logout-btn') {
         store.dispatch(logOut());
