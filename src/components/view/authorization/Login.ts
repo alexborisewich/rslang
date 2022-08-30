@@ -13,7 +13,8 @@ export default class Login {
                   <div class="form__input-message"></div>
                 </li>
                 <li class="form__input-item">
-                  <input type="password" class="form__input" id="password-input" autofocus placeholder="Пароль" required>
+                  <input type="password" class="form__input"
+                  id="password-input" autofocus placeholder="Пароль" required>
                   <div class="form__input-message"></div>
                 </li>
                 <li class="form__input-item">

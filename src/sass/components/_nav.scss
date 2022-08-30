@@ -1,35 +1,36 @@
 .dot-nav {
-    display: flex;
-    justify-content: center;
-  
-    &__item {}
-  
-    &__link {
-      display: flex;
-      outline: none;
-    }
-  
-    &__circle {
-      width: 20px;
-      height: 20px;
-      border: 2px solid transparent;
-      border-radius: 50%;
-      background: #9e9e9eab;
-      margin: 10px;
-      transition: 0.3s ease-in-out;
-    }
-  
-    &__link--active &__circle {
-      border-color: #ffffffd0;
-      background: transparent;
-    }
-  
-    &__link:hover &__circle {
-      background: #ffffffd0;
-    }
-  
-    &__link:active &__circle {
-      background: transparent;
-      border-color: #ffffffd0;
-    }
+  display: flex;
+  justify-content: center;
+
+  &__item {
   }
+
+  &__link {
+    display: flex;
+    outline: none;
+  }
+
+  &__circle {
+    width: 20px;
+    height: 20px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    background: #9e9e9eab;
+    margin: 10px;
+    transition: 0.3s ease-in-out;
+  }
+
+  &__link--active &__circle {
+    border-color: #ffffffd0;
+    background: transparent;
+  }
+
+  &__link:hover &__circle {
+    background: #ffffffd0;
+  }
+
+  &__link:active &__circle {
+    background: transparent;
+    border-color: #ffffffd0;
+  }
+}

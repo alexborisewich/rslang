@@ -59,7 +59,6 @@ const dictionarySlice = createSlice({
       state.learnedWords.push(action.payload);
     },
     deleteLearnedWord(state, action: PayloadAction<Dictionary>) {
-      console.log(action.payload.id);
       state.learnedWords = state.learnedWords.filter((word) => word.id !== action.payload.id);
     },
     changePlayState(state, action: PayloadAction<boolean>) {

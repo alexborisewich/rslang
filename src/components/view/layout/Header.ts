@@ -6,6 +6,7 @@ export default class Header {
   appState = store.getState().app;
 
   createElement() {
+    const body = document.querySelector('body') as HTMLBodyElement;
     return `<header class="header">
     <div class=" header__container container">
       <a class="header__logo logo" href="#">
@@ -38,7 +39,9 @@ export default class Header {
           </li>
         </ul>
       </nav>
-      <div class="header__theme-switcher"><img class="header__theme-switcher-img" src="assets/8328350.png"/></div>
+      <div class="header__theme-switcher"><img class="header__theme-switcher-img
+      ${body.classList.contains('theme--dark') ? 'header__theme-switcher--active' : ''}"
+      id="theme-btn" src="assets/8328350.png"/></div>
       ${
         this.userState.isLoggedOn
           ? '<button class="header__auth-btn btn" type="button" id="logout-btn">Выйти</button>'

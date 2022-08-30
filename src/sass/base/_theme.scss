@@ -1,8 +1,11 @@
-.theme--light {
-  color: black;
-  background-color: white;
-}
-.theme--dark {
-  color: white;
-  background: black;
+.theme {
+  &--light {
+    background-color: white;
+  }
+  &--dark {
+    background: black;
+    & > main {
+      color: white;
+    }
+  }
 }

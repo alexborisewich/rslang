@@ -42,24 +42,23 @@ export default class Dictionary {
         <h3 class="card__translate">${selected.wordTranslate}</h3>
         <span class="card__transcription">${selected.transcription}</span>
         <div class="card__buttons">
-        <button class="card__play btn" type="button" id="play-audio-btn"
-        ${this.state.isPlaying ? 'disabled' : ''}>Воспроизвести</button>
-        <div class="card__user-buttons">
-        <button class="card__btn-set-complex btn
-        ${this.state.complexWords.some((word) => word.id === selected.id) ? 'hidden' : ''}
-        " id="add-complex">Добавить в сложные</button>
-        <button class="card__btn-set-complex btn
-        ${!this.state.complexWords.some((word) => word.id === selected.id) ? 'hidden' : ''}
-        " id="delete-complex">Удалить из сложных</button>
-        <button class="card__btn-set-learned btn
-        ${this.state.learnedWords.some((word) => word.id === selected.id) ? 'hidden' : ''}
-
-        " id="add-learned">Изучено</button>
-        <button class="card__btn-set-learned btn
-        ${!this.state.learnedWords.some((word) => word.id === selected.id) ? 'hidden' : ''}
-
-        " id="delete-learned">Удалить из изученных</button>
-        </div>
+         <button class="card__play btn" type="button" id="play-audio-btn"
+         ${this.state.isPlaying ? 'disabled' : ''}>Воспроизвести</button>
+         <div class="card__user-buttons">
+         <button class="card__btn-set-complex btn
+         ${this.state.complexWords.some((word) => word.id === selected.id) ? 'hidden' : ''}
+         " id="add-complex">Добавить в сложные</button>
+         <button class="card__btn-set-complex btn
+         ${!this.state.complexWords.some((word) => word.id === selected.id) ? 'hidden' : ''}
+         " id="delete-complex">Удалить из сложных</button>
+         <button class="card__btn-set-learned btn
+         ${this.state.learnedWords.some((word) => word.id === selected.id) ? 'hidden' : ''}
+         " id="add-learned">Изучено</button>
+         <button class="card__btn-set-learned btn
+         ${!this.state.learnedWords.some((word) => word.id === selected.id) ? 'hidden' : ''}
+         
+         " id="delete-learned">Удалить из изученных</button>
+         </div>
         </div>
       </div>
 
@@ -152,21 +151,3 @@ export default class Dictionary {
   </section>`;
   }
 }
-
-// <h4 class="card__statistic card-subtitle">Прогресс изучения</h4>
-//             <ul class="card__statistic-list">
-//               <li class="card__statistic-item">
-//                 <span class="card__statistic-new">Новое или Изучено</span>
-//                 <span class="card__statistic-counter">+ или -</span>
-//               </li>
-//               <li class="card__statistic-item">
-//                 <span class="card__statistic-game">Аудиовызов</span>
-//                 <span class="card__statistic-counter">Правильно: 0</span>
-//                 <span class="card__statistic-counter">Неправильно: 0</span>
-//               </li>
-//               <li class="card__statistic-item">
-//                 <span class="card__statistic-game">Спринт</span>
-//                 <span class="card__statistic-counter">Правильно: 0</span>
-//                 <span class="card__statistic-counter">Неправильно: 0</span>
-//               </li>
-//             </ul>
