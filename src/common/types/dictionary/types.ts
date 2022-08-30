@@ -7,7 +7,7 @@ export type DictionaryState = {
   activeTab: 'all' | 'complex';
   totalWordsCount: number;
   selectedWord: string;
-  group: string | number;
+  group: number;
   page: number;
   isLoading: boolean;
   isPlaying: boolean;
