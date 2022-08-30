@@ -185,6 +185,9 @@ export class Timer {
         timerCounter.innerHTML = this.formatTime();
         this.setCircleDashArray(timerPathRemaining);
         this.setRemainingColor(this.timeLeft, timerPathRemaining);
+        if (!(document.querySelector('.timer') as HTMLElement)) {
+          this.stop();
+        }
         if (this.isEnded) {
           clearInterval(timerInterval);
           resolve('Timer was stopped!');
