@@ -20,6 +20,7 @@ import Header from './layout/Header';
 import Main from './layout/Main';
 import Footer from './layout/Footer';
 import sprintController from '../controller/sprint/SprintController';
+import { setGroupAndPage, showSprintStat } from '../../store/reducers/sprint/sprintReducer';
 
 export default class AppView {
   body = document.querySelector('body') as HTMLBodyElement;
@@ -36,7 +37,10 @@ export default class AppView {
     const headerHandler = (e: Event) => {
       const targetBtn = e.target as HTMLButtonElement;
       const targetLink = e.target as HTMLLinkElement;
-      console.log(e.target);
+
+      if (targetBtn) {
+        if (store.getState().sprint.isStarted) sprintController.finishGame();
+      }
 
       if (targetBtn.id === 'login-btn') store.dispatch(switchTab('login'));
       if (targetBtn.id === 'logout-btn') {
@@ -63,8 +67,6 @@ export default class AppView {
       const targetBtn = e.target as HTMLButtonElement;
       const targetSpan = e.target as HTMLSpanElement;
       const wordDiv = targetSpan.closest('.textbook__word') as HTMLDivElement;
-
-      console.log(e.target);
 
       if (targetLink.id === 'link-create-account') store.dispatch(switchTab('registration'));
       if (targetLink.id === 'link-login') store.dispatch(switchTab('login'));
@@ -139,6 +141,20 @@ export default class AppView {
 
       if (targetBtn.id === 'audiochallenge-btn') store.dispatch(switchTab('audiochallenge'));
       if (targetBtn.id === 'sprint-btn') store.dispatch(switchTab('sprint'));
+      if (targetBtn.id === 'dictionary-sprint-link') {
+        const { group, page } = store.getState().dictionary;
+        store.dispatch(showSprintStat(false));
+        store.dispatch(setGroupAndPage({ group, page }));
+        store.dispatch(switchTab('sprint'));
+      }
+      if (targetBtn.id === 'games-sprint-link') {
+        const input = document.querySelector('.games__level-input:checked') as HTMLInputElement;
+        const group = +input.value;
+        const page = Math.floor(Math.random() * 31);
+        store.dispatch(showSprintStat(false));
+        store.dispatch(setGroupAndPage({ group, page }));
+        store.dispatch(switchTab('sprint'));
+      }
     };
 
     const sprintHandler = (e: Event) => {
@@ -146,6 +162,17 @@ export default class AppView {
       if (targetBtn.id === 'sprint-new-game') sprintController.startGame();
       if (targetBtn.id === 'sprint-answer-true') sprintController.getUserAnswer(true);
       if (targetBtn.id === 'sprint-answer-false') sprintController.getUserAnswer(false);
+      if (targetBtn.id === 'close-sprint-stat') store.dispatch(showSprintStat(false));
+      if (targetBtn.id === 'close-sprint-game') {
+        sprintController.finishGame();
+        store.dispatch(showSprintStat(false));
+        store.dispatch(switchTab('homepage'));
+      }
+      if (targetBtn.id === 'back-to-games') {
+        sprintController.finishGame();
+        store.dispatch(showSprintStat(false));
+        store.dispatch(switchTab('games'));
+      }
     };
 
     const regFormHandler = (e: Event) => {

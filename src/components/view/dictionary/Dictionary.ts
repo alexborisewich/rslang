@@ -122,7 +122,7 @@ export default class Dictionary {
         ${this.state.activeTab === 'complex' ? 'disabled' : ''}>Сложные слова</button>
         </div>
         <button class="textbook__set-btn btn" type="button">Аудиовызов</button>
-        <button class="textbook__set-btn btn" type="button">Спринт</button>
+        <button class="textbook__set-btn btn" id="dictionary-sprint-link" type="button">Спринт</button>
         </div>
         <div class="textbook__words-container">
         <div class="textbook__words">
@@ -152,21 +152,3 @@ export default class Dictionary {
   </section>`;
   }
 }
-
-// <h4 class="card__statistic card-subtitle">Прогресс изучения</h4>
-//             <ul class="card__statistic-list">
-//               <li class="card__statistic-item">
-//                 <span class="card__statistic-new">Новое или Изучено</span>
-//                 <span class="card__statistic-counter">+ или -</span>
-//               </li>
-//               <li class="card__statistic-item">
-//                 <span class="card__statistic-game">Аудиовызов</span>
-//                 <span class="card__statistic-counter">Правильно: 0</span>
-//                 <span class="card__statistic-counter">Неправильно: 0</span>
-//               </li>
-//               <li class="card__statistic-item">
-//                 <span class="card__statistic-game">Спринт</span>
-//                 <span class="card__statistic-counter">Правильно: 0</span>
-//                 <span class="card__statistic-counter">Неправильно: 0</span>
-//               </li>
-//             </ul>
