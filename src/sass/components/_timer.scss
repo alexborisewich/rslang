@@ -1,16 +1,4 @@
 .timer {
-  &__svg {}
-
-  &__circle {}
-
-  &__path-elapsed {}
-
-  &__path-remaining {}
-
-  &__counter {}
-}
-
-_timer.scss .timer {
   position: relative;
   height: 100px;
   width: 100px;
