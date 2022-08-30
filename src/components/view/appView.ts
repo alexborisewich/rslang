@@ -21,20 +21,13 @@ import Main from './layout/Main';
 import Footer from './layout/Footer';
 import sprintController from '../controller/sprint/SprintController';
 import { setGroupAndPage, showSprintStat } from '../../store/reducers/sprint/sprintReducer';
-import sprintController from '../controller/sprint/SprintController';
-import { setGroupAndPage, showSprintStat } from '../../store/reducers/sprint/sprintReducer';
 
 export default class AppView {
   body = document.querySelector('body') as HTMLBodyElement;
 
-  //   sprintController = new SprintController();
-
-  //   sprintController = new SprintController();
-
   listen() {
     const header = this.body.querySelector('.header') as HTMLDivElement;
     const main = this.body.querySelector('.main') as HTMLDivElement;
-    const sprint = this.body.querySelector('.sprint') as HTMLDivElement;
     const sprint = this.body.querySelector('.sprint') as HTMLDivElement;
     const regForm = this.body.querySelector('#reg-form') as HTMLFormElement;
     const logForm = this.body.querySelector('#log-form') as HTMLFormElement;
@@ -195,24 +188,6 @@ export default class AppView {
         store.dispatch(showSprintStat(false));
         store.dispatch(setGroupAndPage({ group, page }));
         store.dispatch(switchTab('sprint'));
-      }
-    };
-
-    const sprintHandler = (e: Event) => {
-      const targetBtn = e.target as HTMLButtonElement;
-      if (targetBtn.id === 'sprint-new-game') sprintController.startGame();
-      if (targetBtn.id === 'sprint-answer-true') sprintController.getUserAnswer(true);
-      if (targetBtn.id === 'sprint-answer-false') sprintController.getUserAnswer(false);
-      if (targetBtn.id === 'close-sprint-stat') store.dispatch(showSprintStat(false));
-      if (targetBtn.id === 'close-sprint-game') {
-        sprintController.finishGame();
-        store.dispatch(showSprintStat(false));
-        store.dispatch(switchTab('homepage'));
-      }
-      if (targetBtn.id === 'back-to-games') {
-        sprintController.finishGame();
-        store.dispatch(showSprintStat(false));
-        store.dispatch(switchTab('games'));
       }
     };
 
