@@ -37,7 +37,7 @@
 
   &__level-item {
     padding: 10px 10px;
-    margin: 5px 0;
+    margin-bottom: 8px;
     cursor: pointer;
     border-radius: 5px;
     transition: 0.1s ease;
@@ -229,6 +229,7 @@
 
 .game-link {
   display: flex;
+  position: relative;
   flex-direction: column-reverse;
   align-items: center;
   justify-content: center;
@@ -238,7 +239,7 @@
     background-color: antiquewhite;
     width: 300px;
     text-align: center;
-    margin-top: -6px;
+    margin-top: -8px;
     /* padding-top: 5px; */
     font-size: 2rem;
     border-bottom-left-radius: 5px 5px;
@@ -260,4 +261,8 @@
     background-color: rgba(191, 84, 38, 0.3);
     //border: solid 1px darkslategray;
   }
+}
+.game-link:focus{
+  border: solid 1px darkcyan;
+  border-radius: 5px;
 }
