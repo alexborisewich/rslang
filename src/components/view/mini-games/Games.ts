@@ -6,7 +6,7 @@ export default class Games {
         <a class="games__audiochallenge-link game-link" href="#">
           <span class="game-link__title">Аудиовызов</span>
           <span class="game-link__img-wrapper">
-            <img class="game-link__img" src="../../assets/image-games/audio.svg" alt="">
+            <img class="game-link__img" src="../../assets/image-games/audio.svg" alt="image-game-audio">
           </span>
         </a>
         <ul class="games__level-list">
@@ -55,7 +55,7 @@ export default class Games {
         <a class="games__audiochallenge-link game-link" href="#">
           <span class="game-link__title">Спринт</span>
           <span class="game-link__img-wrapper">
-            <img class="game-link__img" src="../../assets/image-games/sprint.svg" alt="">
+            <img class="game-link__img" src="../../assets/image-games/sprint.svg" alt="image-game-sprint">
           </span>
         </a>
       </div>
