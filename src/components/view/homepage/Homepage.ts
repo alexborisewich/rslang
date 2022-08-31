@@ -15,10 +15,10 @@ export default class Homepage {
             Смотреть
           </button>
         </div>
-        
+
       </div>
       <div class="homepage__img-container">
-        <img class="homepage__img-promo" src="./assets/promo-image.svg" />
+        <img class="homepage__img-promo" src="./assets/promo-image-new.svg" />
       </div>
     </div>
   </section>`;
