@@ -13,6 +13,7 @@ export interface Dictionary {
   textExampleTranslate: string;
   textMeaningTranslate: string;
   wordTranslate: string;
+  correctAnswer?: number;
 }
 
 export interface Registration {
