@@ -9,7 +9,7 @@
   background-image: url(../assets/sprint/background-sprint-game.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 100%;
+  min-height: 300px;
   height: 100%;
   color: black !important;
 
@@ -53,6 +53,7 @@
   &__body {
     width: 300px;
     height: auto;
+    min-height: 300px;
     border-radius: 10px;
     display: flex;
     justify-content: center;
