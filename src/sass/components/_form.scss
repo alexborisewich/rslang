@@ -1,7 +1,7 @@
 .form {
   padding: 25px;
 
-  & > *:not(:last-child) {
+  &>*:not(:last-child) {
     margin-bottom: 10px;
   }
 
@@ -17,8 +17,7 @@
     margin: 0 auto;
   }
 
-  &__avatar-img {
-  }
+  &__avatar-img {}
 
   &__message {
     text-align: center;
@@ -36,19 +35,18 @@
   }
 
   &__input-list {
-    & > *:not(:last-child) {
+    &>*:not(:last-child) {
       margin-bottom: 10px;
     }
   }
 
   &__input-item {
     position: relative;
-    display: flex;
-    align-items: center;
   }
 
   &__input-message {
     margin-top: 5px;
+    margin-left: 5px;
     font-size: 12px;
     color: $error-color;
   }
@@ -111,6 +109,7 @@
   &__link {
     color: #000;
   }
+
   &--hidden {
     display: none;
   }
