@@ -10,8 +10,10 @@ export default class Sprint {
     ${this.sprintState.showStat ? new SprintStat().createElement() : ''}
       <div class="sprint__game">
       <div class="sprint__btn-wpapper">
-          <button class="sprint__sound-btn">Звук</button>
-          <button class="sprint__screen-btn">На весь экран</button>
+          <button class="sprint__sound-btn" id="mute">Звук</button>
+          <button class="sprint__screen-btn" id="fullscreen">${
+            this.sprintState.isFullscreen ? 'Выйти из полноэкранного режима' : 'На весь экран'
+          }</button>
           <button class="sprint__close-btn" id="close-sprint-game">&#9587</button>
       </div>
       <div class = "sprint__body">

@@ -20,6 +20,8 @@ type SprintState = {
   showStat: boolean;
   question: Dictionary | null;
   answer: Dictionary | null;
+  isFullscreen: boolean;
+  isMuted: boolean;
   isStarted: boolean;
   isLoading: boolean;
   error: { isError: boolean; message: string };
@@ -43,6 +45,8 @@ const initialState: SprintState = {
   showStat: false,
   question: null,
   answer: null,
+  isFullscreen: false,
+  isMuted: false,
   isStarted: false,
   isLoading: false,
   error: { isError: false, message: '' },
@@ -74,8 +78,6 @@ const sprintSlice = createSlice({
       state.streak = initialState.streak;
       state.maxStreak = initialState.maxStreak;
       state.words = initialState.words;
-      //   state.page = initialState.page;
-      //   state.group = initialState.group;
       state.correct = initialState.correct;
       state.wrong = initialState.wrong;
       state.roundState = initialState.roundState;
@@ -97,18 +99,30 @@ const sprintSlice = createSlice({
       state.words = state.words.filter((word) => word.id !== action.payload.question.id);
     },
     checkUserAnswer(state, action: PayloadAction<boolean>) {
+      const audio = new Audio();
       if (state.roundState.isCorrect === action.payload) {
         state.streak += 1;
         state.score += 20;
         state.maxStreak = Math.max(state.maxStreak, state.streak);
+        audio.src = '../../../assets/music/correct.mp3';
+        if (!state.isMuted) audio.play();
         if (state.roundState.question) state.correct.push(state.roundState.question);
+        // if (action.payload) state.words = state.words.filter((word) => word.id !== state.roundState.answer?.id);
       } else {
         state.streak = 0;
+        audio.src = '../../../assets/music/error.mp3';
+        if (!state.isMuted) audio.play();
         if (state.roundState.question) state.wrong.push(state.roundState.question);
       }
     },
     tick(state) {
       state.time -= 1;
+    },
+    mute(state) {
+      state.isMuted = !state.isMuted;
+    },
+    toggleFullscreen(state) {
+      state.isFullscreen = !state.isFullscreen;
     },
     setGroupAndPage(state, action: PayloadAction<{ group: number; page: number }>) {
       state.group = action.payload.group;
@@ -135,5 +149,14 @@ const sprintSlice = createSlice({
 });
 
 export default sprintSlice.reducer;
-export const { init, switchGameStatus, showSprintStat, setRoundState, checkUserAnswer, tick, setGroupAndPage } =
-  sprintSlice.actions;
+export const {
+  init,
+  switchGameStatus,
+  showSprintStat,
+  setRoundState,
+  checkUserAnswer,
+  tick,
+  mute,
+  toggleFullscreen,
+  setGroupAndPage,
+} = sprintSlice.actions;
