@@ -1,6 +1,7 @@
 import { Dictionary } from '../../../common/interface/interface';
 import { switchTab } from '../../../store/reducers/app/appReducer';
 import {
+  checkUserAnswer,
   getSprintData,
   init,
   setRoundState,
@@ -54,10 +55,8 @@ class SprintController {
   }
 
   getUserAnswer(answer: boolean) {
-    store.dispatch(getSprintData({ group: this.state.group, page: this.state.page })).then(() => {
-      store.dispatch(switchGameStatus(true));
-      this.startRound();
-    });
+    store.dispatch(checkUserAnswer(answer));
+    this.startRound();
   }
 
   finishGame() {

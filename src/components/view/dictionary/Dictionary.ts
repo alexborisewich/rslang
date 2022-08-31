@@ -61,7 +61,6 @@ export default class Dictionary {
          </div>
         </div>
       </div>
-
       <div class="card-description">
         <h4 class="card__mean card-subtitle">Значение</h3>
           <p>${selected.textMeaning}</p>
@@ -69,7 +68,6 @@ export default class Dictionary {
           <h4 class="card__example card-subtitle">Пример</h3>
             <p>${selected.textExample}</p>
             <p>${selected.textExampleTranslate}</p>
-
       </div>
     </div>
   </div>`;
@@ -120,12 +118,7 @@ export default class Dictionary {
         <button class="textbook__set-btn btn" type="button" id="complex-words-btn"
         ${this.state.activeTab === 'complex' ? 'disabled' : ''}>Сложные слова</button>
         </div>
-<<<<<<< HEAD
         <button class="textbook__set-btn btn" id="audiochallenge-btn" type="button">Аудиовызов</button>
-        <button class="textbook__set-btn btn" type="button">Спринт</button>
-=======
->>>>>>> 6d675d5 (feat: add sprint statistic)
-        <button class="textbook__set-btn btn" type="button">Аудиовызов</button>
         <button class="textbook__set-btn btn" id="dictionary-sprint-link" type="button">Спринт</button>
         </div>
         <div class="textbook__words-container">
