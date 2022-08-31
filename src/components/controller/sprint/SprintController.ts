@@ -7,6 +7,7 @@ import {
   setRoundState,
   showSprintStat,
   switchGameStatus,
+  toggleFullscreen,
 } from '../../../store/reducers/sprint/sprintReducer';
 import store from '../../../store/store';
 
@@ -84,6 +85,16 @@ class SprintController {
     const idx = Math.floor(Math.random() * array.length);
     return array[idx];
   };
+
+  toggleFullscreen(container: HTMLBodyElement) {
+    // store.dispatch(toggleFullscreen());
+    if (!document.fullscreenElement) {
+      container.requestFullscreen();
+    } else {
+      document.exitFullscreen();
+    }
+    store.dispatch(toggleFullscreen());
+  }
 }
 
 export default new SprintController();

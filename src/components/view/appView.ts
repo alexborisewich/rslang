@@ -21,10 +21,12 @@ import Main from './layout/Main';
 import Footer from './layout/Footer';
 import AudioChallengeGame from './mini-games/audioсhallenge/Audiochallenge';
 import sprintController from '../controller/sprint/SprintController';
-import { setGroupAndPage, showSprintStat } from '../../store/reducers/sprint/sprintReducer';
+import { mute, setGroupAndPage, showSprintStat, toggleFullscreen } from '../../store/reducers/sprint/sprintReducer';
 
 export default class AppView {
   body = document.querySelector('body') as HTMLBodyElement;
+
+  sprint = this.body.querySelector('.sprint') as HTMLDivElement;
 
   listen() {
     const header = this.body.querySelector('.header') as HTMLDivElement;
@@ -195,14 +197,20 @@ export default class AppView {
       if (targetBtn.id === 'sprint-answer-true') sprintController.getUserAnswer(true);
       if (targetBtn.id === 'sprint-answer-false') sprintController.getUserAnswer(false);
       if (targetBtn.id === 'close-sprint-stat') store.dispatch(showSprintStat(false));
+      if (targetBtn.id === 'mute') store.dispatch(mute());
+      if (targetBtn.id === 'fullscreen') sprintController.toggleFullscreen(this.body);
       if (targetBtn.id === 'close-sprint-game') {
         sprintController.finishGame();
         store.dispatch(showSprintStat(false));
+        store.dispatch(toggleFullscreen());
+        document.exitFullscreen();
         store.dispatch(switchTab('homepage'));
       }
       if (targetBtn.id === 'back-to-games') {
         sprintController.finishGame();
         store.dispatch(showSprintStat(false));
+        store.dispatch(toggleFullscreen());
+        document.exitFullscreen();
         store.dispatch(switchTab('games'));
       }
     };
