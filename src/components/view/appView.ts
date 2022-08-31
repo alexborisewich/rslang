@@ -30,7 +30,6 @@ export default class AppView {
     const header = this.body.querySelector('.header') as HTMLDivElement;
     const main = this.body.querySelector('.main') as HTMLDivElement;
     const sprint = this.body.querySelector('.sprint') as HTMLDivElement;
-    const sprint = this.body.querySelector('.sprint') as HTMLDivElement;
     const regForm = this.body.querySelector('#reg-form') as HTMLFormElement;
     const logForm = this.body.querySelector('#log-form') as HTMLFormElement;
 
