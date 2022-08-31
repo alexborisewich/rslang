@@ -1,6 +1,6 @@
 // import { fetchWords } from '../../store/reducers/dictionary/dictionaryReducer';
 import store from '../../store/store';
-import AppView from '../view/AppView';
+import AppView from '../view/appView';
 
 export default class App {
   view = new AppView();

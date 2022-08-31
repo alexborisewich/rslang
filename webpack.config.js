@@ -68,8 +68,12 @@ const config = {
         use: [isProd ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader', 'sass-loader'],
       },
       {
-        test: /\.(?:ico|gif|png|jpg|jpeg|svg|webp)$/i,
+        test: /\.(?:ico|gif|png|jpg|jpeg|webp)$/i,
         type: 'asset/resource',
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-inline-loader',
       },
       {
         test: /\.(?:mp3|wav|ogg|mp4)$/i,

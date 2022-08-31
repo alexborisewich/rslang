@@ -1,7 +1,8 @@
 .footer {
   background-color: $color-primary;
-  height: 110px;
+  height: 40px;
   margin-top: auto;
+
   &__container {
     display: flex;
     align-items: center;
@@ -11,24 +12,26 @@
     height: 100px;
   }
 
-  &__copyright {
-  }
+  &__copyright {}
 
   &__team-list {
     display: flex;
     gap: 20px;
   }
 
-  &__team-item {
-  }
+  &__team-item {}
 
   &__team-link {
     transition: all 0.1s linear;
+
     &:hover {
       color: ghostwhite;
     }
   }
 
   &__rsschool-link {
+    & svg {
+      height: 20px;
+    }
   }
 }
