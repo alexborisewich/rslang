@@ -4,6 +4,7 @@
 
   &__container {
     display: flex;
+    align-items: center;
     flex-grow: 1;
     justify-content: space-between;
   }
@@ -12,9 +13,11 @@
     position: relative;
   }
 
-  &__title {}
+  &__title {
+  }
 
-  &__set-level {}
+  &__set-level {
+  }
 
   &__level-list {
     padding: 15px 0;
@@ -24,7 +27,7 @@
     transition: 0.3s ease-in-out;
   }
 
-  &__set-level:hover~&__level-list {
+  &__set-level:hover ~ &__level-list {
     opacity: 1;
     visibility: visible;
   }
@@ -60,9 +63,11 @@
     }
   }
 
-  &__set-btn {}
+  &__set-btn {
+  }
 
-  &__minigames-link {}
+  &__minigames-link {
+  }
 
   &__body {
     display: flex;
@@ -73,7 +78,8 @@
     display: flex;
   }
 
-  &__subtitle {}
+  &__subtitle {
+  }
 
   &__words {
     padding-top: 50px;
@@ -83,7 +89,8 @@
     max-width: 600px;
   }
 
-  &__link {}
+  &__link {
+  }
 
   &__word {
     transition: all 0.1s linear;
@@ -138,7 +145,8 @@
     }
   }
 
-  &__translate {}
+  &__translate {
+  }
 
   &__pagination {
     display: flex;
@@ -153,7 +161,8 @@
     display: none;
   }
 
-  &__page-pointer {}
+  &__page-pointer {
+  }
 
   &__btn-prev-label,
   &__btn-next-label {
@@ -199,7 +208,8 @@
     align-items: flex-start;
   }
 
-  &__card-container {}
+  &__card-container {
+  }
 
   &__workspace {
     display: flex;
