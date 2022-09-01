@@ -3,6 +3,7 @@ import Login from '../authorization/Login';
 import Registration from '../authorization/Registration';
 import Dictionary from '../dictionary/Dictionary';
 import Homepage from '../homepage/Homepage';
+// import AudioChallengeGame from '../mini-games/audioсhallenge/Audiochallenge';
 import Games from '../mini-games/Games';
 import Sprint from '../mini-games/sprint/Sprint';
 import Statistic from '../statistics/Statistic';

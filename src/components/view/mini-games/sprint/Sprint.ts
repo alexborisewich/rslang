@@ -7,6 +7,7 @@ export default class Sprint {
 
   createElement() {
     return `<section class="sprint">
+    <div class="sprint__container container">
     ${this.sprintState.showStat ? new SprintStat().createElement() : ''}
       <div class="sprint__game">
       <div class="sprint__btn-wpapper">
@@ -32,6 +33,9 @@ export default class Sprint {
       <div class = "sprint__back">
       <button class = "sprint__back-to-new-game" id="sprint-new-game">Новая игра</button>
       <button class = "sprint__back-to-list-games" id="back-to-games">К списку игр</button>
+      </div>
+      </div>
+      </div>
       </div>
     </section>`;
   }

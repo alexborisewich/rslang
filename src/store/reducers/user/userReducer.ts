@@ -8,7 +8,7 @@ const initialState: UserState = {
   email: '',
   message: '',
   token: '',
-  isLoggedOn: true,
+  isLoggedOn: false,
   isLoading: false,
   error: { isError: false, message: '' },
 };

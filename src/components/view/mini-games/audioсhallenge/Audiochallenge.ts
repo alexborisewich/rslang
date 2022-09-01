@@ -37,7 +37,8 @@ export default class AudioChallengeGame {
 
   page: number;
 
-  container = document.querySelector('section > .container') as HTMLElement;
+  //   container = document.querySelector('section > .container') as HTMLElement;
+  container = document.querySelector('.main') as HTMLDivElement;
 
   api = api;
 
@@ -83,9 +84,11 @@ export default class AudioChallengeGame {
   }
 
   renderStartScreen() {
-    this.container.classList.add('audiochallenge');
+    // this.container.classList.add('audiochallenge');
     this.container.innerHTML = '';
-    this.container.innerHTML = `<div class="audiochallenge__start-screen start">
+    this.container.innerHTML = `
+    <section class="audiochallenge container">
+    <div class="audiochallenge__start-screen start">
         <h2 class="start__title">Аудиовызов</h2>
         <div class="start__instruction-wrapper">
           <p class="start__instruction">Используйте клавиши:</p>
@@ -111,7 +114,8 @@ export default class AudioChallengeGame {
         </select>
         </div>
         <button class="start__btn audiogame-btn btn-start">Играть</button>
-      </div>`;
+      </div>
+      </section>`;
     const levelSelector = this.container.querySelector('.start__level') as HTMLSelectElement;
     if (this.level) levelSelector.selectedIndex = this.level;
     levelSelector.addEventListener('change', (e) => {
@@ -124,7 +128,9 @@ export default class AudioChallengeGame {
   }
 
   renderGame() {
-    this.container.innerHTML = `<div class="audiochallenge__preloader preloader visible">
+    this.container.innerHTML = `
+    <section class="audiochallenge container">
+    <div class="audiochallenge__preloader preloader visible">
         <img class="preloader__img" src="${preloaderGIF}" alt="preloader">
       </div>
       <audio class="audiochallenge__answer-sound" audio preload="auto"></audio>
@@ -168,7 +174,8 @@ export default class AudioChallengeGame {
           </div>
         </div>
       </div>
-      <div class="audiochallenge__finish finish --hidden"></div>`;
+      <div class="audiochallenge__finish finish --hidden"></div>
+      </section>`;
   }
 
   btnsHandler() {

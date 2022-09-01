@@ -20,11 +20,12 @@ export default class SprintStat {
     <table class="sprint__finish-statistic">
       <tbody class ="tbody-items">
     <tr>
-    <td colspan="3" style = "text-align: center; background-color:#00FF00">Верно</td>
+    <td colspan="4" style = "text-align: center; background-color:#00FF00">Верно</td>
     </tr>
     ${this.state.correct
       .map((word: Dictionary) => {
         return `<tr>
+        <td>audio</td>
         <td>${word.word}</td>
         <td>${word.transcription}</td>
         <td>${word.wordTranslate}</td>
@@ -32,11 +33,12 @@ export default class SprintStat {
       })
       .join('')}
     <tr>
-    <td colspan="3" style = "text-align: center; background-color:#FF0000">Не верно</td>
+    <td colspan="4" style = "text-align: center; background-color:#FF0000">Не верно</td>
     </tr>
     ${this.state.wrong
       .map((word: Dictionary) => {
         return `<tr>
+        <td>audio</td>
         <td>${word.word}</td>
         <td>${word.transcription}</td>
         <td>${word.wordTranslate}</td>
