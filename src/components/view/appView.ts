@@ -26,7 +26,7 @@ import { mute, setGroupAndPage, showSprintStat, toggleFullscreen } from '../../s
 export default class AppView {
   body = document.querySelector('body') as HTMLBodyElement;
 
-  //   sprintController = new SprintController();
+  sprint = this.body.querySelector('.sprint') as HTMLDivElement;
 
   listen() {
     const header = this.body.querySelector('.header') as HTMLDivElement;
