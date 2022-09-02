@@ -1,5 +1,6 @@
 import { Dictionary } from '../../../../common/interface/interface';
 import store from '../../../../store/store';
+import api from '../../../api/api';
 
 export default class SprintStat {
   state = store.getState().sprint;
@@ -20,12 +21,13 @@ export default class SprintStat {
     <table class="sprint__finish-statistic">
       <tbody class ="tbody-items">
     <tr>
-    <td colspan="4" style = "text-align: center; background-color:#00FF00">Верно</td>
+    <td colspan="4" style ="text-align: center; background-color:#00FF00">Верно</td>
     </tr>
     ${this.state.correct
       .map((word: Dictionary) => {
         return `<tr>
-        <td>audio</td>
+        <td class="sprint__finish-audio-btn" id="finish-audio-btn">▶
+        <audio src="${api.baseApi}${word.audio}" preload ="auto"></audio></td>
         <td>${word.word}</td>
         <td>${word.transcription}</td>
         <td>${word.wordTranslate}</td>
@@ -38,7 +40,8 @@ export default class SprintStat {
     ${this.state.wrong
       .map((word: Dictionary) => {
         return `<tr>
-        <td>audio</td>
+        <td class="sprint__finish-audio-btn" id="finish-audio-btn">▶
+        <audio src="${api.baseApi}${word.audio}" preload ="auto"></audio></td>
         <td>${word.word}</td>
         <td>${word.transcription}</td>
         <td>${word.wordTranslate}</td>

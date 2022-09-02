@@ -11,7 +11,7 @@ import {
   switchDictionaryTab,
 } from '../../store/reducers/dictionary/dictionaryReducer';
 import { switchTab } from '../../store/reducers/app/appReducer';
-import { parseID, playAudio } from '../../common/utils/utils';
+import { parseID, play, playAudio } from '../../common/utils/utils';
 import store from '../../store/store';
 import api from '../api/api';
 import { logIn, logOut } from '../../store/reducers/user/userReducer';
@@ -208,6 +208,7 @@ export default class AppView {
 
     const sprintHandler = (e: Event) => {
       const targetBtn = e.target as HTMLButtonElement;
+      const targetTd = e.target as HTMLTableCellElement;
       if (targetBtn.id === 'sprint-new-game') sprintController.startGame();
       if (targetBtn.id === 'sprint-answer-true') sprintController.getUserAnswer(true);
       if (targetBtn.id === 'sprint-answer-false') sprintController.getUserAnswer(false);
@@ -232,6 +233,7 @@ export default class AppView {
         }
         store.dispatch(switchTab('games'));
       }
+      if (targetTd.id === 'finish-audio-btn') play(targetTd.lastElementChild as HTMLAudioElement);
     };
 
     const regFormHandler = (e: Event) => {

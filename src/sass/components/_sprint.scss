@@ -298,6 +298,7 @@
   }
 
   &__finish-table {
+    background-color: green;
   }
 
   &__finish-btn-wrapper {
@@ -312,5 +313,12 @@
   }
 
   &__exit-btn {
+  }
+  &__finish-audio-btn {
+    text-align: center;
+    width: 15px;
+    height: 15px;
+    padding: 5px;
+    cursor: pointer;
   }
 }
