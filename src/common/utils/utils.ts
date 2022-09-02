@@ -1,6 +1,7 @@
 // eslint-disable-next-line import/prefer-default-export
 import timerSVG from '../../assets/timer.svg';
 import bgSound from '../../assets/bg.mp3';
+import { LoginResponse } from '../types/user/types';
 
 export const parseID = (string: string): number => parseInt(string.replace(/[^\d]/g, ''), 10);
 export const playAudio = (trackUrl: string) => {
@@ -200,4 +201,28 @@ export class Timer {
       }, 1000);
     });
   }
+}
+
+export function checkUser() {
+  const userData = localStorage.getItem('user') || sessionStorage.getItem('user');
+  if (userData) return JSON.parse(userData) as LoginResponse;
+  return undefined;
+}
+
+export function getUserId() {
+  const data = (localStorage.getItem('user') || sessionStorage.getItem('user')) as unknown as LoginResponse;
+  const { userId } = data;
+  return userId;
+}
+
+export function getJwtToken() {
+  const data = (localStorage.getItem('user') || sessionStorage.getItem('user')) as unknown as LoginResponse;
+  const { token } = data;
+  return token;
+}
+
+export function getRefreshToken() {
+  const data = (localStorage.getItem('user') || sessionStorage.getItem('user')) as unknown as LoginResponse;
+  const { refreshToken } = data;
+  return refreshToken;
 }
