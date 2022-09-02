@@ -14,10 +14,11 @@ export default class Homepage {
           <button class="homepage__btn btn">
             Смотреть
           </button>
-        </div>        
+        </div>
+
       </div>
       <div class="homepage__img-container">
-        <img class="homepage__img-promo" src="./assets/promo-image.svg" />
+        <img class="homepage__img-promo" src="./assets/promo-image-new.svg" />
       </div>
     </div>
   </section>`;

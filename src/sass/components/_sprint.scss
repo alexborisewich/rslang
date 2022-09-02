@@ -1,17 +1,27 @@
 .sprint {
   //display: none;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+
   //   flex-grow: 1;
+  //   background-image: url(../assets/sprint/background-sprint-game.jpg);
+
+  width: 100%;
+  height: 100%;
+  color: black !important;
   background-image: url(../assets/sprint/background-sprint-game.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 300px;
-  height: 100%;
-  color: black !important;
+
+  &__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+  }
 
   & > *:not(:last-child) {
     margin-bottom: 10px;
@@ -288,6 +298,7 @@
   }
 
   &__finish-table {
+    background-color: green;
   }
 
   &__finish-btn-wrapper {
@@ -302,5 +313,12 @@
   }
 
   &__exit-btn {
+  }
+  &__finish-audio-btn {
+    text-align: center;
+    width: 15px;
+    height: 15px;
+    padding: 5px;
+    cursor: pointer;
   }
 }

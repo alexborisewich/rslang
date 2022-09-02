@@ -11,7 +11,7 @@ import {
   switchDictionaryTab,
 } from '../../store/reducers/dictionary/dictionaryReducer';
 import { switchTab } from '../../store/reducers/app/appReducer';
-import { parseID, playAudio } from '../../common/utils/utils';
+import { parseID, play, playAudio } from '../../common/utils/utils';
 import store from '../../store/store';
 import api from '../api/api';
 import { logIn, logOut } from '../../store/reducers/user/userReducer';
@@ -57,11 +57,10 @@ export default class AppView {
         store.dispatch(switchTab('dictionary'));
         store.dispatch(fetchWords({ group, page }));
       }
-
-      if (targetLink.id === 'games-link') {
-        store.dispatch(switchTab('games'));
-        this.body.querySelectorAll('.game-link').forEach((link) => link.addEventListener('click', gamesHandler));
-      }
+      //   if (targetLink.closest('.game-link')) {
+      //     store.dispatch(switchTab('games'));
+      //   this.body.querySelectorAll('.game-link').forEach((link) => link.addEventListener('click', gamesHandler));
+      //   }
       if (targetLink.id === 'audiochallenge-link') {
         const audioGame = new AudioChallengeGame();
         audioGame.renderStartScreen();
@@ -82,7 +81,10 @@ export default class AppView {
       const targetLink = e.target as HTMLLinkElement;
       const targetBtn = e.target as HTMLButtonElement;
       const targetSpan = e.target as HTMLSpanElement;
+      const targetImg = e.target as HTMLImageElement;
       const wordDiv = targetSpan.closest('.textbook__word') as HTMLDivElement;
+      const audiochallengeLink = targetImg.closest('#games-audiochallenge-link');
+      const sprintLink = targetImg.closest('#games-sprint-link');
 
       if (targetLink.id === 'link-create-account') store.dispatch(switchTab('registration'));
       if (targetLink.id === 'link-login') store.dispatch(switchTab('login'));
@@ -168,7 +170,7 @@ export default class AppView {
         store.dispatch(setGroupAndPage({ group, page }));
         store.dispatch(switchTab('sprint'));
       }
-      if (targetBtn.id === 'games-sprint-link') {
+      if (sprintLink) {
         const input = document.querySelector('.games__level-input:checked') as HTMLInputElement;
         const group = +input.value;
         const page = Math.floor(Math.random() * 31);
@@ -176,23 +178,37 @@ export default class AppView {
         store.dispatch(setGroupAndPage({ group, page }));
         store.dispatch(switchTab('sprint'));
       }
-    };
-
-    const gamesHandler = (e: Event) => {
-      const getLevelNumber = () =>
-        +(document.querySelector('input[name="level-select"]:checked') as HTMLInputElement).value;
-      const targetGameLink = e.target;
-      if ((targetGameLink as HTMLElement).closest('.games__audiochallenge-link')) {
+      if (audiochallengeLink) {
+        const getLevelNumber = () =>
+          +(document.querySelector('input[name="level-select"]:checked') as HTMLInputElement).value;
         const audioGame = new AudioChallengeGame(getLevelNumber());
         audioGame.renderStartScreen();
       }
-      if ((targetGameLink as HTMLElement).closest('.games__sprint-link')) {
-        console.warn('GameSprint not implemented');
-      }
     };
+
+    // const gamesHandler = (e: Event) => {
+    //   console.log(e.target);
+    //   const getLevelNumber = () =>
+    //     +(document.querySelector('input[name="level-select"]:checked') as HTMLInputElement).value;
+    //   const targetGameLink = e.target;
+    //   if ((targetGameLink as HTMLElement).closest('.games__audiochallenge-link')) {
+    //     const audioGame = new AudioChallengeGame(getLevelNumber());
+    //     audioGame.renderStartScreen();
+    //   }
+    //   if ((targetGameLink as HTMLElement).closest('.games__sprint-link')) {
+    //     console.warn('GameSprint not implemented');
+    //     // const input = document.querySelector('.games__level-input:checked') as HTMLInputElement;
+    //     const group = getLevelNumber();
+    //     const page = Math.floor(Math.random() * 31);
+    //     store.dispatch(showSprintStat(false));
+    //     store.dispatch(setGroupAndPage({ group, page }));
+    //     store.dispatch(switchTab('sprint'));
+    //   }
+    // };
 
     const sprintHandler = (e: Event) => {
       const targetBtn = e.target as HTMLButtonElement;
+      const targetTd = e.target as HTMLTableCellElement;
       if (targetBtn.id === 'sprint-new-game') sprintController.startGame();
       if (targetBtn.id === 'sprint-answer-true') sprintController.getUserAnswer(true);
       if (targetBtn.id === 'sprint-answer-false') sprintController.getUserAnswer(false);
@@ -202,17 +218,22 @@ export default class AppView {
       if (targetBtn.id === 'close-sprint-game') {
         sprintController.finishGame();
         store.dispatch(showSprintStat(false));
-        store.dispatch(toggleFullscreen());
-        document.exitFullscreen();
+        if (store.getState().sprint.isFullscreen) {
+          store.dispatch(toggleFullscreen());
+          document.exitFullscreen();
+        }
         store.dispatch(switchTab('homepage'));
       }
       if (targetBtn.id === 'back-to-games') {
         sprintController.finishGame();
         store.dispatch(showSprintStat(false));
-        store.dispatch(toggleFullscreen());
-        document.exitFullscreen();
+        if (store.getState().sprint.isFullscreen) {
+          store.dispatch(toggleFullscreen());
+          document.exitFullscreen();
+        }
         store.dispatch(switchTab('games'));
       }
+      if (targetTd.id === 'finish-audio-btn') play(targetTd.lastElementChild as HTMLAudioElement);
     };
 
     const regFormHandler = (e: Event) => {
@@ -242,6 +263,7 @@ export default class AppView {
 
     header.addEventListener('click', headerHandler);
     main.addEventListener('click', mainHandler);
+    // main.addEventListener('click', gamesHandler);
     if (sprint) sprint.addEventListener('click', sprintHandler);
     if (regForm) regForm.addEventListener('submit', regFormHandler);
     if (logForm) logForm.addEventListener('submit', logFormHandler);
