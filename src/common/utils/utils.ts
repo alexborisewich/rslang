@@ -226,3 +226,8 @@ export function getRefreshToken() {
   const { refreshToken } = data;
   return refreshToken;
 }
+
+export function logOut() {
+  localStorage.clear();
+  sessionStorage.clear();
+}

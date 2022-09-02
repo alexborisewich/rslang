@@ -3,8 +3,8 @@ import avatarSVG from '../../../assets/avatar.svg';
 
 export default class Registration {
   createElement() {
-    return `<section class="auth --hidden">
-    <div class="auth__container">
+    return `<section class="auth">
+    <div class="auth__container --hidden">
     <div class="auth__form-wrapper">
         <a href="#" class="auth__close-form">${closeSVG}</a>
         <form class="auth__form form" id="reg-form" action="#" autocomplete="off" novalidate>

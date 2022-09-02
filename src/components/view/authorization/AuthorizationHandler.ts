@@ -21,11 +21,11 @@ export default class AutorizationHandler {
   }
 
   showForm() {
-    setTimeout(() => this.form.closest('.auth')?.classList.remove('--hidden'), 0);
+    setTimeout(() => this.form.closest('.auth__container')?.classList.remove('--hidden'), 0);
   }
 
   hideForm() {
-    this.form.closest('.auth')?.classList.add('--hidden');
+    this.form.closest('.auth__container')?.classList.add('--hidden');
     setTimeout(() => store.dispatch(switchTab('homepage')), 300);
   }
 
@@ -137,11 +137,6 @@ export default class AutorizationHandler {
           // this.hideForm();
         }
       });
-  }
-
-  static logOut() {
-    localStorage.clear();
-    sessionStorage.clear();
   }
 
   setFormMessage(type: string, message: string) {

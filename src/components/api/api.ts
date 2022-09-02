@@ -1,6 +1,5 @@
 import { Registration, StatBackProps } from '../../common/interface/interface';
-import { getJwtToken, getRefreshToken, getUserId } from '../../common/utils/utils';
-import AuthorizationHandler from '../view/authorization/AuthorizationHandler';
+import { getJwtToken, getRefreshToken, getUserId, logOut } from '../../common/utils/utils';
 
 class API {
   baseApi = 'https://rslang-172.herokuapp.com/';
@@ -48,7 +47,7 @@ class API {
         Accept: 'application/json',
       },
     });
-    return response.ok ? response : AuthorizationHandler.logOut();
+    return response.ok ? response : logOut();
   }
 
   async loginUser(body: Registration) {

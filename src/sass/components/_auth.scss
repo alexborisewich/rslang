@@ -9,18 +9,6 @@
   radial-gradient(circle farthest-side at 0 0, #402613 0%, #956340 50%, #402613 100%)
     no-repeat, #211f20;
   cursor: pointer;
-  visibility: visible;
-  opacity: 1;
-  transition: 0.3s ease-in-out;
-
-  &.--hidden {
-    visibility: hidden;
-    opacity: 0;
-
-    &>.auth__container {
-      transform: translateY(0);
-    }
-  }
 
   &__container {
     position: relative;
@@ -31,7 +19,16 @@
     border-radius: 25px;
     box-shadow: 0px 0px 20px 0px #000;
     transform: translateY(-30px);
+    visibility: visible;
+    opacity: 1;
     transition: 0.3s ease-in-out;
+
+
+    &.--hidden {
+      transform: translateY(0);
+      visibility: hidden;
+      opacity: 0;
+    }
   }
 
   &__close-form {

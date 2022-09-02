@@ -11,7 +11,7 @@ import {
   switchDictionaryTab,
 } from '../../store/reducers/dictionary/dictionaryReducer';
 import { switchTab } from '../../store/reducers/app/appReducer';
-import { parseID, play, playAudio } from '../../common/utils/utils';
+import { parseID, play, playAudio, logOut } from '../../common/utils/utils';
 import store from '../../store/store';
 import Header from './layout/Header';
 import Main from './layout/Main';
@@ -30,8 +30,6 @@ export default class AppView {
     const header = this.body.querySelector('.header') as HTMLDivElement;
     const main = this.body.querySelector('.main') as HTMLDivElement;
     const sprint = this.body.querySelector('.sprint') as HTMLDivElement;
-    const regForm = this.body.querySelector('#reg-form') as HTMLFormElement;
-    const logForm = this.body.querySelector('#log-form') as HTMLFormElement;
 
     const headerHandler = (e: Event) => {
       const targetBtn = e.target as HTMLButtonElement;
@@ -48,7 +46,7 @@ export default class AppView {
         authorizationHandler.start();
       }
       if (targetBtn.closest('#logout-btn')) {
-        AuthorizationHandler.logOut();
+        logOut();
         store.dispatch(switchTab('homepage'));
       }
       if (targetLink.id === 'homepage-link') store.dispatch(switchTab('homepage'));
