@@ -1,0 +1,53 @@
+.timer {
+  position: relative;
+  height: 70px;
+  width: 70px;
+
+  &__svg {
+    transform: scaleX(-1);
+  }
+
+  &__circle {
+    fill: none;
+    stroke: none;
+  }
+
+  &__path-expired {
+    stroke-width: 10px;
+    stroke: #a8a8a86d;
+  }
+
+  &__path-remaining {
+    stroke-width: 10px;
+    stroke-linecap: round;
+    transform: rotate(90deg);
+    transform-origin: center;
+    transition: 1s linear all;
+    stroke: currentColor;
+
+    &.green {
+      color: #00b500;
+    }
+
+    &.orange {
+      color: #ffa500;
+    }
+
+    &.red {
+      color: #ff0000;
+    }
+  }
+
+  &__counter {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    color: #FFF;
+    font-size: 20px;
+  }
+}
