@@ -7,7 +7,8 @@ export default class Header {
 
   createElement() {
     const body = document.querySelector('body') as HTMLBodyElement;
-    return `<header class="header">
+    const { isFullscreen } = store.getState().sprint;
+    return `<header class="header ${isFullscreen ? 'hidden' : ''}">
     <div class=" header__container container">
       <a class="header__logo logo" href="#">
       <img class="logo__image" src="/assets/RS_Lang-logos_black.png" />

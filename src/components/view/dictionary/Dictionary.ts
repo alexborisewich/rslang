@@ -56,12 +56,11 @@ export default class Dictionary {
          " id="add-learned">Изучено</button>
          <button class="card__btn-set-learned btn
          ${!this.state.learnedWords.some((word) => word.id === selected.id) ? 'hidden' : ''}
-         
+
          " id="delete-learned">Удалить из изученных</button>
          </div>
         </div>
       </div>
-
       <div class="card-description">
         <h4 class="card__mean card-subtitle">Значение</h3>
           <p>${selected.textMeaning}</p>
@@ -69,7 +68,6 @@ export default class Dictionary {
           <h4 class="card__example card-subtitle">Пример</h3>
             <p>${selected.textExample}</p>
             <p>${selected.textExampleTranslate}</p>
-
       </div>
     </div>
   </div>`;
@@ -121,13 +119,12 @@ export default class Dictionary {
         ${this.state.activeTab === 'complex' ? 'disabled' : ''}>Сложные слова</button>
         </div>
         <button class="textbook__set-btn btn" id="audiochallenge-btn" type="button">Аудиовызов</button>
-        <button class="textbook__set-btn btn" type="button">Спринт</button>
+        <button class="textbook__set-btn btn" id="dictionary-sprint-link" type="button">Спринт</button>
         </div>
         <div class="textbook__words-container">
         <div class="textbook__words">
         ${this.renderWords()}
         </div>
-
       </div>
       <nav class="textbook__pagination">
         <input type="button" class="pagination__btn textbook__btn-prev" id='prev-button'
@@ -142,11 +139,9 @@ export default class Dictionary {
         for="next-button"> >> </label>
       </nav>
       </div>
-
       <div class="textbook__card-container">
       ${this.renderCard()}
       </div>
-
     </div>
   </section>`;
   }

@@ -1,6 +1,9 @@
+import store from '../../../store/store';
+
 export default class Footer {
   createElement() {
-    return `<footer class="footer">
+    const { isFullscreen } = store.getState().sprint;
+    return `<footer class="footer ${isFullscreen ? 'hidden' : ''}">
         <div class="footer__container container">
           <p class="footer__copyright">© 2022 RSLang</p>
           <ul class="footer__team-list">
