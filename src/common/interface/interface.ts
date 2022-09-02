@@ -17,6 +17,7 @@ export interface Dictionary {
 }
 
 export interface Registration {
+  name?: string;
   email: string;
   password: string;
 }
