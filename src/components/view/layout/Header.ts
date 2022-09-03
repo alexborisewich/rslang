@@ -25,15 +25,7 @@ export default class Header {
             <a class="menu__link" id="dictionary-link" href="#">Учебник</a>
           </li>
           <li class="menu__item ${this.appState.activeTab === 'games' ? 'menu__item--active' : ''}">
-            <a class="menu__link submenu-title" id="games-link" href="#">Игры</a>
-            <ul class="submenu__list">
-              <li>
-                <a class="submenu__link" id="audiochallenge-link" href="#">Аудиовызов</a>
-              </li>
-              <li>
-                <a class="submenu__link" id="sprint-link" href="#">Спринт</a>
-              </li>
-            </ul>
+            <a class="menu__link" id="games-link" href="#">Игры</a>
           </li>
           <li class="menu__item ${this.appState.activeTab === 'statistic' ? 'menu__item--active' : ''}">
             <a class="menu__link" id="statistic-link" href="#">Статистика</a>
@@ -48,8 +40,14 @@ export default class Header {
       id="theme-btn" src="assets/8328350.png"/></div>
       ${
         checkUser()
-          ? `<button class="header__auth-btn btn" type="button" id="logout-btn">${logoutSVG}</button>`
-          : `<button class="header__auth-btn btn" type="button" id="login-btn">${loginSVG}</button>`
+          ? `<button class="header__auth-btn btn" type="button" id="logout-btn">
+              <span class="header__auth-text">Выйти</span>
+              ${logoutSVG}
+            </button>`
+          : `<button class="header__auth-btn btn" type="button" id="login-btn">
+              <span class="header__auth-text">Войти</span>
+              ${loginSVG}
+              </button>`
       }
     </div>
   </header>`;
