@@ -1,5 +1,5 @@
 export type UserState = {
-  id: string;
+  userId: string;
   email: string;
   message: string;
   token: string;
@@ -8,4 +8,10 @@ export type UserState = {
   error: { isError: boolean; message: string };
 };
 
-export type LoginResponse = { message: string; id: string; token: string };
+export type LoginResponse = {
+  message: string;
+  token: string;
+  refreshToken: string;
+  userId: string;
+  name: string;
+};

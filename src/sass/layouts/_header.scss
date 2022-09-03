@@ -29,8 +29,10 @@
     &:hover {
       filter: hue-rotate(120deg);
     }
+
     &--active {
       filter: hue-rotate(120deg);
+
       &:hover {
         filter: hue-rotate(-120deg);
       }
@@ -38,6 +40,21 @@
   }
 
   &__auth-btn {
-    background-color: #fd7f34;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    transform: scale(1, 1);
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: transparent;
+      transform: scale(1.2, 1.2);
+    }
+
+    & svg {
+      width: 36px;
+    }
   }
 }

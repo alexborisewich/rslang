@@ -1,4 +1,7 @@
 import store from '../../../store/store';
+import loginSVG from '../../../assets/login.svg';
+import logoutSVG from '../../../assets/logout.svg';
+import { checkUser } from '../../../common/utils/utils';
 
 export default class Header {
   userState = store.getState().user;
@@ -44,10 +47,10 @@ export default class Header {
       ${body.classList.contains('theme--dark') ? 'header__theme-switcher--active' : ''}"
       id="theme-btn" src="assets/8328350.png"/></div>
       ${
-        this.userState.isLoggedOn
-          ? '<button class="header__auth-btn btn" type="button" id="logout-btn">Выйти</button>'
-          : '<button class="header__auth-btn btn" type="button" id="login-btn">Войти</button>'
-      }      
+        checkUser()
+          ? `<button class="header__auth-btn btn" type="button" id="logout-btn">${logoutSVG}</button>`
+          : `<button class="header__auth-btn btn" type="button" id="login-btn">${loginSVG}</button>`
+      }
     </div>
   </header>`;
   }

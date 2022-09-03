@@ -236,7 +236,7 @@ export default class AudioChallengeGame {
       Space: false,
     };
     function handleKeyDown(e: KeyboardEvent) {
-      e.preventDefault();
+      // e.preventDefault();
       const keyPressed = e.code;
       if (keyboardKeys[keyPressed] || keyboardKeys[keyPressed] === undefined) {
         return;
@@ -520,6 +520,8 @@ export default class AudioChallengeGame {
     const footerBtnWrapper = this.container.querySelector('.game__skip-wrapper') as HTMLElement;
     footerBtnWrapper.innerHTML = `
       <button class="game__finish-btn audiogame-btn btn-finish">Показать статистику</button>`;
+    const answerBtns = this.container.querySelectorAll('.btn-answer');
+    disable(answerBtns);
     const finishScreen = this.container.querySelector('.finish') as HTMLElement;
     const finishBtn = this.container.querySelector('.btn-finish') as HTMLElement;
     finishBtn.addEventListener('click', () => finishScreen.classList.remove('--hidden'));

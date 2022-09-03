@@ -11,17 +11,15 @@ import {
   switchDictionaryTab,
 } from '../../store/reducers/dictionary/dictionaryReducer';
 import { switchTab } from '../../store/reducers/app/appReducer';
-import { parseID, play, playAudio } from '../../common/utils/utils';
+import { parseID, play, playAudio, logOut } from '../../common/utils/utils';
 import store from '../../store/store';
-import api from '../api/api';
-import { logIn, logOut } from '../../store/reducers/user/userReducer';
-import { LoginResponse } from '../../common/types/user/types';
 import Header from './layout/Header';
 import Main from './layout/Main';
 import Footer from './layout/Footer';
 import AudioChallengeGame from './mini-games/audioсhallenge/Audiochallenge';
 import sprintController from '../controller/sprint/SprintController';
 import { mute, setGroupAndPage, showSprintStat, toggleFullscreen } from '../../store/reducers/sprint/sprintReducer';
+import AuthorizationHandler from './authorization/AuthorizationHandler';
 
 export default class AppView {
   body = document.querySelector('body') as HTMLBodyElement;
@@ -32,8 +30,6 @@ export default class AppView {
     const header = this.body.querySelector('.header') as HTMLDivElement;
     const main = this.body.querySelector('.main') as HTMLDivElement;
     const sprint = this.body.querySelector('.sprint') as HTMLDivElement;
-    const regForm = this.body.querySelector('#reg-form') as HTMLFormElement;
-    const logForm = this.body.querySelector('#log-form') as HTMLFormElement;
 
     const headerHandler = (e: Event) => {
       const targetBtn = e.target as HTMLButtonElement;
@@ -44,16 +40,19 @@ export default class AppView {
       if (targetBtn) {
         if (store.getState().sprint.isStarted) sprintController.finishGame();
       }
-      if (targetBtn.id === 'login-btn') store.dispatch(switchTab('login'));
-      if (targetBtn.id === 'logout-btn') {
-        store.dispatch(logOut());
+      if (targetBtn.closest('#login-btn')) {
+        store.dispatch(switchTab('login'));
+        const authorizationHandler = new AuthorizationHandler();
+        authorizationHandler.start();
+      }
+      if (targetBtn.closest('#logout-btn')) {
+        logOut();
         store.dispatch(switchTab('homepage'));
       }
       if (targetLink.id === 'homepage-link') store.dispatch(switchTab('homepage'));
       if (targetLink.id === 'dictionary-link') {
         const state = store.getState().dictionary;
         const { group, page } = state;
-
         store.dispatch(switchTab('dictionary'));
         store.dispatch(fetchWords({ group, page }));
       }
@@ -86,9 +85,16 @@ export default class AppView {
       const audiochallengeLink = targetImg.closest('#games-audiochallenge-link');
       const sprintLink = targetImg.closest('#games-sprint-link');
 
-      if (targetLink.id === 'link-create-account') store.dispatch(switchTab('registration'));
-      if (targetLink.id === 'link-login') store.dispatch(switchTab('login'));
-      if (targetLink.id === 'close-form') store.dispatch(switchTab('homepage'));
+      if (targetLink.id === 'link-create-account') {
+        store.dispatch(switchTab('registration'));
+        const authorizationHandler = new AuthorizationHandler();
+        authorizationHandler.start();
+      }
+      if (targetLink.id === 'link-login') {
+        store.dispatch(switchTab('login'));
+        const authorizationHandler = new AuthorizationHandler();
+        authorizationHandler.start();
+      }
       if (wordDiv) store.dispatch(selectWord(wordDiv.id));
       if (targetBtn.classList.contains('textbook__difficulty-btn')) {
         const id = parseID(targetBtn.id);
@@ -137,14 +143,12 @@ export default class AppView {
         const learned = learnedWords.find((word) => word.id === selected);
         if (learned) store.dispatch(deleteLearnedWord(learned));
       }
-
       if (targetBtn.id === 'play-audio-btn') {
         const selected = store.getState().dictionary.selectedWord;
         const words =
           store.getState().dictionary.activeTab === 'all'
             ? store.getState().dictionary.words
             : store.getState().dictionary.complexWords;
-
         const word = words.find((el) => el.id === selected);
         if (word) {
           store.dispatch(changePlayState(true));
@@ -236,37 +240,10 @@ export default class AppView {
       if (targetTd.id === 'finish-audio-btn') play(targetTd.lastElementChild as HTMLAudioElement);
     };
 
-    const regFormHandler = (e: Event) => {
-      e.preventDefault();
-      const email = main.querySelector('#email-input') as HTMLInputElement;
-      const password = main.querySelector('#password-input') as HTMLInputElement;
-      api
-        .createUser({ email: email.value, password: password.value })
-        .then(() => store.dispatch(switchTab('login')))
-        .catch(console.warn);
-    };
-
-    const logFormHandler = (e: Event) => {
-      e.preventDefault();
-      const email = main.querySelector('#email-input') as HTMLInputElement;
-      const password = main.querySelector('#password-input') as HTMLInputElement;
-      api
-        .loginUser({ email: email.value, password: password.value })
-        .then((response) => response.json())
-        .then((data) => {
-          const userData = data as LoginResponse;
-          store.dispatch(logIn(userData));
-        })
-        .then(() => store.dispatch(switchTab('homepage')))
-        .catch(console.warn);
-    };
-
     header.addEventListener('click', headerHandler);
     main.addEventListener('click', mainHandler);
     // main.addEventListener('click', gamesHandler);
     if (sprint) sprint.addEventListener('click', sprintHandler);
-    if (regForm) regForm.addEventListener('submit', regFormHandler);
-    if (logForm) logForm.addEventListener('submit', logFormHandler);
   }
 
   renderHeader() {
