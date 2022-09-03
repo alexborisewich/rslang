@@ -61,7 +61,6 @@ class SprintController {
   }
 
   finishGame() {
-    console.log('game is finished');
     store.dispatch(switchGameStatus(false));
     store.dispatch(showSprintStat(true));
     this.stopTimer(this.interval);
