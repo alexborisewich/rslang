@@ -9,7 +9,12 @@ export default class App {
 
   start() {
     // store.dispatch(fetchWords({ group: this.state.group, page: this.state.page }));
+
     this.view.renderApp();
-    store.subscribe(() => this.view.renderApp());
+    store.subscribe(() => {
+      localStorage.setItem('userState', JSON.stringify(store.getState().user));
+      this.view.renderApp();
+      console.log(localStorage.getItem('userState'));
+    });
   }
 }

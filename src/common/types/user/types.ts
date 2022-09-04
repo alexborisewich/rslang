@@ -9,10 +9,12 @@ export type UserState = {
     complexWords: Dictionary[];
     learnedWords: Dictionary[];
     audiochallenge: {
+      finished: number;
       maxScore: number;
       correctCount: number;
     };
     sprint: {
+      finished: number;
       maxScore: number;
       correctCount: number;
     };
