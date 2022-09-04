@@ -8,6 +8,18 @@ const initialState: UserState = {
   email: '',
   message: '',
   token: '',
+  statistic: {
+    complexWords: [],
+    learnedWords: [],
+    audiochallenge: {
+      maxScore: 0,
+      correctCount: 0,
+    },
+    sprint: {
+      maxScore: 0,
+      correctCount: 0,
+    },
+  },
   isLoggedOn: false,
   isLoading: false,
   error: { isError: false, message: '' },
