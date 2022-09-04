@@ -20,6 +20,7 @@ import AudioChallengeGame from './mini-games/audioсhallenge/Audiochallenge';
 import sprintController from '../controller/sprint/SprintController';
 import { mute, setGroupAndPage, showSprintStat, toggleFullscreen } from '../../store/reducers/sprint/sprintReducer';
 import AuthorizationHandler from './authorization/AuthorizationHandler';
+import { addComplex, deleteComplex, logOut as logout } from '../../store/reducers/user/userReducer';
 import sunSVG from '../../assets/sun.svg';
 import moonSVG from '../../assets/moon.svg';
 
@@ -38,10 +39,11 @@ export default class AppView {
       const targetLink = e.target as HTMLLinkElement;
       const targetImg = e.target as HTMLImageElement;
 
-      if (targetBtn) if (store.getState().sprint.isStarted) sprintController.finishGame();
-      if (targetBtn) {
+      if (targetBtn && targetBtn.id !== 'theme-btn') {
+        console.log(targetBtn);
         if (store.getState().sprint.isStarted) sprintController.finishGame();
       }
+
       if (targetBtn.closest('#login-btn')) {
         store.dispatch(switchTab('login'));
         const authorizationHandler = new AuthorizationHandler();
@@ -49,6 +51,7 @@ export default class AppView {
       }
       if (targetBtn.closest('#logout-btn')) {
         logOut();
+        store.dispatch(logout());
         store.dispatch(switchTab('homepage'));
       }
       if (targetLink.id === 'homepage-link') store.dispatch(switchTab('homepage'));
@@ -115,12 +118,14 @@ export default class AppView {
         const { words } = store.getState().dictionary;
         const complex = words.find((word) => word.id === selected);
         if (complex) store.dispatch(addComplexWord(complex));
+        if (complex) store.dispatch(addComplex(complex));
       }
       if (targetBtn.id === 'delete-complex') {
         const selected = store.getState().dictionary.selectedWord;
         const { complexWords } = store.getState().dictionary;
         const complex = complexWords.find((word) => word.id === selected);
         if (complex) store.dispatch(deleteComplexWord(complex));
+        if (complex) store.dispatch(deleteComplex(complex));
       }
       if (targetBtn.id === 'add-learned') {
         const selected = store.getState().dictionary.selectedWord;

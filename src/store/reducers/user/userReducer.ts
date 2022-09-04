@@ -1,7 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Dictionary } from '../../../common/interface/interface';
 // import { Dictionary, Registration } from '../../../common/interface/interface';
 import { LoginResponse, UserState } from '../../../common/types/user/types';
 // import api from '../../../components/api/api';
+
+const storedUser = localStorage.getItem('userState');
+let userState: UserState | null = null;
+if (storedUser) userState = JSON.parse(storedUser) as UserState;
 
 const initialState: UserState = {
   userId: '',
@@ -12,10 +17,12 @@ const initialState: UserState = {
     complexWords: [],
     learnedWords: [],
     audiochallenge: {
+      finished: 0,
       maxScore: 0,
       correctCount: 0,
     },
     sprint: {
+      finished: 0,
       maxScore: 0,
       correctCount: 0,
     },
@@ -72,7 +79,7 @@ const initialState: UserState = {
 
 const userSlice = createSlice({
   name: 'user',
-  initialState,
+  initialState: userState || initialState,
   reducers: {
     logIn(state, action: PayloadAction<LoginResponse>) {
       state.isLoggedOn = true;
@@ -84,10 +91,21 @@ const userSlice = createSlice({
       state.email = initialState.email;
       state.error = initialState.error;
       state.userId = initialState.userId;
+      state.statistic = initialState.statistic;
       state.isLoading = initialState.isLoading;
       state.isLoggedOn = initialState.isLoggedOn;
       state.message = initialState.message;
       state.token = initialState.token;
+      localStorage.clear();
+    },
+    addComplex(state, action: PayloadAction<Dictionary>) {
+      state.statistic.complexWords.push(action.payload);
+    },
+    deleteComplex(state, action: PayloadAction<Dictionary>) {
+      state.statistic.complexWords = state.statistic.complexWords.filter((word) => word.id !== action.payload.id);
+    },
+    addLearned(state, action: PayloadAction<Dictionary>) {
+      state.statistic.learnedWords.push(action.payload);
     },
   },
   // extraReducers: (builder) => {
@@ -127,4 +145,4 @@ const userSlice = createSlice({
 });
 
 export default userSlice.reducer;
-export const { logIn, logOut } = userSlice.actions;
+export const { logIn, logOut, addComplex, deleteComplex, addLearned } = userSlice.actions;
