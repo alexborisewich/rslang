@@ -1,3 +1,5 @@
+import homeSVG from '../../../assets/promo-image-new.svg';
+
 export default class Homepage {
   createElement() {
     return `<section class="homepage">
@@ -11,14 +13,14 @@ export default class Homepage {
           <p class="homepage__text">
             В учебнике мы собрали более 3000 самых используемых слов, а миниигры помогут закрепить материал.
           </p>
-          <button class="homepage__btn btn">
+          <button class="homepage__home-btn">
             Смотреть
           </button>
         </div>
 
       </div>
       <div class="homepage__img-container">
-        <img class="homepage__img-promo" src="./assets/promo-image-new.svg" />
+        ${homeSVG}
       </div>
     </div>
   </section>`;

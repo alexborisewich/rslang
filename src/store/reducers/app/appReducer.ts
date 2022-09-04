@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppState, Tabs } from '../../../common/types/app/types';
 
-const initialState: AppState = { activeTab: Tabs.AUDIOCHALLENGE };
+const initialState: AppState = { activeTab: Tabs.HOMEPAGE };
 
 const appSlice = createSlice({
   name: 'app',

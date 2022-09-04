@@ -11,7 +11,7 @@ export default class Team {
         <a class="teammate__github" target="_blank" href="https://github.com/Axe11er">Github</a>
         <p class="teammate__role">Teamlead</p>
         <p class="teammate__description">Основной вклад: реализация словаря,
-        реализация авторизации, работа с Redux, стилизация приложения</p>
+        реализация статистики, работа с Redux, стилизация приложения</p>
       </div>
       <div class="team__teammate teammate">
         <div class="teammate__photo-container">
@@ -20,9 +20,8 @@ export default class Team {
         <p class="teammate__name">Aliaksei Barysewich</p>
         <a class="teammate__github" target="_blank" href="https://github.com/alexborisewich">Github</a>
         <p class="teammate__role">Developer</p>
-        <p class="teammate__description">Основной вклад: помощь с организацией работы над проектом,
-        создание базовой верстки и стилей для приложения,
-        реализация игры Аудиовызов, работа со статистикой</p>
+        <p class="teammate__description">Основной вклад: помощь с организацией работы над проектом, деплой сервера,
+        создание верстки и стилей для приложения, реализация игры Аудиовызов, реализация авторизации</p>
       </div>
       <div class="team__teammate teammate">
         <div class="teammate__photo-container">

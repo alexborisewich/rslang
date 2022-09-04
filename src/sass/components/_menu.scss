@@ -1,38 +1,93 @@
 .menu {
   &__list {
     display: flex;
-    gap: 20px;
+
+    &>*:not(:last-child) {
+      border-right: 2px solid #ffffff6a;
+    }
   }
 
   &__item {
     color: $menu-item-color;
     transition: all 0.1s linear;
-    padding: 3px;
-    &--active > a {
-      color: $active-menu-item-color;
-      text-shadow: 2px 2px black;
-    }
-  }
+    text-align: center;
+    padding: 5px 20px;
 
-  &__item:hover > .submenu__list {
-    visibility: visible;
-    opacity: 1;
+      &--active > a {
+        color: rgb(255, 214, 175);
+        text-shadow: 0px 1px 3px rgba(0, 0, 0, 1);
+      }
+
+      &--active > a::before {
+        background-color: rgb(255, 214, 175);
+        opacity: 1;
+        visibility: visible;
+        width: 50%;
+        transform: translateX(100%);
+      }
+
+      &--active > a::after {
+        background-color: rgb(255, 214, 175);
+        opacity: 1;
+        visibility: visible;
+        width: 50%;
+        transform: translateX(-100%);
+      }
   }
 
   &__link {
-    transition: all 0.1s linear;
-    &:hover {
-      color: $active-menu-item-color;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    text-shadow: 0px 3px 5px rgba(0, 0, 0, 1);
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: 0.06em;
+    transition: all 0.3s;
+
+    &::before {
+      content: '';
+      opacity: 0;
+      visibility: hidden;
+      width: 20px;
+      height: 3px;
+      background-color: #fff;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      transition: all 0.5s;
     }
-  }
-}
 
-.submenu__list {
-  margin-top: 5px;
-}
+    &::after {
+      content: '';
+      opacity: 0;
+      visibility: hidden;
+      width: 20px;
+      height: 3px;
+      background-color: #fff;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      transition: all 0.5s;
+    }
 
-.submenu__link {
-  &:hover {
-    color: $active-menu-item-color;
+
+      &:hover {
+        color: rgb(255, 214, 175);
+        &::before {
+          opacity: 1;
+          visibility: visible;
+          width: 50%;
+          transform: translateX(100%);
+        }
+        &::after {
+          opacity: 1;
+          visibility: visible;
+          width: 50%;
+          transform: translateX(-100%);
+        }
+      }
   }
 }

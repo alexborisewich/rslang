@@ -3,40 +3,37 @@
   height: 100%;
 
   &__container {
+    padding-top: 10px;
     display: flex;
-    align-items: center;
     flex-grow: 1;
-    justify-content: space-between;
-  }
-
-  &__header {
-    position: relative;
+    row-gap: 5%;
+    justify-content: space-evenly;
   }
 
   &__title {
-  }
-
-  &__set-level {
+    text-align: center;
   }
 
   &__level-list {
-    padding: 15px 0;
     display: flex;
-    flex-flow: wrap;
-    gap: 5px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
     transition: 0.3s ease-in-out;
-  }
-
-  &__set-level:hover ~ &__level-list {
-    opacity: 1;
-    visibility: visible;
+    gap: 5% 10px;
   }
 
   &__level-item {
+    display: flex;
+    justify-content:center;
+    align-items: center;
     cursor: pointer;
     user-select: none;
     border-radius: 10px;
     padding: 5px;
+    min-height: 40%;
+    min-width: 30%;
+    max-width: 30%;
+    flex-grow: 1;
 
     &--a1 {
       background-color: $a1-level-color;
@@ -66,10 +63,21 @@
     opacity: 0.7;
   }
 
-  &__set-btn {
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
   }
 
-  &__minigames-link {
+  &__user-buttons,
+  &__games-buttons {
+    display: flex;
+    min-width: 50%;
+    justify-content: space-evenly;
+  }
+
+  &__set-btn {
+    min-width: 40%;
   }
 
   &__body {
@@ -77,25 +85,20 @@
     flex-grow: 1;
   }
 
-  &__words-wrapper {
-    display: flex;
-  }
-
-  &__subtitle {
-  }
-
-  &__words {
-    padding-top: 50px;
-    display: flex;
-    flex-flow: wrap;
-    gap: 10px;
-    max-width: 600px;
-  }
-
   &__link {
   }
 
+  &__words {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-evenly;
+    align-content: space-evenly;
+    gap: 1% 1%;
+    flex-grow: 1;
+  }
+
   &__word {
+    background-color: rgba(255, 255, 255, 0.621);
     transition: all 0.1s linear;
     cursor: pointer;
     border-radius: 5px;
@@ -103,6 +106,14 @@
     flex-flow: column;
     padding: 5px;
     user-select: none;
+    min-height: 19%;
+    min-width: 24%;
+    max-width: 24%;
+
+    &>:last-child {
+      font-size: 10px;
+      word-wrap: wrap;
+    }
 
     &--group-0 {
       border: 2px solid $a1-level-color;
@@ -147,6 +158,7 @@
       color: initial;
     }
   }
+
   &__word:hover{
     opacity: 0.8;
   }
@@ -156,7 +168,6 @@
 
   &__pagination {
     display: flex;
-    margin-top: auto;
     gap: 10px;
     justify-content: center;
     align-items: center;
@@ -208,29 +219,21 @@
     }
   }
 
-  &__words-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-
   &__card-container {
+    max-width: 35%;
+    min-width: 35%;
+    min-height: 100%;
   }
 
   &__workspace {
     display: flex;
+    justify-content: space-evenly;
     flex-flow: column;
-    max-width: 600px;
-    min-height: 550px;
+    max-width: 60%;
+    min-height: 100%;
   }
 
-  &__buttons {
-    display: flex;
-    gap: 5px;
-  }
 
-  &__user-buttons {
-    display: flex;
-    gap: 5px;
-  }
+
+
 }

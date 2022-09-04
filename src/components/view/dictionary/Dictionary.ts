@@ -78,7 +78,6 @@ export default class Dictionary {
     <div class="textbook__container container">
       <div class="textbook__workspace">
         <h2 class="textbook__title title">Выберите уровень</h2>
-        <a class="textbook__set-level"></a>
         <ul class="textbook__level-list">
           <li class="textbook__level-item textbook__level-item--a1">
             <span class="textbook__difficulty-btn" id="group-0">
@@ -118,14 +117,14 @@ export default class Dictionary {
         <button class="textbook__set-btn btn" type="button" id="complex-words-btn"
         ${this.state.activeTab === 'complex' ? 'disabled' : ''}>Сложные слова</button>
         </div>
+        <div class="textbook__games-buttons">
         <button class="textbook__set-btn btn" id="audiochallenge-btn" type="button">Аудиовызов</button>
         <button class="textbook__set-btn btn" id="dictionary-sprint-link" type="button">Спринт</button>
         </div>
-        <div class="textbook__words-container">
+        </div>
         <div class="textbook__words">
         ${this.renderWords()}
         </div>
-      </div>
       <nav class="textbook__pagination">
         <input type="button" class="pagination__btn textbook__btn-prev" id='prev-button'
         ${this.state.page === 0 ? 'disabled' : ''}/> <label class="textbook__btn-prev-label

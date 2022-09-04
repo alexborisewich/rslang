@@ -104,13 +104,13 @@ const sprintSlice = createSlice({
         state.streak += 1;
         state.score += 20;
         state.maxStreak = Math.max(state.maxStreak, state.streak);
-        audio.src = '../../../assets/music/correct.mp3';
+        audio.src = './assets/correct.mp3';
         if (!state.isMuted) audio.play();
         if (state.roundState.question) state.correct.push(state.roundState.question);
         // if (action.payload) state.words = state.words.filter((word) => word.id !== state.roundState.answer?.id);
       } else {
         state.streak = 0;
-        audio.src = '../../../assets/music/error.mp3';
+        audio.src = './assets/error.mp3';
         if (!state.isMuted) audio.play();
         if (state.roundState.question) state.wrong.push(state.roundState.question);
       }

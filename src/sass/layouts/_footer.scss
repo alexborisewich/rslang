@@ -1,7 +1,7 @@
 .footer {
-  background-color: $color-primary;
+  background: radial-gradient(circle, #fd9534 0%, #fd7f34 50%, #fd6334 100%);
+  color: #fff;
   height: 40px;
-  margin-top: auto;
 
   &__container {
     display: flex;
@@ -22,10 +22,10 @@
   &__team-item {}
 
   &__team-link {
-    transition: all 0.1s linear;
+    transition: all 0.3s;
 
     &:hover {
-      color: ghostwhite;
+      color: rgb(255, 214, 175);
     }
   }
 

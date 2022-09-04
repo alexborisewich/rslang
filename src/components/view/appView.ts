@@ -20,6 +20,8 @@ import AudioChallengeGame from './mini-games/audioсhallenge/Audiochallenge';
 import sprintController from '../controller/sprint/SprintController';
 import { mute, setGroupAndPage, showSprintStat, toggleFullscreen } from '../../store/reducers/sprint/sprintReducer';
 import AuthorizationHandler from './authorization/AuthorizationHandler';
+import sunSVG from '../../assets/sun.svg';
+import moonSVG from '../../assets/moon.svg';
 
 export default class AppView {
   body = document.querySelector('body') as HTMLBodyElement;
@@ -56,23 +58,15 @@ export default class AppView {
         store.dispatch(switchTab('dictionary'));
         store.dispatch(fetchWords({ group, page }));
       }
-      //   if (targetLink.closest('.game-link')) {
-      //     store.dispatch(switchTab('games'));
-      //   this.body.querySelectorAll('.game-link').forEach((link) => link.addEventListener('click', gamesHandler));
-      //   }
-      if (targetLink.id === 'audiochallenge-link') {
-        const audioGame = new AudioChallengeGame();
-        audioGame.renderStartScreen();
-      }
-
       if (targetLink.id === 'games-link') store.dispatch(switchTab('games'));
-      if (targetLink.id === 'sprint-link') store.dispatch(switchTab('sprint'));
       if (targetLink.id === 'statistic-link') store.dispatch(switchTab('statistic'));
       if (targetLink.id === 'team-link') store.dispatch(switchTab('team'));
-      if (targetImg.id === 'theme-btn') {
+      if (targetImg.closest('.theme-btn')) {
         this.body.classList.toggle('theme--light');
         this.body.classList.toggle('theme--dark');
-        targetImg.classList.toggle('header__theme-switcher--active');
+        (targetImg.closest('.theme-btn') as HTMLElement).innerHTML = this.body.classList.contains('theme--light')
+          ? sunSVG
+          : moonSVG;
       }
     };
 
@@ -188,27 +182,13 @@ export default class AppView {
         const audioGame = new AudioChallengeGame(getLevelNumber());
         audioGame.renderStartScreen();
       }
+      if (targetLink.closest('#dot-stat')) {
+        const statToggleDots = document.querySelectorAll('#dot-stat');
+        statToggleDots.forEach((el) => el.classList.toggle('--active'));
+        const statViews = document.querySelectorAll('#stat-view');
+        statViews.forEach((el) => el.classList.toggle('--hidden'));
+      }
     };
-
-    // const gamesHandler = (e: Event) => {
-    //   console.log(e.target);
-    //   const getLevelNumber = () =>
-    //     +(document.querySelector('input[name="level-select"]:checked') as HTMLInputElement).value;
-    //   const targetGameLink = e.target;
-    //   if ((targetGameLink as HTMLElement).closest('.games__audiochallenge-link')) {
-    //     const audioGame = new AudioChallengeGame(getLevelNumber());
-    //     audioGame.renderStartScreen();
-    //   }
-    //   if ((targetGameLink as HTMLElement).closest('.games__sprint-link')) {
-    //     console.warn('GameSprint not implemented');
-    //     // const input = document.querySelector('.games__level-input:checked') as HTMLInputElement;
-    //     const group = getLevelNumber();
-    //     const page = Math.floor(Math.random() * 31);
-    //     store.dispatch(showSprintStat(false));
-    //     store.dispatch(setGroupAndPage({ group, page }));
-    //     store.dispatch(switchTab('sprint'));
-    //   }
-    // };
 
     const sprintHandler = (e: Event) => {
       const targetBtn = e.target as HTMLButtonElement;
@@ -242,7 +222,6 @@ export default class AppView {
 
     header.addEventListener('click', headerHandler);
     main.addEventListener('click', mainHandler);
-    // main.addEventListener('click', gamesHandler);
     if (sprint) sprint.addEventListener('click', sprintHandler);
   }
 
