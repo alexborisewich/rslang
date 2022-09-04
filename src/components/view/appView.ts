@@ -1,10 +1,6 @@
 import {
-  addComplexWord,
-  addLearnedWord,
   changePage,
   changePlayState,
-  deleteComplexWord,
-  deleteLearnedWord,
   fetchWords,
   selectDifficulty,
   selectWord,
@@ -20,7 +16,13 @@ import AudioChallengeGame from './mini-games/audioсhallenge/Audiochallenge';
 import sprintController from '../controller/sprint/SprintController';
 import { mute, setGroupAndPage, showSprintStat, toggleFullscreen } from '../../store/reducers/sprint/sprintReducer';
 import AuthorizationHandler from './authorization/AuthorizationHandler';
-import { addComplex, deleteComplex, logOut as logout } from '../../store/reducers/user/userReducer';
+import {
+  addComplex,
+  addLearned,
+  deleteComplex,
+  deleteLearned,
+  logOut as logout,
+} from '../../store/reducers/user/userReducer';
 
 export default class AppView {
   body = document.querySelector('body') as HTMLBodyElement;
@@ -123,14 +125,15 @@ export default class AppView {
         const selected = store.getState().dictionary.selectedWord;
         const { words } = store.getState().dictionary;
         const complex = words.find((word) => word.id === selected);
-        if (complex) store.dispatch(addComplexWord(complex));
-        if (complex) store.dispatch(addComplex(complex));
+        if (complex) {
+          store.dispatch(addComplex(complex));
+          store.dispatch(deleteLearned(complex));
+        }
       }
       if (targetBtn.id === 'delete-complex') {
         const selected = store.getState().dictionary.selectedWord;
-        const { complexWords } = store.getState().dictionary;
+        const { complexWords } = store.getState().user.statistic;
         const complex = complexWords.find((word) => word.id === selected);
-        if (complex) store.dispatch(deleteComplexWord(complex));
         if (complex) store.dispatch(deleteComplex(complex));
       }
       if (targetBtn.id === 'add-learned') {
@@ -138,15 +141,18 @@ export default class AppView {
         const words =
           store.getState().dictionary.activeTab === 'all'
             ? store.getState().dictionary.words
-            : store.getState().dictionary.complexWords;
+            : store.getState().user.statistic.complexWords;
         const learned = words.find((word) => word.id === selected);
-        if (learned) store.dispatch(addLearnedWord(learned));
+        if (learned) {
+          store.dispatch(addLearned(learned));
+          store.dispatch(deleteComplex(learned));
+        }
       }
       if (targetBtn.id === 'delete-learned') {
         const selected = store.getState().dictionary.selectedWord;
-        const { learnedWords } = store.getState().dictionary;
+        const { learnedWords } = store.getState().user.statistic;
         const learned = learnedWords.find((word) => word.id === selected);
-        if (learned) store.dispatch(deleteLearnedWord(learned));
+        if (learned) store.dispatch(deleteLearned(learned));
       }
       if (targetBtn.id === 'play-audio-btn') {
         const selected = store.getState().dictionary.selectedWord;
