@@ -9,7 +9,6 @@ export default class App {
     store.subscribe(() => {
       localStorage.setItem('userState', JSON.stringify(store.getState().user));
       this.view.renderApp();
-      //   console.log(localStorage.getItem('userState'));
     });
   }
 }
