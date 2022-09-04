@@ -29,7 +29,7 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       inject: 'body',
-      // favicon: './src/assets/favicon/favicon.ico',
+      favicon: './src/assets/favicon/favicon.ico',
       title: 'RSLang',
       template: path.resolve(__dirname, 'src/index.html'),
     }),
