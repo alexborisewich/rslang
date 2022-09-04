@@ -1,11 +1,15 @@
 .theme {
 
   &--light {
-    background: linear-gradient(to right, #ffefba, #ffffff);
+    background: url(../assets/noise_transparent.png) 0% 0%/125px repeat,
+    radial-gradient(circle farthest-side at 0 0, #f4be81 0%, #ffffff 50%, #f4be81 100%)
+      no-repeat, #353233;
   }
 
   &--dark {
-    background: #0c1445;
+    background: url(../assets/noise_transparent.png) 0% 0%/125px repeat,
+    radial-gradient(circle farthest-side at 0 0, #050926 0%, #0c1445 50%, #050926 100%)
+      no-repeat, #353233;
 
     & > header {
       filter: invert(100%);

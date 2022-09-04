@@ -182,6 +182,13 @@ export default class AppView {
         const audioGame = new AudioChallengeGame(getLevelNumber());
         audioGame.renderStartScreen();
       }
+      console.log(targetLink);
+      if (targetLink.closest('#dot-stat')) {
+        const statToggleDots = document.querySelectorAll('#dot-stat');
+        statToggleDots.forEach((el) => el.classList.toggle('--active'));
+        const statViews = document.querySelectorAll('#stat-view');
+        statViews.forEach((el) => el.classList.toggle('--hidden'));
+      }
     };
 
     const sprintHandler = (e: Event) => {
