@@ -5,8 +5,8 @@ import { LoginResponse, UserState } from '../../../common/types/user/types';
 // import api from '../../../components/api/api';
 
 const storedUser = localStorage.getItem('userState');
-let userState: UserState | null = null;
-if (storedUser) userState = JSON.parse(storedUser) as UserState;
+let storedState: UserState | null = null;
+if (storedUser) storedState = JSON.parse(storedUser) as UserState;
 
 const initialState: UserState = {
   userId: '',
@@ -32,54 +32,12 @@ const initialState: UserState = {
   error: { isError: false, message: '' },
 };
 
-// export const login = createAsyncThunk<LoginResponse, Registration, { rejectValue: string }>(
-//   'user/login',
-//   async (body, { rejectWithValue }) => {
-//     try {
-//       const response: Response = await api.loginUser(body);
-//       if (!response.ok) throw new Error('fetch error');
-//       const data = (await response.json()) as LoginResponse;
-//       return data;
-//     } catch (error) {
-//       const err = error as Error;
-//       return rejectWithValue(err.message);
-//     }
-//   }
-// );
-
-// export const register = createAsyncThunk<{ id: string; email: string }, Registration, { rejectValue: string }>(
-//   'user/register',
-//   async (body, { rejectWithValue }) => {
-//     try {
-//       const response = await api.createUser(body);
-//       if (!response.ok) throw new Error('fetch error');
-//       const data = (await response.json()) as { id: string; email: string };
-//       return data;
-//     } catch (error) {
-//       const err = error as Error;
-//       return rejectWithValue(err.message);
-//     }
-//   }
-// );
-
-// export const fetchUserWord = createAsyncThunk<Dictionary, { rejectValue: string }>(
-//   'user/fetchUserWord',
-//   async (_, { rejectWithValue }) => {
-//     try {
-//       const response = await api.getUserWord();
-//       if (!response.ok) throw new Error('fetch error');
-//       const data = (await response.json()) as Dictionary;
-//       return data;
-//     } catch (error) {
-//       const err = error as Error;
-//       return rejectWithValue(err.message);
-//     }
-//   }
-// );
+export const sendStat = () => {};
+export const getStat = () => {};
 
 const userSlice = createSlice({
   name: 'user',
-  initialState: userState || initialState,
+  initialState: storedState || initialState,
   reducers: {
     logIn(state, action: PayloadAction<LoginResponse>) {
       state.isLoggedOn = true;
@@ -107,42 +65,11 @@ const userSlice = createSlice({
     addLearned(state, action: PayloadAction<Dictionary>) {
       state.statistic.learnedWords.push(action.payload);
     },
+    deleteLearned(state, action: PayloadAction<Dictionary>) {
+      state.statistic.learnedWords = state.statistic.learnedWords.filter((word) => word.id !== action.payload.id);
+    },
   },
-  // extraReducers: (builder) => {
-  //   // builder.addCase(register.pending, (state) => {});
-  //   builder
-  //     .addCase(login.pending, (state) => {
-  //       state.error.isError = false;
-  //       state.error.message = '';
-  //       state.isLoading = true;
-  //     })
-  //     .addCase(login.fulfilled, (state) => {
-  //       state.isLoading = false;
-  //       state.isLoggedOn = true;
-  //       // state.userId = action.payload;
-  //     })
-  //     .addCase(login.rejected, (state, action) => {
-  //       state.error.isError = true;
-  //       if (action.payload) state.error.message = action.payload;
-  //     })
-  //     .addCase(register.pending, (state) => {
-  //       state.error.isError = false;
-  //       state.error.message = '';
-  //       state.isLoading = true;
-  //     })
-  //     .addCase(register.fulfilled, (state, action) => {
-  //       if (action.payload) {
-  //         state.id = action.payload.id;
-  //         state.email = action.payload.email;
-  //       }
-  //     })
-  //     .addCase(register.rejected, (state) => {
-  //       state.error.isError = false;
-  //       state.error.message = '';
-  //       state.isLoading = true;
-  //     });
-  // },
 });
 
 export default userSlice.reducer;
-export const { logIn, logOut, addComplex, deleteComplex, addLearned } = userSlice.actions;
+export const { logIn, logOut, addComplex, deleteComplex, addLearned, deleteLearned } = userSlice.actions;
