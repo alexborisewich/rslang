@@ -1,24 +1,11 @@
-import { Dictionary } from '../../interface/interface';
+import { Statistic } from '../../interface/interface';
 
 export type UserState = {
   userId: string;
   email: string;
   message: string;
   token: string;
-  statistic: {
-    complexWords: Dictionary[];
-    learnedWords: Dictionary[];
-    audiochallenge: {
-      finished: number;
-      maxScore: number;
-      correctCount: number;
-    };
-    sprint: {
-      finished: number;
-      maxScore: number;
-      correctCount: number;
-    };
-  };
+  statistic: Statistic;
   isLoggedOn: boolean;
   isLoading: boolean;
   error: { isError: boolean; message: string };

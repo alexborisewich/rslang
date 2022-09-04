@@ -5,18 +5,30 @@ export default class Dictionary {
 
   userState = store.getState().user;
 
-  words = this.dictionaryState.activeTab === 'all' ? this.dictionaryState.words : this.userState.statistic.complexWords;
+  words =
+    this.dictionaryState.activeTab === 'all'
+      ? this.dictionaryState.words
+      : this.userState.statistic.optional.words.complexWords;
 
   private renderWords() {
+    console.log(this.userState);
     return this.words
       .map((word) => {
         return `<div class="textbook__word
         ${word.id === this.dictionaryState.selectedWord ? 'textbook__word--active' : ''}
-        ${this.userState.statistic.complexWords.some((el) => el.id === word.id) ? 'textbook__word--complex' : ''}
-        ${this.userState.statistic.learnedWords.some((el) => el.id === word.id) ? 'textbook__word--learned' : ''}
         ${
-          this.userState.statistic.complexWords.some((el) => el.id === word.id) &&
-          this.userState.statistic.learnedWords.some((el) => el.id === word.id)
+          this.userState.statistic.optional.words.complexWords.some((el) => el.id === word.id)
+            ? 'textbook__word--complex'
+            : ''
+        }
+        ${
+          this.userState.statistic.optional.words.learnedWords.some((el) => el.id === word.id)
+            ? 'textbook__word--learned'
+            : ''
+        }
+        ${
+          this.userState.statistic.optional.words.complexWords.some((el) => el.id === word.id) &&
+          this.userState.statistic.optional.words.learnedWords.some((el) => el.id === word.id)
             ? 'textbook__word--complex-and-learned'
             : ''
         }
@@ -44,16 +56,20 @@ export default class Dictionary {
          ${this.dictionaryState.isPlaying ? 'disabled' : ''}>Воспроизвести</button>
          <div class="card__user-buttons ${this.userState.isLoggedOn ? '' : 'hidden'}">
          <button class="card__btn-set-complex btn
-         ${this.userState.statistic.complexWords.some((word) => word.id === selected.id) ? 'hidden' : ''}
+         ${this.userState.statistic.optional.words.complexWords.some((word) => word.id === selected.id) ? 'hidden' : ''}
          " id="add-complex">Добавить в сложные</button>
          <button class="card__btn-set-complex btn
-         ${!this.userState.statistic.complexWords.some((word) => word.id === selected.id) ? 'hidden' : ''}
+         ${
+           !this.userState.statistic.optional.words.complexWords.some((word) => word.id === selected.id) ? 'hidden' : ''
+         }
          " id="delete-complex">Удалить из сложных</button>
          <button class="card__btn-set-learned btn
-         ${this.userState.statistic.learnedWords.some((word) => word.id === selected.id) ? 'hidden' : ''}
+         ${this.userState.statistic.optional.words.learnedWords.some((word) => word.id === selected.id) ? 'hidden' : ''}
          " id="add-learned">Изучено</button>
          <button class="card__btn-set-learned btn
-         ${!this.userState.statistic.learnedWords.some((word) => word.id === selected.id) ? 'hidden' : ''}
+         ${
+           !this.userState.statistic.optional.words.learnedWords.some((word) => word.id === selected.id) ? 'hidden' : ''
+         }
 
          " id="delete-learned">Удалить из изученных</button>
          </div>

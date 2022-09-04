@@ -22,6 +22,7 @@ import {
   deleteComplex,
   deleteLearned,
   logOut as logout,
+  sendStat,
 } from '../../store/reducers/user/userReducer';
 
 export default class AppView {
@@ -40,7 +41,6 @@ export default class AppView {
       const targetImg = e.target as HTMLImageElement;
 
       if (targetBtn && targetBtn.id !== 'theme-btn') {
-        console.log(targetBtn);
         if (store.getState().sprint.isStarted) sprintController.finishGame();
       }
 
@@ -128,31 +128,43 @@ export default class AppView {
         if (complex) {
           store.dispatch(addComplex(complex));
           store.dispatch(deleteLearned(complex));
+          const { userId, token, statistic } = store.getState().user;
+          store.dispatch(sendStat({ userId, token, statistic }));
         }
       }
       if (targetBtn.id === 'delete-complex') {
         const selected = store.getState().dictionary.selectedWord;
-        const { complexWords } = store.getState().user.statistic;
+        const { complexWords } = store.getState().user.statistic.optional.words;
         const complex = complexWords.find((word) => word.id === selected);
-        if (complex) store.dispatch(deleteComplex(complex));
+        if (complex) {
+          store.dispatch(deleteComplex(complex));
+          const { userId, token, statistic } = store.getState().user;
+          store.dispatch(sendStat({ userId, token, statistic }));
+        }
       }
       if (targetBtn.id === 'add-learned') {
         const selected = store.getState().dictionary.selectedWord;
         const words =
           store.getState().dictionary.activeTab === 'all'
             ? store.getState().dictionary.words
-            : store.getState().user.statistic.complexWords;
+            : store.getState().user.statistic.optional.words.complexWords;
         const learned = words.find((word) => word.id === selected);
         if (learned) {
           store.dispatch(addLearned(learned));
           store.dispatch(deleteComplex(learned));
+          const { userId, token, statistic } = store.getState().user;
+          store.dispatch(sendStat({ userId, token, statistic }));
         }
       }
       if (targetBtn.id === 'delete-learned') {
         const selected = store.getState().dictionary.selectedWord;
-        const { learnedWords } = store.getState().user.statistic;
+        const { learnedWords } = store.getState().user.statistic.optional.words;
         const learned = learnedWords.find((word) => word.id === selected);
-        if (learned) store.dispatch(deleteLearned(learned));
+        if (learned) {
+          store.dispatch(deleteLearned(learned));
+          const { userId, token, statistic } = store.getState().user;
+          store.dispatch(sendStat({ userId, token, statistic }));
+        }
       }
       if (targetBtn.id === 'play-audio-btn') {
         const selected = store.getState().dictionary.selectedWord;
