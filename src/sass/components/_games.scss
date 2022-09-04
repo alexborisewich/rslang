@@ -80,6 +80,7 @@
   align-items: center;
   justify-content: center;
   margin: 5px;
+  box-shadow: 0px 8px 5px 3px rgba(8, 9, 9, 0.2);
 
   &__title {
     background-color: antiquewhite;
@@ -108,8 +109,4 @@
     background-color: rgba(191, 84, 38, 0.3);
     //border: solid 1px darkslategray;
   }
-}
-.game-link:focus{
-  border: solid 1px darkcyan;
-  border-radius: 5px;
 }

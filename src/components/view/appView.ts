@@ -182,7 +182,6 @@ export default class AppView {
         const audioGame = new AudioChallengeGame(getLevelNumber());
         audioGame.renderStartScreen();
       }
-      console.log(targetLink);
       if (targetLink.closest('#dot-stat')) {
         const statToggleDots = document.querySelectorAll('#dot-stat');
         statToggleDots.forEach((el) => el.classList.toggle('--active'));
