@@ -11,7 +11,7 @@ export default class Team {
         <a class="teammate__github" target="_blank" href="https://github.com/Axe11er">Github</a>
         <p class="teammate__role">Teamlead</p>
         <p class="teammate__description">Основной вклад: реализация словаря,
-        реализация статистики, работа с Redux, стилизация приложения</p>
+        реализация статистики, работа с Redux, стилизация приложения, помощь в реализации игры Спринт</p>
       </div>
       <div class="team__teammate teammate">
         <div class="teammate__photo-container">

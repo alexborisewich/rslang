@@ -42,10 +42,9 @@ export default class AppView {
       const targetLink = e.target as HTMLLinkElement;
       const targetImg = e.target as HTMLImageElement;
 
-      if (targetBtn && targetBtn.id !== 'theme-btn') {
+      if (targetBtn && !targetBtn.closest('svg')) {
         if (store.getState().sprint.isStarted) sprintController.finishGame();
       }
-
 
       if (targetBtn.closest('#login-btn')) {
         store.dispatch(switchTab('login'));
