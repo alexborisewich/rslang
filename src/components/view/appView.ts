@@ -20,6 +20,8 @@ import AudioChallengeGame from './mini-games/audioсhallenge/Audiochallenge';
 import sprintController from '../controller/sprint/SprintController';
 import { mute, setGroupAndPage, showSprintStat, toggleFullscreen } from '../../store/reducers/sprint/sprintReducer';
 import AuthorizationHandler from './authorization/AuthorizationHandler';
+import sunSVG from '../../assets/sun.svg';
+import moonSVG from '../../assets/moon.svg';
 
 export default class AppView {
   body = document.querySelector('body') as HTMLBodyElement;
@@ -59,10 +61,12 @@ export default class AppView {
       if (targetLink.id === 'games-link') store.dispatch(switchTab('games'));
       if (targetLink.id === 'statistic-link') store.dispatch(switchTab('statistic'));
       if (targetLink.id === 'team-link') store.dispatch(switchTab('team'));
-      if (targetImg.id === 'theme-btn') {
+      if (targetImg.closest('.theme-btn')) {
         this.body.classList.toggle('theme--light');
         this.body.classList.toggle('theme--dark');
-        targetImg.classList.toggle('header__theme-switcher--active');
+        (targetImg.closest('.theme-btn') as HTMLElement).innerHTML = this.body.classList.contains('theme--light')
+          ? sunSVG
+          : moonSVG;
       }
     };
 

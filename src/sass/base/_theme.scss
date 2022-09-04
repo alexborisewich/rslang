@@ -1,11 +1,23 @@
 .theme {
+
   &--light {
-    background-color: white;
+    background: linear-gradient(to right, #ffefba, #ffffff);
   }
+
   &--dark {
     background: #0c1445;
+
+    & > header {
+      filter: invert(100%);
+    }
+
     & > main {
       color: white;
     }
+
+    & > footer {
+      filter: invert(100%);
+    }
   }
 }
+
