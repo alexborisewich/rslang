@@ -37,7 +37,6 @@ export default class AudioChallengeGame {
 
   page: number;
 
-  //   container = document.querySelector('section > .container') as HTMLElement;
   container = document.querySelector('.main') as HTMLDivElement;
 
   api = api;
@@ -84,7 +83,6 @@ export default class AudioChallengeGame {
   }
 
   renderStartScreen() {
-    // this.container.classList.add('audiochallenge');
     this.container.innerHTML = '';
     this.container.innerHTML = `
     <section class="audiochallenge container">
@@ -348,16 +346,21 @@ export default class AudioChallengeGame {
   }
 
   async setData() {
-    if (!this.words || this.current === this.words.length) {
-      if (this.words && this.current === this.words.length && this.page === 0) this.timer.stop();
-      if (!this.words || (this.words && this.current === this.words.length && this.page !== 0)) {
+    if (!this.words) this.words = await this.getData(this.page);
+
+    if (this.current === this.words.length) {
+      if (this.page === 0) {
+        this.timer.stop();
+        this.isEnded = !this.isEnded;
+      }
+      if (this.page !== 0) {
+        this.page -= 1;
         this.words = await this.getData(this.page);
-        this.page = this.page === 0 ? this.page : (this.page -= 1);
         this.current = 0;
       }
     }
-    const { wordTranslate, audio } = this.words[this.current];
     if (this.isEnded) return;
+    const { wordTranslate, audio } = this.words[this.current];
     this.renderGameBody();
     setTimeout(() => play(new Audio(this.api.baseApi + audio)), 500);
     const answers: string[] = [];
@@ -384,7 +387,7 @@ export default class AudioChallengeGame {
     const notAnswerBtn = this.container.querySelector('.btn-not-answer') as HTMLButtonElement;
     const nextBtn = this.container.querySelector('.btn-next') as HTMLButtonElement;
     if (userAnswer === wordTranslate) {
-      this.questions[this.current].correctAnswer = 1;
+      this.questions[this.questions.length - 1].correctAnswer = 1;
       this.streakCounter += 1;
       if (this.streakCounter > this.maxStreak) this.maxStreak = this.streakCounter;
       this.streakHundler();
@@ -398,7 +401,7 @@ export default class AudioChallengeGame {
       this.showCorrectAnswer();
       this.attemptCounter -= 1;
       this.streakCounter = 0;
-      this.questions[this.current].correctAnswer = 0;
+      this.questions[this.questions.length - 1].correctAnswer = 0;
       playSound('wrong');
       (target as HTMLElement).classList.add('--wrong');
       disable(answerBtns);
@@ -420,7 +423,7 @@ export default class AudioChallengeGame {
     }
     this.attemptCounter -= 1;
     this.streakCounter = 0;
-    this.questions[this.current].correctAnswer = 0;
+    this.questions[this.questions.length - 1].correctAnswer = 0;
     this.attemptHandler();
     this.showCorrectAnswer();
   }
