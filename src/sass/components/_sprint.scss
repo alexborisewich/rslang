@@ -270,7 +270,11 @@
     transform: translateY(-30px);
     transition: 0.3s ease-in-out;
     padding: 25px;
-    overflow: scroll;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+        width: 0;
+      }
+    
 
     &--hidden {
       transform: translateY(0);
