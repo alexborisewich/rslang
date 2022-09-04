@@ -46,6 +46,7 @@ export default class AppView {
         if (store.getState().sprint.isStarted) sprintController.finishGame();
       }
 
+
       if (targetBtn.closest('#login-btn')) {
         store.dispatch(switchTab('login'));
         const authorizationHandler = new AuthorizationHandler();
@@ -53,6 +54,7 @@ export default class AppView {
       }
       if (targetBtn.closest('#logout-btn')) {
         logOut();
+        store.dispatch(logout());
         store.dispatch(logout());
         store.dispatch(switchTab('homepage'));
       }

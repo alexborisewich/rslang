@@ -10,7 +10,13 @@ export default class Dictionary {
       ? this.dictionaryState.words
       : this.userState.statistic.optional.words.complexWords;
 
+  words =
+    this.dictionaryState.activeTab === 'all'
+      ? this.dictionaryState.words
+      : this.userState.statistic.optional.words.complexWords;
+
   private renderWords() {
+    console.log(this.userState);
     console.log(this.userState);
     return this.words
       .map((word) => {
