@@ -86,7 +86,6 @@ class SprintController {
   };
 
   toggleFullscreen(container: HTMLBodyElement) {
-    // store.dispatch(toggleFullscreen());
     if (!document.fullscreenElement) {
       container.requestFullscreen();
     } else {
