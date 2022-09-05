@@ -84,6 +84,7 @@ export default class AppView {
       const wordDiv = targetSpan.closest('.textbook__word') as HTMLDivElement;
       const audiochallengeLink = targetImg.closest('#games-audiochallenge-link');
       const sprintLink = targetImg.closest('#games-sprint-link');
+      const difficultyBtn = targetBtn.closest('.textbook__level-item');
 
       if (targetLink.id === 'link-create-account') {
         store.dispatch(switchTab('registration'));
@@ -96,8 +97,8 @@ export default class AppView {
         authorizationHandler.start();
       }
       if (wordDiv) store.dispatch(selectWord(wordDiv.id));
-      if (targetBtn.classList.contains('textbook__difficulty-btn')) {
-        const id = parseID(targetBtn.id);
+      if (difficultyBtn) {
+        const id = parseID(difficultyBtn.id);
         store.dispatch(changePage(0));
         store.dispatch(selectDifficulty(id));
         store.dispatch(selectWord(''));

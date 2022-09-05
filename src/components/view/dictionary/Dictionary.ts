@@ -92,33 +92,33 @@ export default class Dictionary {
       <div class="textbook__workspace">
         <h2 class="textbook__title title">Выберите уровень</h2>
         <ul class="textbook__level-list">
-          <li class="textbook__level-item textbook__level-item--a1">
-            <span class="textbook__difficulty-btn" id="group-0">
+          <li class="textbook__level-item textbook__level-item--a1" id="group-0">
+            <span class="textbook__difficulty-btn">
               Elementary A1
             </span>
           </li>
-          <li class="textbook__level-item textbook__level-item--a2">
-            <span class="textbook__difficulty-btn" id="group-1">
+          <li class="textbook__level-item textbook__level-item--a2" id="group-1">
+            <span class="textbook__difficulty-btn">
               Pre-Intermediate A2
             </span>
           </li>
-          <li class="textbook__level-item textbook__level-item--b1">
-            <span class="textbook__difficulty-btn" id="group-2">
+          <li class="textbook__level-item textbook__level-item--b1" id="group-2">
+            <span class="textbook__difficulty-btn">
               Intermediate B1
             </span>
           </li>
-          <li class="textbook__level-item textbook__level-item--b2">
-            <span class="textbook__difficulty-btn" id="group-3">
+          <li class="textbook__level-item textbook__level-item--b2" id="group-3">
+            <span class="textbook__difficulty-btn">
               Upper-Intermediate B2
             </span>
           </li>
-          <li class="textbook__level-item textbook__level-item--c1">
-            <span class="textbook__difficulty-btn" id="group-4">
+          <li class="textbook__level-item textbook__level-item--c1" id="group-4">
+            <span class="textbook__difficulty-btn">
               Advanced C1
             </span>
           </li>
-          <li class="textbook__level-item textbook__level-item--c2">
-            <span class="textbook__difficulty-btn" id="group-5">
+          <li class="textbook__level-item textbook__level-item--c2" id="group-5">
+            <span class="textbook__difficulty-btn">
               Proficiency C2
             </span>
           </li>
