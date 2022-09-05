@@ -2,7 +2,7 @@
   padding: 25px;
   color: #a8704e;
 
-  &>*:not(:last-child) {
+  & > *:not(:last-child) {
     margin-bottom: 10px;
   }
 
@@ -44,7 +44,7 @@
   }
 
   &__input-list {
-    &>*:not(:last-child) {
+    & > *:not(:last-child) {
       margin-bottom: 10px;
     }
   }
@@ -133,15 +133,15 @@
   font-family: Arial;
   color: #ffffff;
   font-size: 15px;
-  padding: 8px 20px ;
+  padding: 8px 20px;
 
   &.btn-download {
     max-width: 100%;
   }
 
   &:hover {
-  background: #fd7f34;
-  background-image: linear-gradient(to bottom, #fd7f34, #af5623);
+    background: #fd7f34;
+    background-image: linear-gradient(to bottom, #fd7f34, #af5623);
   }
 
   &:active {

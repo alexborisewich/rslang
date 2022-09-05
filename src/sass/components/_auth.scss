@@ -6,8 +6,7 @@
   width: 100%;
   height: 100%;
   background: url(../assets/noise_transparent.png) 0% 0%/125px repeat,
-  radial-gradient(circle farthest-side at 0 0, #402613 0%, #956340 50%, #402613 100%)
-    no-repeat, #211f20;
+    radial-gradient(circle farthest-side at 0 0, #402613 0%, #956340 50%, #402613 100%) no-repeat, #211f20;
   cursor: pointer;
 
   &__container {
@@ -22,7 +21,6 @@
     visibility: visible;
     opacity: 1;
     transition: 0.3s ease-in-out;
-
 
     &.--hidden {
       visibility: hidden;

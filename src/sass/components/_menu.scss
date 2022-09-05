@@ -2,7 +2,7 @@
   &__list {
     display: flex;
 
-    &>*:not(:last-child) {
+    & > *:not(:last-child) {
       border-right: 2px solid #ffffff6a;
     }
   }
@@ -13,26 +13,26 @@
     text-align: center;
     padding: 5px 20px;
 
-      &--active > a {
-        color: rgb(255, 214, 175);
-        text-shadow: 0px 1px 3px rgba(0, 0, 0, 1);
-      }
+    &--active > a {
+      color: rgb(255, 214, 175);
+      text-shadow: 0px 1px 3px rgba(0, 0, 0, 1);
+    }
 
-      &--active > a::before {
-        background-color: rgb(255, 214, 175);
-        opacity: 1;
-        visibility: visible;
-        width: 50%;
-        transform: translateX(100%);
-      }
+    &--active > a::before {
+      background-color: rgb(255, 214, 175);
+      opacity: 1;
+      visibility: visible;
+      width: 50%;
+      transform: translateX(100%);
+    }
 
-      &--active > a::after {
-        background-color: rgb(255, 214, 175);
-        opacity: 1;
-        visibility: visible;
-        width: 50%;
-        transform: translateX(-100%);
-      }
+    &--active > a::after {
+      background-color: rgb(255, 214, 175);
+      opacity: 1;
+      visibility: visible;
+      width: 50%;
+      transform: translateX(-100%);
+    }
   }
 
   &__link {
@@ -73,21 +73,20 @@
       transition: all 0.5s;
     }
 
-
-      &:hover {
-        color: rgb(255, 214, 175);
-        &::before {
-          opacity: 1;
-          visibility: visible;
-          width: 50%;
-          transform: translateX(100%);
-        }
-        &::after {
-          opacity: 1;
-          visibility: visible;
-          width: 50%;
-          transform: translateX(-100%);
-        }
+    &:hover {
+      color: rgb(255, 214, 175);
+      &::before {
+        opacity: 1;
+        visibility: visible;
+        width: 50%;
+        transform: translateX(100%);
       }
+      &::after {
+        opacity: 1;
+        visibility: visible;
+        width: 50%;
+        transform: translateX(-100%);
+      }
+    }
   }
 }

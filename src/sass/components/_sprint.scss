@@ -259,9 +259,8 @@
     padding: 25px;
     overflow-y: scroll;
     &::-webkit-scrollbar {
-        width: 0;
-      }
-    
+      width: 0;
+    }
 
     &--hidden {
       transform: translateY(0);
@@ -317,7 +316,7 @@
     cursor: pointer;
     transition: 0.5s ease;
   }
-  &__finish-audio-btn:hover{
+  &__finish-audio-btn:hover {
     opacity: 0.7;
   }
 }

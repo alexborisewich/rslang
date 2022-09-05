@@ -12,14 +12,16 @@
     height: 100px;
   }
 
-  &__copyright {}
+  &__copyright {
+  }
 
   &__team-list {
     display: flex;
     gap: 20px;
   }
 
-  &__team-item {}
+  &__team-item {
+  }
 
   &__team-link {
     transition: all 0.3s;
