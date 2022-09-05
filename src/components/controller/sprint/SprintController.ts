@@ -9,12 +9,13 @@ import {
   switchGameStatus,
   toggleFullscreen,
 } from '../../../store/reducers/sprint/sprintReducer';
+import { sendStat } from '../../../store/reducers/user/userReducer';
 import store from '../../../store/store';
 
 class SprintController {
-  state = store.getState().sprint;
+  sprintState = store.getState().sprint;
 
-  time = this.state.time;
+  time = this.sprintState.time;
 
   interval = 0;
 
@@ -52,7 +53,7 @@ class SprintController {
 
   stopTimer(id: number) {
     clearInterval(id);
-    this.time = this.state.time;
+    this.time = this.sprintState.time;
   }
 
   getUserAnswer(answer: boolean) {
@@ -64,6 +65,26 @@ class SprintController {
     store.dispatch(switchGameStatus(false));
     store.dispatch(showSprintStat(true));
     this.stopTimer(this.interval);
+
+    const { userId, token, statistic, isLoggedOn } = store.getState().user;
+    const { correct, score } = store.getState().sprint;
+
+    if (isLoggedOn) {
+      const stat = {
+        ...statistic,
+        optional: {
+          ...statistic.optional,
+          sprint: {
+            ...statistic.optional.sprint,
+            finished: statistic.optional.sprint.finished + 1,
+            totalScore: statistic.optional.sprint.totalScore + score,
+            totalCorrect: +statistic.optional.sprint.totalCorrect + correct.length,
+          },
+        },
+      };
+
+      store.dispatch(sendStat({ userId, token, statistic: stat }));
+    }
   }
 
   backToGames() {
@@ -86,7 +107,6 @@ class SprintController {
   };
 
   toggleFullscreen(container: HTMLBodyElement) {
-    // store.dispatch(toggleFullscreen());
     if (!document.fullscreenElement) {
       container.requestFullscreen();
     } else {

@@ -1,4 +1,4 @@
-import { Registration, StatBackProps } from '../../common/interface/interface';
+import { Registration, Statistic } from '../../common/interface/interface';
 import { getJwtToken, getRefreshToken, getUserId, logOut } from '../../common/utils/utils';
 
 class API {
@@ -99,8 +99,8 @@ class API {
     return response;
   }
 
-  async setStatistic(statistic: StatBackProps) {
-    await fetch(`${this.baseApi}users/${getUserId()}/statistics`, {
+  async setStatistic(statistic: Statistic) {
+    const response = await fetch(`${this.baseApi}users/${getUserId()}/statistics`, {
       method: 'PUT',
       headers: {
         Authorization: `Bearer ${getJwtToken()}`,
@@ -109,6 +109,31 @@ class API {
       },
       body: JSON.stringify(statistic),
     });
+    return response;
+  }
+
+  async getUserStat(userId: string, token: string) {
+    const response = await fetch(`${this.baseApi}users/${userId}/statistics`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: 'application/json',
+      },
+    });
+    return response;
+  }
+
+  async setUserStat(userId: string, token: string, statistic: Statistic) {
+    const response = await fetch(`${this.baseApi}users/${userId}/statistics`, {
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(statistic),
+    });
+    return response;
   }
 }
 

@@ -36,7 +36,9 @@ export default class Header {
           </li>
         </ul>
       </nav>
-      <button class="header__theme-btn theme-btn">${body.classList.contains('theme--dark') ? moonSVG : sunSVG}</button>
+      <button class="header__theme-btn theme-btn" id="theme-btn">${
+        body.classList.contains('theme--dark') ? moonSVG : sunSVG
+      }</button>
       ${
         checkUser()
           ? `<button class="header__auth-btn btn" type="button" id="logout-btn">

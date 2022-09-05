@@ -1,6 +1,7 @@
 import { Registration } from '../../../common/interface/interface';
 import { LoginResponse } from '../../../common/types/user/types';
 import { switchTab } from '../../../store/reducers/app/appReducer';
+import { getStat, logIn } from '../../../store/reducers/user/userReducer';
 import store from '../../../store/store';
 import api from '../../api/api';
 
@@ -129,6 +130,8 @@ export default class AutorizationHandler {
       .then((data) => {
         if (data !== undefined) {
           const userData = data as unknown as LoginResponse;
+          store.dispatch(logIn(userData));
+          store.dispatch(switchTab('homepage'));
           if ((this.form.loginKeep as HTMLInputElement).checked) {
             localStorage.setItem('user', JSON.stringify(userData));
           } else {
@@ -136,6 +139,10 @@ export default class AutorizationHandler {
           }
           // this.hideForm();
         }
+      })
+      .then(() => {
+        const { userId, token } = store.getState().user;
+        store.dispatch(getStat({ userId, token }));
       });
   }
 

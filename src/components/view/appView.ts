@@ -1,10 +1,6 @@
 import {
-  addComplexWord,
-  addLearnedWord,
   changePage,
   changePlayState,
-  deleteComplexWord,
-  deleteLearnedWord,
   fetchWords,
   selectDifficulty,
   selectWord,
@@ -20,6 +16,14 @@ import AudioChallengeGame from './mini-games/audioсhallenge/Audiochallenge';
 import sprintController from '../controller/sprint/SprintController';
 import { mute, setGroupAndPage, showSprintStat, toggleFullscreen } from '../../store/reducers/sprint/sprintReducer';
 import AuthorizationHandler from './authorization/AuthorizationHandler';
+import {
+  addComplex,
+  addLearned,
+  deleteComplex,
+  deleteLearned,
+  logOut as logout,
+  sendStat,
+} from '../../store/reducers/user/userReducer';
 import sunSVG from '../../assets/sun.svg';
 import moonSVG from '../../assets/moon.svg';
 
@@ -38,10 +42,10 @@ export default class AppView {
       const targetLink = e.target as HTMLLinkElement;
       const targetImg = e.target as HTMLImageElement;
 
-      if (targetBtn) if (store.getState().sprint.isStarted) sprintController.finishGame();
-      if (targetBtn) {
+      if (targetBtn && !targetBtn.closest('svg')) {
         if (store.getState().sprint.isStarted) sprintController.finishGame();
       }
+
       if (targetBtn.closest('#login-btn')) {
         store.dispatch(switchTab('login'));
         const authorizationHandler = new AuthorizationHandler();
@@ -49,6 +53,8 @@ export default class AppView {
       }
       if (targetBtn.closest('#logout-btn')) {
         logOut();
+        store.dispatch(logout());
+        store.dispatch(logout());
         store.dispatch(switchTab('homepage'));
       }
       if (targetLink.id === 'homepage-link') store.dispatch(switchTab('homepage'));
@@ -78,6 +84,7 @@ export default class AppView {
       const wordDiv = targetSpan.closest('.textbook__word') as HTMLDivElement;
       const audiochallengeLink = targetImg.closest('#games-audiochallenge-link');
       const sprintLink = targetImg.closest('#games-sprint-link');
+      const difficultyBtn = targetBtn.closest('.textbook__level-item');
 
       if (targetLink.id === 'link-create-account') {
         store.dispatch(switchTab('registration'));
@@ -90,8 +97,8 @@ export default class AppView {
         authorizationHandler.start();
       }
       if (wordDiv) store.dispatch(selectWord(wordDiv.id));
-      if (targetBtn.classList.contains('textbook__difficulty-btn')) {
-        const id = parseID(targetBtn.id);
+      if (difficultyBtn) {
+        const id = parseID(difficultyBtn.id);
         store.dispatch(changePage(0));
         store.dispatch(selectDifficulty(id));
         store.dispatch(selectWord(''));
@@ -114,35 +121,53 @@ export default class AppView {
         const selected = store.getState().dictionary.selectedWord;
         const { words } = store.getState().dictionary;
         const complex = words.find((word) => word.id === selected);
-        if (complex) store.dispatch(addComplexWord(complex));
+        if (complex) {
+          store.dispatch(addComplex(complex));
+          store.dispatch(deleteLearned(complex));
+          const { userId, token, statistic } = store.getState().user;
+          store.dispatch(sendStat({ userId, token, statistic }));
+        }
       }
       if (targetBtn.id === 'delete-complex') {
         const selected = store.getState().dictionary.selectedWord;
-        const { complexWords } = store.getState().dictionary;
+        const { complexWords } = store.getState().user.statistic.optional.words;
         const complex = complexWords.find((word) => word.id === selected);
-        if (complex) store.dispatch(deleteComplexWord(complex));
+        if (complex) {
+          store.dispatch(deleteComplex(complex));
+          const { userId, token, statistic } = store.getState().user;
+          store.dispatch(sendStat({ userId, token, statistic }));
+        }
       }
       if (targetBtn.id === 'add-learned') {
         const selected = store.getState().dictionary.selectedWord;
         const words =
           store.getState().dictionary.activeTab === 'all'
             ? store.getState().dictionary.words
-            : store.getState().dictionary.complexWords;
+            : store.getState().user.statistic.optional.words.complexWords;
         const learned = words.find((word) => word.id === selected);
-        if (learned) store.dispatch(addLearnedWord(learned));
+        if (learned) {
+          store.dispatch(addLearned(learned));
+          store.dispatch(deleteComplex(learned));
+          const { userId, token, statistic } = store.getState().user;
+          store.dispatch(sendStat({ userId, token, statistic }));
+        }
       }
       if (targetBtn.id === 'delete-learned') {
         const selected = store.getState().dictionary.selectedWord;
-        const { learnedWords } = store.getState().dictionary;
+        const { learnedWords } = store.getState().user.statistic.optional.words;
         const learned = learnedWords.find((word) => word.id === selected);
-        if (learned) store.dispatch(deleteLearnedWord(learned));
+        if (learned) {
+          store.dispatch(deleteLearned(learned));
+          const { userId, token, statistic } = store.getState().user;
+          store.dispatch(sendStat({ userId, token, statistic }));
+        }
       }
       if (targetBtn.id === 'play-audio-btn') {
         const selected = store.getState().dictionary.selectedWord;
         const words =
           store.getState().dictionary.activeTab === 'all'
             ? store.getState().dictionary.words
-            : store.getState().dictionary.complexWords;
+            : store.getState().user.statistic.optional.words.complexWords;
         const word = words.find((el) => el.id === selected);
         if (word) {
           store.dispatch(changePlayState(true));
@@ -171,7 +196,7 @@ export default class AppView {
       if (sprintLink) {
         const input = document.querySelector('.games__level-input:checked') as HTMLInputElement;
         const group = +input.value;
-        const page = Math.floor(Math.random() * 31);
+        const page = Math.floor(Math.random() * 30);
         store.dispatch(showSprintStat(false));
         store.dispatch(setGroupAndPage({ group, page }));
         store.dispatch(switchTab('sprint'));

@@ -35,6 +35,22 @@ export interface StatProps {
   sprint: StatisticDailyProps[];
 }
 
-export interface StatBackProps {
-  statistics: StatProps;
+export interface Statistic {
+  learnedWords: number;
+  optional: {
+    words: {
+      complexWords: Dictionary[];
+      learnedWords: Dictionary[];
+    };
+    audiochallenge: {
+      finished: number;
+      totalScore: number;
+      totalCorrect: number;
+    };
+    sprint: {
+      finished: number;
+      totalScore: number;
+      totalCorrect: number;
+    };
+  };
 }

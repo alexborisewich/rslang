@@ -18,8 +18,9 @@
   }
 
   &__level-item {
-    display: flex;
-    justify-content: center;
+    // display: flex;
+    // justify-content: center;
+    // justify-content: flex-start;
     min-height: 20px;
     margin-bottom: 8px;
     cursor: pointer;
@@ -51,10 +52,13 @@
   }
 
   &__level-input {
-    display: none;
+    // display: none;
   }
 
   &__level-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     padding:10px;
     cursor: pointer;
     width: 100%;
