@@ -167,7 +167,7 @@ export default class AppView {
         const words =
           store.getState().dictionary.activeTab === 'all'
             ? store.getState().dictionary.words
-            : store.getState().dictionary.complexWords;
+            : store.getState().user.statistic.optional.words.complexWords;
         const word = words.find((el) => el.id === selected);
         if (word) {
           store.dispatch(changePlayState(true));
