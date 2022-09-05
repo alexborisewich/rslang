@@ -14,6 +14,7 @@ export default class Header {
   createElement() {
     const body = document.querySelector('body') as HTMLBodyElement;
     const { isFullscreen } = store.getState().sprint;
+    const { isLoggedOn } = store.getState().user;
     return `<header class="header ${isFullscreen ? 'hidden' : ''}">
     <div class=" header__container container">
       <a class="header__logo" href="#">${logoSVG}</a>
@@ -28,7 +29,10 @@ export default class Header {
           <li class="menu__item ${this.appState.activeTab === 'games' ? 'menu__item--active' : ''}">
             <a class="menu__link" id="games-link" href="#">Игры</a>
           </li>
-          <li class="menu__item ${this.appState.activeTab === 'statistic' ? 'menu__item--active' : ''}">
+          <li class="menu__item
+          ${this.appState.activeTab === 'statistic' ? 'menu__item--active' : ''}
+          ${isLoggedOn ? '' : 'hidden'}
+          ">
             <a class="menu__link" id="statistic-link" href="#">Статистика</a>
           </li>
           <li class="menu__item ${this.appState.activeTab === 'team' ? 'menu__item--active' : ''}">
