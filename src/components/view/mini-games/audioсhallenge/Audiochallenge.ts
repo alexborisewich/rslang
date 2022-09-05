@@ -234,7 +234,6 @@ export default class AudioChallengeGame {
       Space: false,
     };
     function handleKeyDown(e: KeyboardEvent) {
-      // e.preventDefault();
       const keyPressed = e.code;
       if (keyboardKeys[keyPressed] || keyboardKeys[keyPressed] === undefined) {
         return;

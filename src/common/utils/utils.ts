@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/prefer-default-export
 import timerSVG from '../../assets/timer.svg';
 import bgSound from '../../assets/bg.mp3';
 import { LoginResponse } from '../types/user/types';

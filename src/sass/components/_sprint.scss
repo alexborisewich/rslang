@@ -1,9 +1,4 @@
 .sprint {
-  //display: none;
-
-  //   flex-grow: 1;
-  //   background-image: url(../assets/sprint/background-sprint-game.jpg);
-
   width: 100%;
   height: 100%;
   color: black !important;
@@ -69,7 +64,6 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    // margin: 0 auto;
     background: radial-gradient(
       circle,
       rgba(60, 132, 127, 0.8830882694874825) 0%,
@@ -182,12 +176,10 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 15px;
-    // width: 380px;
   }
 
   &__sound-btn {
     display: inline-block;
-    // visibility: hidden;
     padding: 5px;
     border: none;
     border-radius: 5px;
@@ -199,7 +191,6 @@
     cursor: pointer;
     text-align: center;
     transition: background 250ms ease-in-out, transform 150ms ease;
-    //background-color: turquoise;
   }
   &__sound-btn:hover {
     opacity: 0.8;
@@ -207,7 +198,6 @@
 
   &__screen-btn {
     display: inline-block;
-    // visibility: hidden;
     padding: 5px;
     border: none;
     border-radius: 5px;
@@ -219,7 +209,6 @@
     cursor: pointer;
     text-align: center;
     transition: background 250ms ease-in-out, transform 150ms ease;
-    //background-color: turquoise;
   }
   &__screen-btn:hover {
     opacity: 0.8;
@@ -238,13 +227,11 @@
     cursor: pointer;
     text-align: center;
     transition: background 250ms ease-in-out, transform 150ms ease;
-    //background-color: turquoise;
   }
   &__close-btn:hover {
     opacity: 0.8;
   }
   &__finish {
-    // display: none;
     display: flex;
     position: absolute;
     z-index: 2;
