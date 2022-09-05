@@ -18,13 +18,13 @@ const initialState: UserState = {
       words: { complexWords: [], learnedWords: [] },
       audiochallenge: {
         finished: 0,
-        maxScore: 0,
-        correctCount: 0,
+        totalScore: 0,
+        totalCorrect: 0,
       },
       sprint: {
         finished: 0,
-        maxScore: 0,
-        correctCount: 0,
+        totalScore: 0,
+        totalCorrect: 0,
       },
     },
   },

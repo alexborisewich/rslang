@@ -44,13 +44,13 @@ export interface Statistic {
     };
     audiochallenge: {
       finished: number;
-      maxScore: number;
-      correctCount: number;
+      totalScore: number;
+      totalCorrect: number;
     };
     sprint: {
       finished: number;
-      maxScore: number;
-      correctCount: number;
+      totalScore: number;
+      totalCorrect: number;
     };
   };
 }

@@ -196,7 +196,7 @@ export default class AppView {
       if (sprintLink) {
         const input = document.querySelector('.games__level-input:checked') as HTMLInputElement;
         const group = +input.value;
-        const page = Math.floor(Math.random() * 31);
+        const page = Math.floor(Math.random() * 30);
         store.dispatch(showSprintStat(false));
         store.dispatch(setGroupAndPage({ group, page }));
         store.dispatch(switchTab('sprint'));
