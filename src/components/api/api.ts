@@ -112,6 +112,17 @@ class API {
     return response;
   }
 
+  async getUserStat(userId: string, token: string) {
+    const response = await fetch(`${this.baseApi}users/${userId}/statistics`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: 'application/json',
+      },
+    });
+    return response;
+  }
+
   async setUserStat(userId: string, token: string, statistic: Statistic) {
     const response = await fetch(`${this.baseApi}users/${userId}/statistics`, {
       method: 'PUT',

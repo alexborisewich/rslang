@@ -48,7 +48,20 @@ export const sendStat = createAsyncThunk<
     return rejectWithValue(err.message);
   }
 });
-export const getStat = () => {};
+export const getStat = createAsyncThunk<Statistic, { userId: string; token: string }, { rejectValue: string }>(
+  'user/getStat',
+  async ({ userId, token }, { rejectWithValue }) => {
+    try {
+      const response = await api.getUserStat(userId, token);
+      if (!response) throw new Error('fetch error');
+      const data = (await response.json()) as Statistic;
+      return data;
+    } catch (error) {
+      const err = error as Error;
+      return rejectWithValue(err.message);
+    }
+  }
+);
 
 const userSlice = createSlice({
   name: 'user',
@@ -105,6 +118,21 @@ const userSlice = createSlice({
         state.statistic.optional = action.payload.optional;
       })
       .addCase(sendStat.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error.isError = true;
+        if (action.payload) state.error.message = action.payload;
+      })
+      .addCase(getStat.pending, (state) => {
+        state.isLoading = true;
+        state.error.isError = false;
+        state.error.message = '';
+      })
+      .addCase(getStat.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.statistic.learnedWords = action.payload.learnedWords;
+        state.statistic.optional = action.payload.optional;
+      })
+      .addCase(getStat.rejected, (state, action) => {
         state.isLoading = false;
         state.error.isError = true;
         if (action.payload) state.error.message = action.payload;

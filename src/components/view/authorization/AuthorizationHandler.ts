@@ -1,7 +1,7 @@
 import { Registration } from '../../../common/interface/interface';
 import { LoginResponse } from '../../../common/types/user/types';
 import { switchTab } from '../../../store/reducers/app/appReducer';
-import { logIn } from '../../../store/reducers/user/userReducer';
+import { getStat, logIn } from '../../../store/reducers/user/userReducer';
 import store from '../../../store/store';
 import api from '../../api/api';
 
@@ -139,6 +139,10 @@ export default class AutorizationHandler {
           }
           // this.hideForm();
         }
+      })
+      .then(() => {
+        const { userId, token } = store.getState().user;
+        store.dispatch(getStat({ userId, token }));
       });
   }
 
