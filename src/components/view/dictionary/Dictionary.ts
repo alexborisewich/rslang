@@ -1,4 +1,5 @@
 import store from '../../../store/store';
+import preloaderGIF from '../../../assets/preloader.gif';
 
 export default class Dictionary {
   dictionaryState = store.getState().dictionary;
@@ -87,7 +88,13 @@ export default class Dictionary {
   }
 
   createElement() {
-    return `<section class="textbook">
+    const { isLoading } = store.getState().dictionary;
+    return isLoading
+      ? `<div class="audiochallenge__preloader preloader visible">
+    <img class="preloader__img" src="${preloaderGIF}" alt="preloader">
+  </div>`
+      : `<section class="textbook">
+    
     <div class="textbook__container container">
       <div class="textbook__workspace">
         <h2 class="textbook__title title">Выберите уровень</h2>

@@ -68,7 +68,7 @@ class SprintController {
 
     const { userId, token, statistic, isLoggedOn } = store.getState().user;
     const { correct, score } = store.getState().sprint;
-    console.log(isLoggedOn);
+
     if (isLoggedOn) {
       const stat = {
         ...statistic,
@@ -82,7 +82,7 @@ class SprintController {
           },
         },
       };
-      console.log(stat.optional.sprint.finished);
+
       store.dispatch(sendStat({ userId, token, statistic: stat }));
     }
   }

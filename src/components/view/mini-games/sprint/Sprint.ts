@@ -1,12 +1,17 @@
 import store from '../../../../store/store';
 import sprintController from '../../../controller/sprint/SprintController';
 import SprintStat from './SprintStat';
+import preloaderGIF from '../../../../assets/preloader.gif';
 
 export default class Sprint {
   sprintState = store.getState().sprint;
 
   createElement() {
-    return `<section class="sprint">
+    return this.sprintState.isLoading
+      ? `<div class="audiochallenge__preloader preloader visible">
+    <img class="preloader__img" src="${preloaderGIF}" alt="preloader">
+  </div>`
+      : `<section class="sprint">
     <div class="sprint__container container">
     ${this.sprintState.showStat ? new SprintStat().createElement() : ''}
       <div class="sprint__game">
