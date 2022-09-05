@@ -209,20 +209,20 @@ export function checkUser() {
 }
 
 export function getUserId() {
-  const data = (localStorage.getItem('user') || sessionStorage.getItem('user')) as unknown as LoginResponse;
-  const { userId } = data;
+  const data = (localStorage.getItem('user') || sessionStorage.getItem('user')) as string;
+  const { userId } = JSON.parse(data) as LoginResponse;
   return userId;
 }
 
 export function getJwtToken() {
-  const data = (localStorage.getItem('user') || sessionStorage.getItem('user')) as unknown as LoginResponse;
-  const { token } = data;
+  const data = (localStorage.getItem('user') || sessionStorage.getItem('user')) as string;
+  const { token } = JSON.parse(data) as LoginResponse;
   return token;
 }
 
 export function getRefreshToken() {
-  const data = (localStorage.getItem('user') || sessionStorage.getItem('user')) as unknown as LoginResponse;
-  const { refreshToken } = data;
+  const data = (localStorage.getItem('user') || sessionStorage.getItem('user')) as string;
+  const { refreshToken } = JSON.parse(data) as LoginResponse;
   return refreshToken;
 }
 
