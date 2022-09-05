@@ -1,0 +1,322 @@
+.sprint {
+  width: 100%;
+  height: 100%;
+  color: black !important;
+  background-image: url(../assets/sprint/background-sprint-game.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+  }
+
+  & > *:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    width: 63%;
+    margin-top: 10px;
+  }
+
+  &__score {
+    background-color: turquoise;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__score-pointer {
+  }
+
+  &__score-animate {
+  }
+
+  &__timer {
+    background-color: turquoise;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__body {
+    width: 400px;
+    height: auto;
+    min-height: 300px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background: radial-gradient(
+      circle,
+      rgba(60, 132, 127, 0.8830882694874825) 0%,
+      rgba(44, 213, 202, 0.8578781854538691) 100%
+    );
+  }
+
+  &__question {
+    margin-bottom: 10px;
+  }
+
+  &__word {
+    padding: 20px 0 15px 0;
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
+    font-family: Georgia;
+  }
+
+  &__translate {
+    padding: 20px 0 30px 0;
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
+    font-family: Georgia;
+  }
+
+  &__answer {
+    display: flex;
+    margin-bottom: 20px;
+  }
+
+  &__answer-btn {
+    width: 100px;
+    display: inline-block;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin: 0 15px 0 15px;
+    text-decoration: none;
+    color: black;
+    font-family: sans-serif;
+    font-size: 1.5rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out, transform 150ms ease;
+  }
+  &__answer-btn-true {
+    background: yellowgreen;
+  }
+  &__answer-btn-false {
+    background: coral;
+  }
+  &__answer-btn-true:hover {
+    opacity: 0.8;
+  }
+  &__answer-btn-false:hover {
+    opacity: 0.8;
+  }
+
+  &__back {
+    display: flex;
+    width: 95%;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  &__back-to-new-game {
+    width: 230px;
+    display: inline-block;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    background: burlywood;
+    color: black;
+    font-family: sans-serif;
+    font-size: 1.6rem;
+    cursor: pointer;
+    text-align: center;
+  }
+  &__back-to-list-games {
+    width: 230px;
+    display: inline-block;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    background: burlywood;
+    color: black;
+    font-family: sans-serif;
+    font-size: 1.6rem;
+    cursor: pointer;
+    text-align: center;
+  }
+  &__back-to-new-game:hover {
+    opacity: 0.8;
+  }
+  &__back-to-list-games:hover {
+    opacity: 0.8;
+  }
+  &__interface {
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__btn-wpapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+
+  &__sound-btn {
+    display: inline-block;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    margin: 0 10px 0 10px;
+    text-decoration: none;
+    color: black;
+    font-family: sans-serif;
+    font-size: 1.8rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out, transform 150ms ease;
+  }
+  &__sound-btn:hover {
+    opacity: 0.8;
+  }
+
+  &__screen-btn {
+    display: inline-block;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    margin: 0 10px 0 10px;
+    text-decoration: none;
+    color: black;
+    font-family: sans-serif;
+    font-size: 1.8rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out, transform 150ms ease;
+  }
+  &__screen-btn:hover {
+    opacity: 0.8;
+  }
+
+  &__close-btn {
+    display: inline-block;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    margin: 0 10px 0 10px;
+    text-decoration: none;
+    color: black;
+    font-family: sans-serif;
+    font-size: 1.4rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out, transform 150ms ease;
+  }
+  &__close-btn:hover {
+    opacity: 0.8;
+  }
+  &__finish {
+    display: flex;
+    position: absolute;
+    z-index: 2;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-height: 100%;
+    margin: auto;
+  }
+  &__finish-container {
+    margin: 100px auto 0px auto;
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    align-content: center;
+    width: 100%;
+    max-width: 700px;
+    height: 500px;
+    background: #fff;
+    cursor: auto;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px 0px #000;
+    transform: translateY(-30px);
+    transition: 0.3s ease-in-out;
+    padding: 25px;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+
+    &--hidden {
+      transform: translateY(0);
+    }
+
+    & > *:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__finish-title {
+    text-align: center;
+  }
+  &__answers-counters {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__answers-right {
+  }
+
+  &__correct-count {
+  }
+
+  &__answers-wrong {
+  }
+
+  &__wrong-count {
+  }
+
+  &__finish-table {
+    background-color: green;
+  }
+
+  &__finish-btn-wrapper {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__restart-btn {
+  }
+
+  &__change-btn {
+  }
+
+  &__exit-btn {
+  }
+  &__finish-audio-btn {
+    text-align: center;
+    width: 15px;
+    height: 15px;
+    padding: 5px;
+    cursor: pointer;
+    transition: 0.5s ease;
+  }
+  &__finish-audio-btn:hover {
+    opacity: 0.7;
+  }
+}

@@ -1,0 +1,36 @@
+.dot-nav {
+  display: flex;
+  justify-content: center;
+
+  &__item {
+  }
+
+  &__link {
+    display: flex;
+    outline: none;
+
+    &.--active > * {
+      border-color: #ffffffd0;
+      background: transparent;
+    }
+
+    &:hover > * {
+      background: #ffffffd0;
+    }
+
+    &:active > * {
+      background: transparent;
+      border-color: #ffffffd0;
+    }
+  }
+
+  &__circle {
+    width: 20px;
+    height: 20px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    background: #9e9e9eab;
+    margin: 10px;
+    transition: 0.3s ease-in-out;
+  }
+}

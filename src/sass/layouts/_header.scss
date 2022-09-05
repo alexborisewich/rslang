@@ -1,0 +1,49 @@
+.header {
+  height: 80px;
+  background: radial-gradient(circle, rgba(253, 149, 52, 1) 0%, #fd7f34 50%, rgba(253, 99, 52, 1) 100%);
+  box-shadow: rgba(0, 0, 0, 0.8) 0 3px 8px -3px;
+  color: #fff;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+  }
+
+  &__logo {
+    display: block;
+    width: 120px;
+    min-width: 100px;
+    height: 50px;
+  }
+
+  &__menu {
+  }
+
+  &__theme-btn,
+  &__auth-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    color: inherit;
+    border: none;
+    transform: scale(1, 1);
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: transparent;
+
+      & svg {
+        transform: scale(1.1, 1.1);
+      }
+    }
+
+    & svg {
+      width: 36px;
+      transition: all 0.3s;
+    }
+  }
+}

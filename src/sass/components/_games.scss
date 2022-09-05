@@ -1,0 +1,117 @@
+.games {
+  width: 100%;
+  height: 100%;
+  @include media-tablet {
+    height: initial;
+  }
+
+  &__container {
+    display: flex;
+  }
+
+  &__select {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-grow: 1;
+    @include media-tablet {
+      flex-flow: column;
+      gap: 15px;
+    }
+  }
+
+  &__level-list {
+    min-width: 30%;
+  }
+
+  &__level-item {
+    min-height: 20px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.1s ease;
+    border: none;
+    box-shadow: 0px 4px 11px 5px rgba(34, 60, 80, 0.2);
+    gap: 8px;
+  }
+  &__level-item:nth-of-type(1) {
+    background-color: lime;
+  }
+  &__level-item:nth-of-type(2) {
+    background-color: limegreen;
+  }
+  &__level-item:nth-of-type(3) {
+    background-color: rgba(245, 212, 29, 0.842);
+  }
+  &__level-item:nth-of-type(4) {
+    background-color: orange;
+  }
+  &__level-item:nth-of-type(5) {
+    background-color: skyblue;
+  }
+  &__level-item:nth-of-type(6) {
+    background-color: rgb(6, 136, 168);
+  }
+  &__level-item:hover {
+    opacity: 0.7;
+  }
+
+  &__level-input {
+  }
+
+  &__level-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
+
+  &__level-title {
+    font-size: 2.2rem;
+    font-weight: 500;
+  }
+
+  &__level-name {
+    cursor: pointer;
+    font-size: 1.8rem;
+  }
+}
+
+.game-link {
+  display: flex;
+  position: relative;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  box-shadow: 0px 8px 5px 3px rgba(8, 9, 9, 0.2);
+
+  &__title {
+    background-color: antiquewhite;
+    width: 300px;
+    text-align: center;
+    margin-top: -8px;
+    font-size: 2rem;
+    border-bottom-left-radius: 5px 5px;
+    border-bottom-right-radius: 5px 5px;
+    color: black;
+  }
+
+  &__img-wrapper {
+  }
+
+  &__img {
+    width: 300px;
+    height: 300px;
+    background-color: rgba(191, 84, 38, 0.5);
+    border-radius: 5px;
+    animation: 0.5s ease;
+  }
+  &__img:hover {
+    background-color: rgba(191, 84, 38, 0.3);
+  }
+}

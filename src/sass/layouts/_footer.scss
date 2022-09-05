@@ -1,0 +1,39 @@
+.footer {
+  background: radial-gradient(circle, #fd9534 0%, #fd7f34 50%, #fd6334 100%);
+  color: #fff;
+  height: 40px;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    height: 100px;
+  }
+
+  &__copyright {
+  }
+
+  &__team-list {
+    display: flex;
+    gap: 20px;
+  }
+
+  &__team-item {
+  }
+
+  &__team-link {
+    transition: all 0.3s;
+
+    &:hover {
+      color: rgb(255, 214, 175);
+    }
+  }
+
+  &__rsschool-link {
+    & svg {
+      height: 20px;
+    }
+  }
+}
