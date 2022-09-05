@@ -12,6 +12,10 @@
       filter: invert(100%);
     }
 
+    & a {
+      text-shadow: none;
+    }
+
     & > main {
       color: white;
     }

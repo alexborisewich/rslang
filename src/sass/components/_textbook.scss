@@ -19,7 +19,8 @@
     justify-content: space-evenly;
     flex-wrap: wrap;
     transition: 0.3s ease-in-out;
-    gap: 5% 10px;
+    gap: 10px;
+    font-size: 1.4rem;
   }
 
   &__level-item {
@@ -65,8 +66,9 @@
 
   &__buttons {
     display: flex;
-    justify-content: center;
-    margin: 10px 0;
+    flex-flow: wrap;
+    justify-content: space-evenly;
+    gap: 10px;
   }
 
   &__user-buttons,
@@ -74,6 +76,9 @@
     display: flex;
     min-width: 50%;
     justify-content: space-evenly;
+    gap: 5px;
+    flex-grow: 1;
+    min-width: 200px;
   }
 
   &__set-btn {
@@ -221,7 +226,7 @@
   }
 
   &__card-container {
-    max-width: 35%;
+    max-width: 45%;
     min-width: 35%;
     min-height: 100%;
   }
@@ -229,8 +234,9 @@
   &__workspace {
     display: flex;
     justify-content: space-evenly;
+    gap: 15px;
     flex-flow: column;
-    max-width: 60%;
+    max-width: 50%;
     min-height: 100%;
   }
 }

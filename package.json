@@ -9,7 +9,7 @@
         "start": "webpack serve --open --mode=development --node-env=development",
         "lint": "eslint --fix --ext .js --ext .ts .",
         "prettier": "prettier --write \"src/**/*.{ts,js,css,scss,json}\"",
-        "deploy": "gh-pages -d ../rslang/dist -e rslang"
+        "deploy": "gh-pages -d ../rslang/dist"
     },
     "repository": {
         "type": "git",
