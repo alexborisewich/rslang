@@ -533,9 +533,11 @@ export default class AudioChallengeGame {
   finishGame() {
     this.renderFinishScreen();
     this.isEnded = !this.isEnded;
-    this.statistic.optional.audiochallenge.finished += 1;
-    this.statistic.optional.audiochallenge.totalScore += this.score;
-    this.api.setUserStat(this.userId, this.token, this.statistic);
+    if (this.isLoggedOn) {
+      this.statistic.optional.audiochallenge.finished += 1;
+      this.statistic.optional.audiochallenge.totalScore += this.score;
+      this.api.setUserStat(this.userId, this.token, this.statistic);
+    }
     const footerBtnWrapper = this.container.querySelector('.game__skip-wrapper') as HTMLElement;
     footerBtnWrapper.innerHTML = `
       <button class="game__finish-btn audiogame-btn btn-finish">Показать статистику</button>`;
