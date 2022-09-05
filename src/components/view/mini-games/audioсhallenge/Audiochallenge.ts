@@ -13,7 +13,7 @@ import streakSVG from '../../../../assets/streak.svg';
 import restartSVG from '../../../../assets/restart.svg';
 import gamesSVG from '../../../../assets/games.svg';
 import preloaderGIF from '../../../../assets/preloader.gif';
-import { Dictionary } from '../../../../common/interface/interface';
+import { Dictionary, Statistic } from '../../../../common/interface/interface';
 import {
   getRandomNumber,
   shuffleArray,
@@ -31,6 +31,7 @@ import {
 } from '../../../../common/utils/utils';
 import store from '../../../../store/store';
 import { switchTab } from '../../../../store/reducers/app/appReducer';
+import { UserState } from '../../../../common/types/user/types';
 
 export default class AudioChallengeGame {
   level: number;
@@ -63,11 +64,21 @@ export default class AudioChallengeGame {
 
   muted = false;
 
+  userId: string;
+
+  token: string;
+
+  statistic: Statistic;
+
+  isLoggedOn: boolean;
+
   constructor(level?: number, page?: number) {
     if (level) this.level = level;
     else this.level = 0;
     if (page || page === 0) this.page = page;
     else this.page = getRandomNumber(30);
+    const userState: UserState = JSON.parse(JSON.stringify(store.getState().user)) as UserState;
+    ({ userId: this.userId, token: this.token, statistic: this.statistic, isLoggedOn: this.isLoggedOn } = userState);
   }
 
   async start() {
@@ -346,7 +357,6 @@ export default class AudioChallengeGame {
 
   async setData() {
     if (!this.words) this.words = await this.getData(this.page);
-
     if (this.current === this.words.length) {
       if (this.page === 0) {
         this.timer.stop();
@@ -387,6 +397,10 @@ export default class AudioChallengeGame {
     const nextBtn = this.container.querySelector('.btn-next') as HTMLButtonElement;
     if (userAnswer === wordTranslate) {
       this.questions[this.questions.length - 1].correctAnswer = 1;
+      if (this.isLoggedOn) {
+        this.statistic.optional.audiochallenge.totalCorrect += 1;
+        this.api.setUserStat(this.userId, this.token, this.statistic);
+      }
       this.streakCounter += 1;
       if (this.streakCounter > this.maxStreak) this.maxStreak = this.streakCounter;
       this.streakHundler();
@@ -519,6 +533,9 @@ export default class AudioChallengeGame {
   finishGame() {
     this.renderFinishScreen();
     this.isEnded = !this.isEnded;
+    this.statistic.optional.audiochallenge.finished += 1;
+    this.statistic.optional.audiochallenge.totalScore += this.score;
+    this.api.setUserStat(this.userId, this.token, this.statistic);
     const footerBtnWrapper = this.container.querySelector('.game__skip-wrapper') as HTMLElement;
     footerBtnWrapper.innerHTML = `
       <button class="game__finish-btn audiogame-btn btn-finish">Показать статистику</button>`;

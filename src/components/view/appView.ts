@@ -7,7 +7,7 @@ import {
   switchDictionaryTab,
 } from '../../store/reducers/dictionary/dictionaryReducer';
 import { switchTab } from '../../store/reducers/app/appReducer';
-import { parseID, play, playAudio, logOut } from '../../common/utils/utils';
+import { parseID, play, playAudio, logOut, getUserId, getJwtToken } from '../../common/utils/utils';
 import store from '../../store/store';
 import Header from './layout/Header';
 import Main from './layout/Main';
@@ -21,6 +21,7 @@ import {
   addLearned,
   deleteComplex,
   deleteLearned,
+  getStat,
   logOut as logout,
   sendStat,
 } from '../../store/reducers/user/userReducer';
@@ -65,7 +66,10 @@ export default class AppView {
         store.dispatch(fetchWords({ group, page }));
       }
       if (targetLink.id === 'games-link') store.dispatch(switchTab('games'));
-      if (targetLink.id === 'statistic-link') store.dispatch(switchTab('statistic'));
+      if (targetLink.id === 'statistic-link') {
+        store.dispatch(getStat({ userId: getUserId(), token: getJwtToken() }));
+        store.dispatch(switchTab('statistic'));
+      }
       if (targetLink.id === 'team-link') store.dispatch(switchTab('team'));
       if (targetImg.closest('.theme-btn')) {
         this.body.classList.toggle('theme--light');

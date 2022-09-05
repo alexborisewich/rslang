@@ -25,9 +25,13 @@ export default class Statistic {
           <div class="stat__games">
             <div class="stat__item">
               <h2 class="stat__game">Аудиовызов</h2>
-              <p class="stat__description">Изучено слов: 0</p>
-              <p class="stat__description">Правильных ответов: 0</p>
-              <p class="stat__description">Максимальная длина серии правильных ответов: 0</p>
+              <p class="stat__description">Всего сыграно: ${this.statistic.optional.audiochallenge.finished}</p>
+              <p class="stat__description">
+                Всего правильных ответов: ${this.statistic.optional.audiochallenge.totalCorrect}
+              </p>
+              <p class="stat__description">
+                Всего очков набрано: ${this.statistic.optional.audiochallenge.totalScore}
+              </p>
             </div>
             <div class="stat__item">
               <h2 class="stat__game">Спринт</h2>
