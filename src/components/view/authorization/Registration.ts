@@ -37,7 +37,7 @@ export default class Registration {
               <label class="form__input-label" for="showpassword">Показать пароль</label>
             </li>
             <li class="form__input-item">
-              <input type="checkbox" class="form__checkbox" id="enter" name="enter">
+              <input type="checkbox" class="form__checkbox" id="enter" name="enter" checked>
               <label class="form__input-label" for="enter">Войти в аккаунт</label>
             </li>
             <li class="form__input-item">
