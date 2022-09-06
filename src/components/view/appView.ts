@@ -60,6 +60,8 @@ export default class AppView {
       }
       if (targetLink.id === 'homepage-link') store.dispatch(switchTab('homepage'));
       if (targetLink.id === 'dictionary-link') {
+        const { userId, token } = store.getState().user;
+        store.dispatch(getStat({ userId, token }));
         const state = store.getState().dictionary;
         const { group, page } = state;
         store.dispatch(switchTab('dictionary'));

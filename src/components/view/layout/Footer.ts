@@ -2,9 +2,15 @@ import store from '../../../store/store';
 import schoolSVG from '../../../assets/rsschool.svg';
 
 export default class Footer {
+  appState = store.getState().app;
+
   createElement() {
     const { isFullscreen } = store.getState().sprint;
-    return `<footer class="footer ${isFullscreen ? 'hidden' : ''}">
+    return `<footer class="footer ${
+      isFullscreen || this.appState.activeTab === 'sprint' || this.appState.activeTab === 'audiochallenge'
+        ? 'hidden'
+        : ''
+    }">
         <div class="footer__container container">
           <p class="footer__copyright">© 2022 RSLang</p>
           <ul class="footer__team-list">

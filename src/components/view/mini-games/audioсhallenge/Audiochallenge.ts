@@ -93,6 +93,8 @@ export default class AudioChallengeGame {
   }
 
   renderStartScreen() {
+    const footer = document.querySelector('.footer') as HTMLDivElement;
+    footer.classList.add('hidden');
     this.container.innerHTML = '';
     this.container.innerHTML = `
     <section class="audiochallenge container">

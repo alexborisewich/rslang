@@ -145,7 +145,7 @@ export default class Dictionary {
         <div class="textbook__words">
         ${this.renderWords()}
         </div>
-      <nav class="textbook__pagination">
+      <nav class="textbook__pagination ${this.dictionaryState.activeTab === 'complex' ? 'hidden' : ''}">
         <input type="button" class="pagination__btn textbook__btn-prev" id='prev-button'
         ${this.dictionaryState.page === 0 ? 'disabled' : ''}/> <label class="textbook__btn-prev-label
         ${this.dictionaryState.page === 0 ? 'textbook__btn-label--disabled' : ''}"
