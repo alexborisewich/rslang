@@ -13,9 +13,11 @@ export default class Homepage {
           <p class="homepage__text">
             В учебнике мы собрали более 3000 самых используемых слов, а миниигры помогут закрепить материал.
           </p>
+          <a href="https://www.youtube.com/watch?v=56CGNfXhmf0&t=1s" target="_blank">
           <button class="homepage__home-btn">
             Смотреть
           </button>
+          </a>
         </div>
 
       </div>
