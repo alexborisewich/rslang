@@ -3,10 +3,6 @@ import { Dictionary, Statistic } from '../../../common/interface/interface';
 import { LoginResponse, UserState } from '../../../common/types/user/types';
 import api from '../../../components/api/api';
 
-const storedUser = localStorage.getItem('userState');
-let storedState: UserState | null = null;
-if (storedUser) storedState = JSON.parse(storedUser) as UserState;
-
 const initialState: UserState = {
   userId: '',
   email: '',
@@ -65,7 +61,7 @@ export const getStat = createAsyncThunk<Statistic, { userId: string; token: stri
 
 const userSlice = createSlice({
   name: 'user',
-  initialState: storedState || initialState,
+  initialState,
   reducers: {
     logIn(state, action: PayloadAction<LoginResponse>) {
       state.isLoggedOn = true;
