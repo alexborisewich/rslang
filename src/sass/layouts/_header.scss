@@ -17,6 +17,12 @@
     width: 120px;
     min-width: 100px;
     height: 50px;
+
+    @include media-tablet {
+      width: 70px;
+      min-width: 70px;
+      line-height: 70px;
+    }
   }
 
   &__menu {
@@ -44,6 +50,12 @@
     & svg {
       width: 36px;
       transition: all 0.3s;
+    }
+  }
+
+  &__auth-text {
+    @include media-tablet {
+      display: none;
     }
   }
 }

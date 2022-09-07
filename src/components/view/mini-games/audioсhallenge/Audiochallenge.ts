@@ -72,18 +72,23 @@ export default class AudioChallengeGame {
 
   isLoggedOn: boolean;
 
-  constructor(level?: number, page?: number) {
-    if (level) this.level = level;
-    else this.level = 0;
-    if (page || page === 0) this.page = page;
-    else this.page = getRandomNumber(30);
-    const userState: UserState = JSON.parse(JSON.stringify(store.getState().user)) as UserState;
-    ({ userId: this.userId, token: this.token, statistic: this.statistic, isLoggedOn: this.isLoggedOn } = userState);
+  constructor(
+    level = 0,
+    page: number = getRandomNumber(30),
+    { userId, token, statistic, isLoggedOn } = JSON.parse(JSON.stringify(store.getState().user)) as UserState
+  ) {
+    this.level = level;
+    this.page = page;
+    this.userId = userId;
+    this.token = token;
+    this.statistic = statistic;
+    this.isLoggedOn = isLoggedOn;
   }
 
   async start() {
     this.renderGame();
     this.btnsHandler();
+    this.keyboardHandler();
     this.attemptHandler();
     await this.setData()
       .then(() => playBackgroundSound())
@@ -227,34 +232,43 @@ export default class AudioChallengeGame {
   }
 
   keyboardHandler() {
-    const answerBtns = this.container.querySelectorAll('.btn-answer');
-    const notAnswerBtn = this.container.querySelector('.btn-not-answer') as HTMLButtonElement;
-    const nextBtn = this.container.querySelector('.btn-next') as HTMLButtonElement;
-    const questionSpeaker = this.container.querySelector('.game__speaker') as HTMLButtonElement;
-    const correctSpeaker = this.container.querySelector('.correct__speaker') as HTMLButtonElement;
     const nextKeyboardBtn = 'ArrowRight';
     const answerKeyboardBtn = 'Enter';
+    const secondAnswerKeyboardBtn = 'NumpadEnter';
     const soundKeyboardBtn = 'Space';
     const keyboardKeys: { [key: string]: boolean } = {
       Digit1: false,
+      Numpad1: false,
       Digit2: false,
+      Numpad2: false,
       Digit3: false,
+      Numpad3: false,
       Digit4: false,
+      Numpad4: false,
       Digit5: false,
+      Numpad5: false,
       Enter: false,
+      NumpadEnter: false,
       ArrowRight: false,
       Space: false,
     };
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!this.isEnded) {
+        e.preventDefault();
         const keyPressed = e.code;
         if (keyboardKeys[keyPressed] || keyboardKeys[keyPressed] === undefined) {
           return;
         }
         keyboardKeys[keyPressed] = true;
       }
+      if (this.isEnded) document.removeEventListener('keyup', handleKeyUp);
     };
     const handleKeyUp = (e: KeyboardEvent) => {
+      const notAnswerBtn = this.container.querySelector('.btn-not-answer') as HTMLButtonElement;
+      const nextBtn = this.container.querySelector('.btn-next') as HTMLButtonElement;
+      const answerBtns = this.container.querySelectorAll('.btn-answer');
+      const questionSpeaker = this.container.querySelector('.game__speaker') as HTMLButtonElement;
+      const correctSpeaker = this.container.querySelector('.correct__speaker') as HTMLButtonElement;
       if (!this.isEnded) {
         const keyPressed = e.code;
         if (keyboardKeys[keyPressed]) {
@@ -263,7 +277,7 @@ export default class AudioChallengeGame {
             nextBtn.click();
             return;
           }
-          if (keyPressed === answerKeyboardBtn) {
+          if (keyPressed === answerKeyboardBtn || keyPressed === secondAnswerKeyboardBtn) {
             if (notAnswerBtn.classList.contains('--hidden')) return;
             notAnswerBtn.click();
             return;
@@ -278,6 +292,7 @@ export default class AudioChallengeGame {
           keyboardKeys[keyPressed] = false;
         }
       }
+      if (this.isEnded) document.removeEventListener('keyup', handleKeyUp);
     };
     document.addEventListener('keydown', handleKeyDown);
     document.addEventListener('keyup', handleKeyUp);
@@ -358,7 +373,6 @@ export default class AudioChallengeGame {
           .then(() => disable(correctAudioBtn));
       });
     }
-    this.keyboardHandler();
   }
 
   async setData() {

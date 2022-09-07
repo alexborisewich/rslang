@@ -49,7 +49,7 @@ export default class Header {
               <span class="header__auth-text">Выйти </span>
               ${logoutSVG}
             </button>`
-          : `<button class="header__auth-btn btn" type="button" id="login-btn">
+          : `<button class="header__auth-btn" type="button" id="login-btn">
               <span class="header__auth-text">Войти </span>
               ${loginSVG}
               </button>`

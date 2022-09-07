@@ -41,6 +41,10 @@
   &__lives-item {
     width: 30px;
     height: 30px;
+    @include media-tablet {
+      width: calc(20px + 10 * ((100vw - 600px) / (1000 - 600)));
+      height: calc(20px + 10 * ((100vw - 600px) / (1000 - 600)));
+    }
   }
 
   &__body {
@@ -89,6 +93,9 @@
     text-decoration: none;
     font-style: normal;
     font-variant: normal;
+    @include media-tablet {
+      font-size: calc(40px + 20 * ((100vw - 600px) / (1000 - 600)));
+    }
   }
 
   &__instruction-wrapper {
@@ -154,6 +161,9 @@
     justify-content: center;
     align-items: center;
     column-gap: 10px;
+    @include media-tablet {
+      flex-wrap: wrap;
+    }
   }
 
   & label {
@@ -346,6 +356,10 @@
   font-style: normal;
   font-variant: normal;
 
+  @include media-tablet {
+    font-size: calc(20px + 10 * ((100vw - 600px) / (1000 - 600)));
+  }
+
   &__pointer {
     margin-left: 5px;
   }
@@ -448,6 +462,10 @@
     font-size: 20px;
     color: #fff;
 
+    @include media-tablet {
+      font-size: calc(15px + 5 * ((100vw - 600px) / (1000 - 600)));
+    }
+
     & > *:not(:last-child) {
       margin-bottom: 10px;
     }
@@ -487,6 +505,12 @@
     color: #ffffff;
     font-size: 20px;
     padding: 10px 20px;
+
+    @include media-tablet {
+      max-width: max-content;
+      font-size: calc(15px + 5 * ((100vw - 600px) / (1000 - 600)));
+      padding: 10px calc(10px + 10 * ((100vw - 600px) / (1000 - 600)));
+    }
 
     &:disabled {
       background: #bb7b43;
@@ -528,6 +552,11 @@
     color: #ffffff;
     font-size: 30px;
     padding: 10px 30px 10px 30px;
+
+    @include media-tablet {
+      font-size: calc(20px + 10 * ((100vw - 600px) / (1000 - 600)));
+      padding: 10px calc(20px + 10 * ((100vw - 600px) / (1000 - 600)));
+    }
 
     &:disabled {
       background: #b25cdd;
